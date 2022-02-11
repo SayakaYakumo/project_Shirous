@@ -23,6 +23,8 @@ void Main()
 	Window::SetFullscreen(true);
 	//GameMain gameMain;
 
+	Print << U"test";
+
 	while (System::Update())
 	{
 		//gameMain.GameUpdate();
