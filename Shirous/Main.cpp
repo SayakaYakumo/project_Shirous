@@ -1,5 +1,5 @@
 ﻿
-# include <Siv3D.hpp> // OpenSiv3D v0.4.3
+# include <Siv3D.hpp> // OpenSiv3D v0.6.3
 
 # include "GameMain.hpp"
 
