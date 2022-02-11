@@ -163,8 +163,17 @@
     <Filter Include="Source Files\Unit">
       <UniqueIdentifier>{a00ac693-4624-4635-84c0-7ce9ae0ceda2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\NewFilter1">
-      <UniqueIdentifier>{98d9a090-e199-4fe1-9a95-af6527c6b7b6}</UniqueIdentifier>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{ea0d61a1-0db2-45a1-bf51-e86f0cab6606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Title">
+      <UniqueIdentifier>{78cecf24-9a95-459b-8e5b-3ceb634edf1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Menu">
+      <UniqueIdentifier>{63617a2f-acc5-4b6f-aea5-40b90206a75f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Game">
+      <UniqueIdentifier>{78acd28e-ab9e-4461-8699-6160692756a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +206,15 @@
     </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Scene\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Source Files\Scene\Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -856,6 +874,18 @@
     </ClInclude>
     <ClInclude Include="Unit.hpp">
       <Filter>Source Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.hpp">
+      <Filter>Source Files\Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Source Files\Scene\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.hpp">
+      <Filter>Source Files\Scene\Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
