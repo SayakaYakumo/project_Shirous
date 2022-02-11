@@ -210,7 +210,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files\Unit</Filter>
     </ClCompile>
