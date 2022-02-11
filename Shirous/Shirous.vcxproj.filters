@@ -136,6 +136,36 @@
     <Filter Include="Resource Files\engine\font\min">
       <UniqueIdentifier>{1b103960-f11a-4515-b4f1-f59333ce00d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{c7cc33ee-72fa-4197-814d-4508042a8ea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game_Data">
+      <UniqueIdentifier>{1d0debbf-3705-4592-95ab-5a9967bc4067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bullet">
+      <UniqueIdentifier>{f70e8f5b-2241-40ee-be0b-3b2af9f8d89c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enemy">
+      <UniqueIdentifier>{b36d1330-7d61-483c-bf00-53ac13c3075a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EnemyBullet">
+      <UniqueIdentifier>{2bcdf60d-e6f0-4897-ba18-a8a292e551ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{13470d00-6c49-48ee-aeb8-6150513569d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PlayerBullet">
+      <UniqueIdentifier>{6c035220-45be-441f-991b-2c29af9ad2ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameMain">
+      <UniqueIdentifier>{35a570a7-c45b-43e3-b7e6-5c9a40d4bdaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unit">
+      <UniqueIdentifier>{a00ac693-4624-4635-84c0-7ce9ae0ceda2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NewFilter1">
+      <UniqueIdentifier>{98d9a090-e199-4fe1-9a95-af6527c6b7b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -144,32 +174,29 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Unit.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Draw_UI.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyBullet.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\EnemyBullet</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerBullet.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\PlayerBullet</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GameMain.cpp">
+      <Filter>Source Files\GameMain</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Source Files\Unit</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -803,35 +830,32 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Unit.hpp">
+    <ClInclude Include="Siv3D.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Game_Data.hpp">
+      <Filter>Source Files\Game_Data</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.hpp">
+      <Filter>Source Files\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBullet.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\EnemyBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>Source Files\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerBullet.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\PlayerBullet</Filter>
     </ClInclude>
-    <ClInclude Include="Title.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="GameMain.hpp">
+      <Filter>Source Files\GameMain</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Common.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Unit.hpp">
+      <Filter>Source Files\Unit</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
