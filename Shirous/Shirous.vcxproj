@@ -116,14 +116,17 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerBullet.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Title.cpp" />
     <ClCompile Include="Draw_UI.cpp" />
     <ClCompile Include="Unit.cpp" />
   </ItemGroup>
@@ -322,14 +325,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.hpp" />
+    <ClInclude Include="Common.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyBullet.hpp" />
+    <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameMain.hpp" />
     <ClInclude Include="Game_Data.hpp" />
+    <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerBullet.hpp" />
     <ClInclude Include="Siv3D.hpp" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Title.hpp" />
     <ClInclude Include="Unit.hpp" />
   </ItemGroup>
   <ItemGroup>
