@@ -17,7 +17,7 @@ void Main()
 	FontAsset::Register(U"TitleFont", FontMethod::MSDF, 50, Typeface::Heavy);
 	FontAsset(U"TitleFont").setBufferThickness(4);
 	FontAsset::Register(U"ScoreFont", 30, Typeface::Light);
-
+  
 	Scene::Resize(1920, 1080);
 	Scene::SetResizeMode(ResizeMode::Keep);
 	Window::SetFullscreen(true);

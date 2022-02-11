@@ -201,8 +201,15 @@
     <ClCompile Include="PlayerBullet.cpp">
       <Filter>Source Files\PlayerBullet</Filter>
     </ClCompile>
-    <ClCompile Include="GameMain.cpp">
-      <Filter>Source Files\GameMain</Filter>
+    <ClCompile Include="Title.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files\Unit</Filter>
@@ -868,9 +875,15 @@
     </ClInclude>
     <ClInclude Include="PlayerBullet.hpp">
       <Filter>Source Files\PlayerBullet</Filter>
+      </ClInclude>
+    <ClInclude Include="Title.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameMain.hpp">
-      <Filter>Source Files\GameMain</Filter>
+    <ClInclude Include="Menu.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Unit.hpp">
       <Filter>Source Files\Unit</Filter>
