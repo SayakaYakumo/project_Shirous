@@ -1,14 +1,42 @@
 ﻿#pragma once
-
-# include <Siv3D.hpp>
-
+#include "Common.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
 #include "PlayerBullet.hpp"
 #include "EnemyBullet.hpp"
 
-class GameMain
+class Game : public App::Scene
 {
+public:
+
+	Game(const InitData& init);
+
+	void update() override;
+
+	void draw() const override;
+
+	//ゲームのメインループ
+	void GameUpdate();
+	//ショットの移動関係
+	void GameShotUpdate(const double _time);
+	//移動関係
+	void GameMoveUpdate(const double _time);
+	//ゲーム描画処理（背景やエフェクト)
+	void GameDraw(const double _time) const;
+
+	//ショットのヒット判定
+	void GameHitCheck(const double _time);
+
+	//敵のランダム配置
+	Enemy GenerateEnemy();
+
+	//一番近い敵を取得
+
+	Enemy NearEnemy();
+
+	double dist(Vec2 _SetPos, Vec2 _TargetPos);
+	double dist(double x1, double y1, double x2, double y2);
+
 private:
 
 	// ゲームオーバー判定
@@ -54,37 +82,4 @@ private:
 	int32 highScore = 0;
 	// 現在のスコア
 	int32 score = 0;
-
-public:
-
-	GameMain();
-
-	~GameMain()
-	{
-
-	}
-
-	//ゲームのメインループ
-	void GameUpdate();
-	//ショットの移動関係
-	void GameShotUpdate(const double _time);
-	//移動関係
-	void GameMoveUpdate(const double _time);
-	//ゲーム描画処理（背景やエフェクト)
-	void GameDrow(const double _time);
-
-	//ショットのヒット判定
-	void GameHitCheck(const double _time);
-
-	//敵のランダム配置
-	Enemy GenerateEnemy();
-
-	//一番近い敵を取得
-
-	Enemy NearEnemy();
-
-	double dist(Vec2 _SetPos, Vec2 _TargetPos);
-	double dist(double x1, double y1, double x2, double y2);
-
-
 };

@@ -1,7 +1,7 @@
-﻿#include "GameMain.hpp"
+﻿#include "Game.hpp"
 
-
-GameMain::GameMain()
+Game::Game(const InitData& init)
+	: IScene{ init }
 {
 	// 背景のいろ
 	Scene::SetBackground(ColorF(0.1, 0.2, 0.7));
@@ -11,12 +11,15 @@ GameMain::GameMain()
 
 	//プレイヤーの生成
 	gamePlayer = Player();
-
 }
 
-void GameMain::GameUpdate()
+void Game::update()
 {
-
+	if (MouseL.down())
+	{
+		// タイトルシーンに遷移
+		changeScene(State::Title);
+	}
 	// ゲームオーバー画面
 	if (gameover)
 	{
@@ -32,9 +35,6 @@ void GameMain::GameUpdate()
 			score = 0;
 			gameover = false;
 		}
-
-		//  文字表示
-		gameoverfont(U"Press Key A to continue").drawAt(Scene::Center(), Palette::Black);
 
 		return;
 	}
@@ -59,12 +59,15 @@ void GameMain::GameUpdate()
 	GameMoveUpdate(deltaTime);
 
 	//描画のみ
-	GameDrow(deltaTime);
-
-
+	//GameDrow(deltaTime);
 }
 
-void GameMain::GameMoveUpdate(const double _time)
+void Game::draw() const
+{
+	GameDraw(Scene::DeltaTime());
+}
+
+void Game::GameMoveUpdate(const double _time)
 {
 	//自機の移動と描画
 	gamePlayer.Update(_time);
@@ -77,7 +80,7 @@ void GameMain::GameMoveUpdate(const double _time)
 	}
 }
 
-void GameMain::GameShotUpdate(const double _time)
+void Game::GameShotUpdate(const double _time)
 {
 	//プレイヤーのショットタイム周り
 	playerShotTimer = Min(playerShotTimer + _time, playerShotCoolTime);
@@ -112,7 +115,7 @@ void GameMain::GameShotUpdate(const double _time)
 	if (playerShotTimer >= playerShotCoolTime)
 	{
 		playerShotTimer = 0.0;
-		gamePlayerBullet << PlayerBullet(gamePlayer.pos.movedBy(50,0));
+		gamePlayerBullet << PlayerBullet(gamePlayer.pos.movedBy(50, 0));
 	}
 
 	for (auto& playerBullet : gamePlayerBullet)
@@ -126,9 +129,13 @@ void GameMain::GameShotUpdate(const double _time)
 
 }
 
-void GameMain::GameDrow(const double _time)
+void Game::GameDraw(const double _time) const
 {
-
+	if (gameover) {
+		//  文字表示
+		gameoverfont(U"Press Key A to continue").drawAt(Scene::Center(), Palette::Black);
+		return;
+	}
 	// 背景のアニメーション
 	for (auto i : step(12))
 	{
@@ -140,7 +147,7 @@ void GameMain::GameDrow(const double _time)
 }
 
 
-void GameMain::GameHitCheck(const double _time)
+void Game::GameHitCheck(const double _time)
 {
 
 	// 敵 vs 自機ショット
@@ -192,13 +199,13 @@ void GameMain::GameHitCheck(const double _time)
 	}
 }
 
-Enemy GameMain::GenerateEnemy()
+Enemy Game::GenerateEnemy()
 {
 	Enemy set;
 	return set;
 }
 //参考にしたプログラムのホーミング弾があったときの名残、使うかもしれないので一応残しておく
-Enemy GameMain::NearEnemy()
+Enemy Game::NearEnemy()
 {
 	Enemy set;
 	double checkDis = 1000;
@@ -218,13 +225,13 @@ Enemy GameMain::NearEnemy()
 }
 
 
-double GameMain::dist(Vec2 _SetPos, Vec2 _TargetPos)
+double Game::dist(Vec2 _SetPos, Vec2 _TargetPos)
 {
 
 	return dist(_SetPos.x, _SetPos.y, _TargetPos.x, _TargetPos.y);
 }
 
-double GameMain::dist(double x1, double y1, double x2, double y2)
+double Game::dist(double x1, double y1, double x2, double y2)
 {
 
 	double dx, dy;
