@@ -2,11 +2,16 @@
 
 void PlayerBullet::Update(double deltaTime)
 {
-	pos.x += deltaTime * speed;
-	Draw();
+
+	circle.x += cos(angle) * speed*deltaTime;
+	circle.y += sin(angle) * speed* deltaTime;
 }
 
-void PlayerBullet::Draw()
+void PlayerBullet::Draw()const
 {
-	Circle(pos, 8).draw(Palette::Orange);
+	String texture_name = U"bullet_" + shape + U"_" + color + U"_" + size;
+
+	TextureAsset(texture_name).draw(circle.x-(circle.r/2), circle.y - (circle.r / 2));
+
+	
 }

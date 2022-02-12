@@ -6,14 +6,20 @@ public:
 
 	double speed = 0.0;
 
-	Vec2 pos;
+	Rect rect;
 
 	Texture texture;
+
+	int count = 0;
+
+	String name;
 
 public:
 
 	Unit()
 	{
+		rect = Rect(0,0,0,0);
+
 	}
 
 	~Unit()
@@ -22,5 +28,5 @@ public:
 
 	}
 
-	bool MyHitCheck(Vec2 _bulletPos, double _r = 40);
+	
 };

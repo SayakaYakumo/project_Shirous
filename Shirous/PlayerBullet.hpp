@@ -8,20 +8,29 @@ private:
 
 public:
 
-	PlayerBullet(Vec2 setPos) {
-		pos = setPos;
-		speed = 500.0;
+	int power = 1;
+
+	PlayerBullet(int x,int y,int r,int speed_,int move_,double angle_,String shape_,String color_,String size_) {
+		circle = Circle(x, y, r);
+		speed = speed_;
+		move = move_;
+		angle = angle_;
+		shape = shape_;
+		color = color_;
+		size = size_;
 	}
 	~PlayerBullet() {
 
 	}
 
-	bool BulletEnd() const {
-		return pos.x > 1970;
-	}
+
 
 
 	void Update(double deltaTime);
 
-	void Draw();
+	void Draw()const;
+
+	Circle get_circle() { return circle; }
+
+	int get_power() { return power; }
 };

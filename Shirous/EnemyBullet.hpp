@@ -6,23 +6,31 @@ class EnemyBullet :
 
 private:
 
+
+
 public:
 
-	EnemyBullet(Vec2 setPos) {
-		pos = setPos;
-		speed = 300.0;
+	EnemyBullet(int x, int y, int r, int speed_, int move_,double angle_, String shape_, String color_, String size_) {
+		circle = Circle(x, y, r);
+		speed = speed_;
+		move = move_;
+		angle = angle_;
+		shape = shape_;
+		color = color_;
+		size = size_;
 	}
+
+	
 	~EnemyBullet() {
 
 	}
 
-	bool BulletEnd() const {
-		return pos.x < -100;
-	}
+	
 
 
 	void Update(double deltaTime);
 
-	void Draw();
+	void Draw()const;
 
+	Circle get_circle() { return circle; }
 };
