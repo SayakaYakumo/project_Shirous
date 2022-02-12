@@ -7,6 +7,8 @@ void Game::update_main() {
 	//ステージ時間に追加
 	stage_time += deltaTime;
 
+	//ステージスクロール
+	stage_scroll += deltaTime * stage_speed;
 	
 
 	// 敵の発生

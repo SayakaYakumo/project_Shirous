@@ -11,7 +11,7 @@ void PlayerBullet::Draw()const
 {
 	String texture_name = U"bullet_" + shape + U"_" + color + U"_" + size;
 
-	TextureAsset(texture_name).draw(circle.x-(circle.r/2), circle.y - (circle.r / 2));
+	TextureAsset(texture_name).draw(circle.x-(circle.r/2), circle.y - (circle.r / 2),ColorF(1.0,0.7));
 
 	
 }

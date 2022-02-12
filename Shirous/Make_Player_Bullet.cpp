@@ -20,7 +20,7 @@ void Game::make_player_bullet() {
 		x = gamePlayer.get_rect().x;
 		y = gamePlayer.get_rect().y;
 		r = 5;
-		speed = 850;
+		speed = 1000;
 		move = 0;
 		angle = ToRadians(0);
 		shape = U"circle";

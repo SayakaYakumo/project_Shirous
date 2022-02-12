@@ -87,6 +87,37 @@ void Game::stage_1_load() {
 	}
 
 
+	//背景データ
+
+	const CSV csv_BACK_TILE(U"data/stage/1/Back_Tile.csv");
+	if (not csv_EMERGE_ENEMY) {
+		throw Error(U"Failed to load 'magic_data.csv'");
+	}
+
+
+
+
+	//縦
+	for (int y = 0; y < csv_BACK_TILE.rows(); y++) {
+
+		int pos_x = 0;
+		int pos_y = 0;
+		int kind = 0;
+
+		//横
+		for (int x = 0; x < 65; x++) {
+			kind = Parse<int>(csv_BACK_TILE[y][x]);
+			back_tile.push_back(Back_Tile(x,y,kind));
+
+		}
+
+	}
+
+
+
+
+
+
 	// アセットの登録
 
 	//自機の登録
@@ -107,6 +138,10 @@ void Game::stage_1_load() {
 
 	TextureAsset::Register(U"bullet_circle_red_s", U"data/image/bullet/circle/red/s.png");
 	TextureAsset::Load(U"bullet_circle_red_s");
+
+	TextureAsset::Register(U"back_tile", U"data/image/back/back_tile.png");
+	TextureAsset::Load(U"back_tile");
+	
 
 
 }

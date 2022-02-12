@@ -334,6 +334,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\デスクトップ\OpenSiv3D_0.6.3\include\Siv3D.hpp" />
+    <ClInclude Include="Back_Tile.hpp" />
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="EmergeEnemy.hpp" />

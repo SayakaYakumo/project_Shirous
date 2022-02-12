@@ -962,5 +962,8 @@
     <ClInclude Include="..\..\..\デスクトップ\OpenSiv3D_0.6.3\include\Siv3D.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Back_Tile.hpp">
+      <Filter>Source Files\Data\Back_Tile</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

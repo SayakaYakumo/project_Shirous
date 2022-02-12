@@ -37,6 +37,12 @@ void Game::draw_main_back() const {
 		break;
 	}
 
+	for (size_t i = 0; i < back_tile.size(); i++) {
+		if (back_tile[i].get_kind() != -1) {
+			back_tile[i].draw(stage_scroll);
+		}
+	}
+
 }
 
 

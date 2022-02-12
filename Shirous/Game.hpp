@@ -5,6 +5,7 @@
 #include "PlayerBullet.hpp"
 #include "EnemyBullet.hpp"
 #include"EmergeEnemy.hpp"
+#include"Back_Tile.hpp"
 
 class Game : public App::Scene
 {
@@ -79,6 +80,7 @@ public:
 	//Stage6
 	void stage_6_load();
 
+	Array<Back_Tile> back_tile;
 
 private:
 
@@ -90,16 +92,17 @@ private:
 	int game_scene = 0;
 
 	//ステージスクロールスピード
-	double stage_speed = 300;
+	double stage_speed = 200;
 
 	//スクロール
-	double scroll = 0;
+	double stage_scroll = 0;
 
 	//現在のステージ番号
 	int stage_number = 1;
 
 	//ステージ経過時間
 	double stage_time = 0;
+
 
 
 
