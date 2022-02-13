@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿/*
+#pragma once
 #include "Common.hpp"
 #include "Enemy.hpp"
 #include "Player.hpp"
@@ -7,69 +8,44 @@
 #include"EmergeEnemy.hpp"
 #include"Back_Tile.hpp"
 
-class Game 
+class Game : public App::Scene
 {
 public:
 
-	
+	Game(const InitData& init);
 
 
-	//Game
-	void ini();
-	void update();
-	void draw();
+	//Update
+	void update() override;
 
-	//Chnage_Scene
-	void change_scene(int);
-	void update_change_scene();
-	void draw_change_scene();
-
-
-	//Game
-	void update_title();
-	void update_menu();
-	void update_play();
-
-	
-	void draw_title();
-	void draw_menu();
-	void draw_play();
-
-	//play
-	int play_scene = 0;
-
-	void play_load();//update_change_sceneで呼ばれます
-
+	void update_first();
 	void update_main();
 	void update_pose();
 	void update_gameover();
+
+	//Draw
+	void draw() const override;
 
 	void draw_main() const;
 	void draw_pose() const;
 	void draw_gameover() const;
 
-
-	//Draw
-	
-
-	
-
 	//ショット生成
 	void make_player_bullet();
-	void make_enemy_bullet(int,int);
+	void make_enemy_bullet(int, int);
 
 	//ショットの移動関係
 	void GameShotUpdate(const double _time);
 	//移動関係
 	void GameMoveUpdate(const double _time);
-	
+
 	//ショットのヒット判定
 	void GameHitUpdate();
 
 	//敵などを消す
 	void GameEraseUpdate();
 
-	
+
 
 	//一番近い敵を取得
 
@@ -109,23 +85,12 @@ public:
 
 private:
 
-	//デバッグモード
-	int debug = 0;
-
 	//「ゲーム」の中のシーン
 	//読み込み・・・０
 	//メイン・・・１
 	//ポーズ・・・２
 	//ゲームオーバー・・・３
 	int game_scene = 0;
-
-
-	//チェンジシーン
-	int change_scene_count = 0;
-	int change_scene_number = 0;
-	double change_scene_screen_fade = 0;
-	//0が普通のもの・(1は長め)
-	int change_scene_type = 0;
 
 	//ステージスクロールスピード
 	double stage_speed = 200;
@@ -146,7 +111,7 @@ private:
 	Font font;
 	Font gameoverfont;
 
-	
+
 
 	Effect effect;
 
@@ -179,4 +144,4 @@ private:
 	int32 highScore = 0;
 	// 現在のスコア
 	int32 score = 0;
-};
+};*/

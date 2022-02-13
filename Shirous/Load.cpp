@@ -1,6 +1,6 @@
 ﻿#include"Game.hpp"
 
-void Game::update_first() {
+void Game::play_load() {
 
 	switch (stage_number)
 	{
@@ -119,10 +119,6 @@ void Game::stage_1_load() {
 
 
 	// アセットの登録
-
-	//自機の登録
-	TextureAsset::Register(U"player_シラス", U"data/image/fish/player/シラス.png");
-	TextureAsset::Load(U"player_シラス");
 
 	//ステージ１の登録
 	TextureAsset::Register(U"stage_1_back", U"data/image/back/1.png");

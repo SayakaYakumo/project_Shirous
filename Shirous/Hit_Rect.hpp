@@ -15,7 +15,7 @@ public:
 	int get_adjust_x() { return adjust_x; }
 	int get_adjust_y() { return adjust_y; }
 
-	void update(int x, int y) { rect.x = x + adjust_x, rect.y + adjust_y; }
+	void update(int x, int y) { rect.x = x + adjust_x, rect.y=y + adjust_y; }
 
 	Rect get_rect() { return rect; }
 

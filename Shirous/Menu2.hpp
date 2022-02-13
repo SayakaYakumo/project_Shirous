@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿/*
+#pragma once
 #include "Common.hpp"
 
 class Menu : public App::Scene
@@ -14,4 +15,4 @@ public:
 private:
 
 	Texture m_texture;
-};
+};*/

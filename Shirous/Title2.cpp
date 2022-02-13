@@ -1,4 +1,5 @@
-﻿#include "Title.hpp"
+﻿/*
+#include "Title.hpp"
 
 Title::Title(const InitData& init)
 	: IScene{ init }
@@ -31,4 +32,4 @@ void Title::draw() const
 	//FontAsset(U"ScoreFont")(U"Clickでシーン遷移").draw(960, 840);
 
 	//Circle{ Cursor::Pos(), 50 }.draw(Palette::Orange);
-}
+}*/

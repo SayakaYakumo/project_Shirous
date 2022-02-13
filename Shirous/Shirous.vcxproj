@@ -115,28 +115,37 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Change_Scene.cpp" />
     <ClCompile Include="Draw_GameOver.cpp" />
+    <ClCompile Include="Draw_Menu.cpp" />
+    <ClCompile Include="Draw_Play.cpp" />
     <ClCompile Include="Draw_Pose.cpp" />
+    <ClCompile Include="Draw_Title.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Game2.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Main2.cpp" />
     <ClCompile Include="Make_Enemy_Bullet.cpp" />
     <ClCompile Include="Make_Player_Bullet.cpp" />
-    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Menu2.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerBullet.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Update_Play.cpp" />
+    <ClCompile Include="Update_Title.cpp" />
     <ClCompile Include="Draw_UI.cpp" />
+    <ClCompile Include="Title2.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="Draw_Main.cpp" />
-    <ClCompile Include="Update_First.cpp" />
+    <ClCompile Include="Load.cpp" />
     <ClCompile Include="Update_GameOver.cpp" />
     <ClCompile Include="Update_Main.cpp" />
+    <ClCompile Include="Update_Menu.cpp" />
     <ClCompile Include="Update_Pose.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -341,13 +350,14 @@
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyBullet.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Game2.hpp" />
     <ClInclude Include="Hit_Rect.hpp" />
+    <ClInclude Include="Menu2.hpp" />
     <ClInclude Include="Score_Data.hpp" />
-    <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerBullet.hpp" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Title.hpp" />
+    <ClInclude Include="Title2.hpp" />
     <ClInclude Include="Unit.hpp" />
   </ItemGroup>
   <ItemGroup>

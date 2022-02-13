@@ -154,18 +154,6 @@
     <Filter Include="Source Files\Scene\Game">
       <UniqueIdentifier>{78acd28e-ab9e-4461-8699-6160692756a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Scene\Game\Main">
-      <UniqueIdentifier>{2e2d0871-a989-4de4-ba6d-ad83962de134}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Scene\Game\Pose">
-      <UniqueIdentifier>{5335a154-a30d-44b9-946c-2045a28f280a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Scene\Game\First">
-      <UniqueIdentifier>{0fa9a028-9cab-469b-872d-f82c238693fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Scene\Game\Game_Over">
-      <UniqueIdentifier>{32156c52-5f36-4357-a653-b5121d89990e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Object">
       <UniqueIdentifier>{55aac8d1-68d8-4c74-b6d3-aa1ab834b40e}</UniqueIdentifier>
     </Filter>
@@ -205,6 +193,27 @@
     <Filter Include="Source Files\Data\Back_Tile">
       <UniqueIdentifier>{4d26cb52-2284-47ce-93a1-800687738ad7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Shelter">
+      <UniqueIdentifier>{99e09acc-5bd4-465c-a4fd-396321ddd4bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play">
+      <UniqueIdentifier>{5c23082e-9156-492a-9dc0-b9ce4f4857c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play\Main">
+      <UniqueIdentifier>{2e2d0871-a989-4de4-ba6d-ad83962de134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play\Game_Over">
+      <UniqueIdentifier>{32156c52-5f36-4357-a653-b5121d89990e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play\Pose">
+      <UniqueIdentifier>{5335a154-a30d-44b9-946c-2045a28f280a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Change_Scene">
+      <UniqueIdentifier>{ca3c0a6c-344f-45ce-869b-f5c3e02942b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play\Load">
+      <UniqueIdentifier>{0fa9a028-9cab-469b-872d-f82c238693fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -234,13 +243,10 @@
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files\Object\Unit</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\Scene\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\Scene\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
+    <ClCompile Include="Update_Title.cpp">
       <Filter>Source Files\Scene\Title</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -252,32 +258,62 @@
     <ClCompile Include="Title.cpp">
       <Filter>Source Files\Scene\Title</Filter>
     </ClCompile>
-    <ClCompile Include="Update_First.cpp">
-      <Filter>Source Files\Scene\Game\First</Filter>
+    <ClCompile Include="Load.cpp">
+      <Filter>Source Files\Scene\Play\Load</Filter>
     </ClCompile>
     <ClCompile Include="Update_Main.cpp">
-      <Filter>Source Files\Scene\Game\Main</Filter>
+      <Filter>Source Files\Scene\Play\Main</Filter>
     </ClCompile>
     <ClCompile Include="Draw_Main.cpp">
-      <Filter>Source Files\Scene\Game\Main</Filter>
+      <Filter>Source Files\Scene\Play\Main</Filter>
     </ClCompile>
     <ClCompile Include="Update_Pose.cpp">
-      <Filter>Source Files\Scene\Game\Pose</Filter>
+      <Filter>Source Files\Scene\Play\Pose</Filter>
     </ClCompile>
     <ClCompile Include="Draw_Pose.cpp">
-      <Filter>Source Files\Scene\Game\Pose</Filter>
+      <Filter>Source Files\Scene\Play\Pose</Filter>
     </ClCompile>
     <ClCompile Include="Update_GameOver.cpp">
-      <Filter>Source Files\Scene\Game\Game_Over</Filter>
+      <Filter>Source Files\Scene\Play\Game_Over</Filter>
     </ClCompile>
     <ClCompile Include="Draw_GameOver.cpp">
-      <Filter>Source Files\Scene\Game\Game_Over</Filter>
+      <Filter>Source Files\Scene\Play\Game_Over</Filter>
     </ClCompile>
     <ClCompile Include="Make_Player_Bullet.cpp">
       <Filter>Source Files\Function</Filter>
     </ClCompile>
     <ClCompile Include="Make_Enemy_Bullet.cpp">
       <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Game2.cpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu2.cpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Menu.cpp">
+      <Filter>Source Files\Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Menu.cpp">
+      <Filter>Source Files\Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Title2.cpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Title.cpp">
+      <Filter>Source Files\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Play.cpp">
+      <Filter>Source Files\Scene\Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Play.cpp">
+      <Filter>Source Files\Scene\Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Main2.cpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClCompile>
+    <ClCompile Include="Change_Scene.cpp">
+      <Filter>Source Files\Change_Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -932,17 +968,11 @@
     <ClInclude Include="Unit.hpp">
       <Filter>Source Files\Object\Unit</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.hpp">
-      <Filter>Source Files\Scene\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="Common.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.hpp">
       <Filter>Source Files\Scene\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Title.hpp">
-      <Filter>Source Files\Scene\Title</Filter>
     </ClInclude>
     <ClInclude Include="Game.hpp">
       <Filter>Source Files\Scene\Game</Filter>
@@ -964,6 +994,15 @@
     </ClInclude>
     <ClInclude Include="Back_Tile.hpp">
       <Filter>Source Files\Data\Back_Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Game2.hpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu2.hpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClInclude>
+    <ClInclude Include="Title2.hpp">
+      <Filter>Source Files\Shelter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

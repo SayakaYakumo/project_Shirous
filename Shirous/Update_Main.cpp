@@ -43,6 +43,11 @@ void Game::update_main() {
 	GameEraseUpdate();
 
 
+	if (KeyControl.down()) {//ポーズ
+		play_scene = 1;
+	}
+
+
 
 }
 
