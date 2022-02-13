@@ -19,6 +19,9 @@ public:
 	void update();
 	void draw();
 
+	//Debug
+	void load_debug();
+
 	//Chnage_Scene
 	void change_scene(int);
 	void update_change_scene();
@@ -38,7 +41,7 @@ public:
 	//play
 	int play_scene = 0;
 
-	void play_load();//update_change_sceneで呼ばれます
+	void play_load(int);//update_change_sceneで呼ばれます
 
 	void update_main();
 	void update_pose();
@@ -49,10 +52,24 @@ public:
 	void draw_gameover() const;
 
 
-	//Draw
-	
 
+	//Debug(Menu)
+	void update_debug_menu();
+	void draw_debug_menu();
 	
+	void update_debug_menu_stage_select();
+	void update_debug_menu_mode_select();
+
+	void draw_debug_menu_stage_select();
+	void draw_debug_menu_mode_select();
+	
+	//Edit
+	void update_edit();
+	void draw_edit();
+
+	void update_edit_ini();
+	void update_edit_main();
+
 
 	//ショット生成
 	void make_player_bullet();
@@ -87,6 +104,10 @@ public:
 	//ステージデータ読み込み
 	//Game/First/Update_First
 
+	//Stage0
+	void stage_0_load();
+
+
 	//Stage1
 	void stage_1_load();
 
@@ -105,12 +126,21 @@ public:
 	//Stage6
 	void stage_6_load();
 
+	//Stage7
+	void stage_7_load();
+
+	//Stage8
+	void stage_8_load();
+
+	//Stage9
+	void stage_9_load();
+
 	Array<Back_Tile> back_tile;
 
 private:
 
 	//デバッグモード
-	int debug = 0;
+	int debug = 1;
 
 	//「ゲーム」の中のシーン
 	//読み込み・・・０
@@ -126,6 +156,34 @@ private:
 	double change_scene_screen_fade = 0;
 	//0が普通のもの・(1は長め)
 	int change_scene_type = 0;
+
+	//メニュー
+
+	//メニュー（デバッグ）
+	int debug_menu_scene = 0;
+	int debug_menu_cur_x = 0;
+	int debug_menu_cur_y = 0;
+
+	int debug_stage_number = 0;
+
+	int debug_stage_select = 0;
+	int debug_menu_2_cur_x = 0;
+
+	//エディタ
+	int edit_scene = 0;
+	int edit_scroll = 0;
+	int edit_display = 0;
+	int edit_select_item = 0;
+	int edit_select_tile_kind = 0;
+
+	int edit_bukket = 0;
+	int edit_bukket_start_x = 0;
+	int edit_bukket_start_y = 0;
+
+	double edit_saved_diplay_fade = 0;
+	int edit_saved = 0;
+
+	Circle cir;//デバッグ用
 
 	//ステージスクロールスピード
 	double stage_speed = 200;

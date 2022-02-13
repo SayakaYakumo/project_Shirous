@@ -214,6 +214,12 @@
     <Filter Include="Source Files\Scene\Play\Load">
       <UniqueIdentifier>{0fa9a028-9cab-469b-872d-f82c238693fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scene\Menu\Debug">
+      <UniqueIdentifier>{1f6f1fc6-bd3d-4b1f-a00a-aa4bcb83c3f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Edit">
+      <UniqueIdentifier>{7c78018e-add6-40b0-9ede-eae474f04584}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -314,6 +320,21 @@
     </ClCompile>
     <ClCompile Include="Change_Scene.cpp">
       <Filter>Source Files\Change_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Debug_Menu.cpp">
+      <Filter>Source Files\Scene\Menu\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Debug_Menu.cpp">
+      <Filter>Source Files\Scene\Menu\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Load_Debug.cpp">
+      <Filter>Source Files\Scene\Menu\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Edit.cpp">
+      <Filter>Source Files\Scene\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Edit.cpp">
+      <Filter>Source Files\Scene\Edit</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

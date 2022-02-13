@@ -13,10 +13,18 @@ void Game::update()
 			update_title();
 			break;
 		case 1://メニュー
-			update_menu();
+			if (debug == 0) {
+				update_menu();
+			}
+			else if (debug == 1) {
+				update_debug_menu();
+			}
 			break;
 		case 2://ゲーム
 			update_play();
+			break;
+		case 3://エディタ
+			update_edit();
 			break;
 
 		default:
@@ -39,10 +47,18 @@ void Game::draw()
 		draw_title();
 		break;
 	case 1://メニュー
-		draw_menu();
+		if (debug == 0) {
+			draw_menu();
+		}
+		else if (debug == 1) {
+			draw_debug_menu();
+		}
 		break;
 	case 2://ゲーム
 		draw_play();
+		break;
+	case 3:
+		draw_edit();
 		break;
 
 	default:
@@ -54,6 +70,11 @@ void Game::draw()
 }
 
 void Game::ini(){
+
+	///デバッグ用
+	if (debug == 1) {
+		load_debug();
+	}
 
 	// ウィンドウを最大化
 

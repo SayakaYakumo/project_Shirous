@@ -1,11 +1,11 @@
 ﻿#include"Game.hpp"
 
-void Game::play_load() {
+void Game::play_load(int stage_number) {
 
 	switch (stage_number)
 	{
 	case 0:
-		
+		stage_0_load();
 		break;
 	case 1:
 		stage_1_load();
@@ -25,6 +25,15 @@ void Game::play_load() {
 	case 6:
 		stage_6_load();
 		break;
+	case 7:
+		stage_7_load();
+		break;
+	case 8:
+		stage_8_load();
+		break;
+	case 9:
+		stage_9_load();
+		break;
 	default:
 		break;
 	}
@@ -32,13 +41,13 @@ void Game::play_load() {
 }
 
 
-void Game::stage_1_load() {
+void Game::stage_0_load() {
 
 	/**/
 	
 	//敵生成データ
 
-	const CSV csv_EMERGE_ENEMY(U"data/stage/1/EmergeEnemy.csv");
+	const CSV csv_EMERGE_ENEMY(U"data/stage/0/EmergeEnemy.csv");
 	if (not csv_EMERGE_ENEMY) {
 		throw Error(U"Failed to load 'magic_data.csv'");
 	}
@@ -86,43 +95,36 @@ void Game::stage_1_load() {
 
 	}
 
+	/*
+	for (int x = 0; x < 16; x++) {
+		for (int y = 0; y < 9; y++) {
+			back_tile.push_back(Back_Tile(x, y, 1));
+		}
+	}
+*/
+
+	
 
 	//背景データ
 
-	const CSV csv_BACK_TILE(U"data/stage/1/Back_Tile.csv");
-	if (not csv_EMERGE_ENEMY) {
-		throw Error(U"Failed to load 'magic_data.csv'");
+	// バイナリファイルをオープン
+	Deserializer<BinaryReader> reader{ U"data/stage/0/BackTile.bin" };
+
+	if (not reader) // もしオープンに失敗したら
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
 	}
 
-
-
-
-	//縦
-	for (int y = 0; y < csv_BACK_TILE.rows(); y++) {
-
-		int pos_x = 0;
-		int pos_y = 0;
-		int kind = 0;
-
-		//横
-		for (int x = 0; x < 65; x++) {
-			kind = Parse<int>(csv_BACK_TILE[y][x]);
-			back_tile.push_back(Back_Tile(x,y,kind));
-
-		}
-
-	}
-
-
-
-
+	// バイナリファイルからシリアライズ対応型のデータを読み込む
+	// （Array は自動でリサイズが行われる）
+	reader(back_tile);
 
 
 	// アセットの登録
 
-	//ステージ１の登録
-	TextureAsset::Register(U"stage_1_back", U"data/image/back/1.png");
-	TextureAsset::Load(U"stage_1_back");
+	//ステージ0の登録
+	TextureAsset::Register(U"stage_0_back", U"data/image/back/0.png");
+	TextureAsset::Load(U"stage_0_back");
 
 	//敵の登録
 	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
@@ -139,6 +141,10 @@ void Game::stage_1_load() {
 	TextureAsset::Load(U"back_tile");
 	
 
+
+}
+
+void Game::stage_1_load() {
 
 }
 
@@ -159,5 +165,17 @@ void Game::stage_5_load() {
 }
 
 void Game::stage_6_load() {
+
+}
+
+void Game::stage_7_load() {
+
+}
+
+void Game::stage_8_load() {
+
+}
+
+void Game::stage_9_load() {
 
 }

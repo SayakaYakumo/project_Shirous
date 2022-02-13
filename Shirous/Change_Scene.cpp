@@ -27,7 +27,12 @@ void Game::update_change_scene() {
 					game_scene = change_scene_number;
 
 					if (change_scene_number == 2) {//Playシーンの場合データを読み込み
-						play_load();
+					
+						play_load(stage_number);
+					}
+
+					if (change_scene_number == 3) {//
+
 					}
 				}
 
