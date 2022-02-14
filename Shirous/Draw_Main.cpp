@@ -11,6 +11,8 @@ void Game::draw_main() const {
 	draw_bullet();//弾描画
 
 	effect.update();//エフェクト描画
+
+	draw_ui();//UI描画
 }
 
 void Game::draw_main_back() const {
@@ -66,12 +68,23 @@ void Game::draw_enemy() const{
 	for (size_t i = 0; i < gameEnemys.size(); i++) {
 		gameEnemys[i].Draw();
 	}
+
+	if (debug_play == 1) {//デバッグ中
+		for (size_t i = 0; i < gameEnemys.size(); i++) {
+			gameEnemys[i].DrawFrame();
+		}
+
+	}
 }
 
 
 void Game::draw_player() const{
 
 	gamePlayer.Draw();
+
+	if (debug_play == 1) {
+		gamePlayer.DrawFrame();
+	}
 }
 
 void Game::draw_bullet()const {
@@ -84,4 +97,12 @@ void Game::draw_bullet()const {
 		gameEnemyBullet[i].Draw();
 	}
 
+}
+
+
+void Game::draw_ui()const {
+
+	FontAsset(U"ScoreFont")(U"SCORE  "+Format(score)).draw(100, 10);
+
+	FontAsset(U"ScoreFont")(U"HISCORE  " + Format(highScore)).draw((1920/2)+100, 10);
 }

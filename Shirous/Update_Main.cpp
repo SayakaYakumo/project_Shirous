@@ -23,7 +23,15 @@ void Game::update_main() {
 				int move = emergeEnemys[i].get_move();
 				int shot_pattern = emergeEnemys[i].get_shot_pattern();
 
-				gameEnemys.push_back(Enemy(name,x,y,move,shot_pattern));//敵を生成する！！
+				Array<Rect> rects;
+				for (size_t e = 0; e < enemy_data.size(); e++) {
+					if (enemy_data[e].get_name() == name) {
+						rects = enemy_data[e].get_rects();
+					}
+				}
+				
+
+				gameEnemys.push_back(Enemy(name,x,y,move,shot_pattern,rects));//敵を生成する！！
 			}
 		}
 	}
@@ -141,22 +149,25 @@ void Game::GameHitUpdate() {
 
 	for (size_t i = 0; i < gameEnemys.size(); i++) {
 
-		for (size_t s = 0; s < gameEnemys[i].get_hit_rect_size(); s++) {
+		for (size_t j = 0; j < gamePlayerBullet.size(); j++) {
 
-			Rect e_rect = gameEnemys[i].get_hit_rect(s);
+			
 
-			for (size_t j = 0; j < gamePlayerBullet.size(); j++) {
+				for (size_t s = 0; s < gameEnemys[i].get_hit_rect_size(); s++) {
 
-				
+					Rect e_rect = gameEnemys[i].get_hit_rect(s);
 
-					Circle b_circle = gamePlayerBullet[j].get_circle();
+					if (b_check[j] == 0) {//どこにもあたっていない
 
-					if (b_circle.intersects(e_rect)) {
+						Circle b_circle = gamePlayerBullet[j].get_circle();
 
-						gameEnemys[i].damage(gamePlayerBullet[j].get_power());
-						b_check[j] = 1;
+						if (b_circle.intersects(e_rect)) {//当たった
+
+							gameEnemys[i].damage(gamePlayerBullet[j].get_power());
+							b_check[j] = 1;
+						}
+
 					}
-
 			}
 		}
 	}

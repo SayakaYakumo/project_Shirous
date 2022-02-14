@@ -90,6 +90,9 @@ void Game::ini(){
 	FontAsset::Register(U"PoseFont", FontMethod::MSDF, 70, Typeface::Bold);
 	FontAsset::Load(U"PoseFont");
 
+	FontAsset::Register(U"ScoreFont", FontMethod::MSDF, 50, Typeface::Bold);
+	FontAsset::Load(U"ScoreFont");
+
 
 	// Textureアセットの登録
 
@@ -136,26 +139,68 @@ void Game::ini(){
 
 	//敵サカナデータ読み込み
 
-	/**/
+	/*
 
 	for (size_t y = 0; y < 12; y++) {
 		for (size_t x = 0; x < 5; x++) {
 
 			enemy_data.push_back(Enemy_Data(U"no_data", x, y, 0, 0, 0, 0));
 		}
-	}
+	}*/
+
+
+
+
 
 	// バイナリファイルをオープン
-	Deserializer<BinaryReader> reader{ U"data/database/enemy_data.bin" };
+	Deserializer<BinaryReader> Ereader{ U"data/database/enemy_data.bin" };
 
-	if (not reader) // もしオープンに失敗したら
+	if (not Ereader) // もしオープンに失敗したら
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	
+	// バイナリファイルからシリアライズ対応型のデータを読み込む
+	// （Array は自動でリサイズが行われる）
+	Ereader(enemy_data);
+
+
+
+
+/*
+	// バイナリファイルをオープン
+	Serializer<BinaryWriter> Swriter{ U"save_data/save_data.bin" };
+
+	if (not Swriter) // もしオープンに失敗したら
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	// シリアライズに対応したデータを記録
+	Swriter(save_data);*/
+
+
+
+
+
+
+
+	/**/
+
+	//セーブデータ読み込み
+
+	// バイナリファイルをオープン
+	Deserializer<BinaryReader> Sreader{ U"save_data/save_data.bin" };
+
+	if (not Sreader) // もしオープンに失敗したら
 	{
 		throw Error{ U"Failed to open `tutorial4.bin`" };
 	}
 
 	// バイナリファイルからシリアライズ対応型のデータを読み込む
 	// （Array は自動でリサイズが行われる）
-	reader(enemy_data);
+	Sreader(save_data);
 }
 
 

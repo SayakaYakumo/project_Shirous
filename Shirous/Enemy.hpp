@@ -41,12 +41,14 @@ private:
 
 public:
 
-	Enemy(String,int,int,int,int);//名前、ｘ、ｙ、移動パターン,ショットパターン
+	Enemy(String,int,int,int,int,Array<Rect>);//名前、ｘ、ｙ、移動パターン,ショットパターン
 	~Enemy();
 
 	void Update(double deltaTime);
 
 	void Draw()const;
+
+	void DrawFrame()const;
 
 	void move(double);
 

@@ -7,6 +7,7 @@
 #include"EmergeEnemy.hpp"
 #include"Back_Tile.hpp"
 #include"Enemy_Data.hpp"
+#include"Save_Data.hpp"
 
 class Game 
 {
@@ -107,11 +108,13 @@ public:
 	double dist(Vec2 _SetPos, Vec2 _TargetPos);
 	double dist(double x1, double y1, double x2, double y2);
 
+	//Playシーンの描画
 
 	void draw_main_back()const;
 	void draw_player()const;
 	void draw_enemy()const;
 	void draw_bullet()const;
+	void draw_ui()const;
 
 	//ステージデータ読み込み
 	//Game/First/Update_First
@@ -153,6 +156,9 @@ private:
 
 	//デバッグモード
 	int debug = 1;
+
+	//プレイ中のデバッグモード
+	int debug_play = 1;
 
 	//「ゲーム」の中のシーン
 	//読み込み・・・０
@@ -213,6 +219,9 @@ private:
 	double edit_enemy_saved_display_fade = 0;
 
 	Circle cir;//デバッグ用
+
+	//セーブデータ
+	Save_Data save_data;
 
 	//ステージスクロールスピード
 	double stage_speed = 200;

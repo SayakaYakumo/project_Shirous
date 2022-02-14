@@ -364,7 +364,7 @@
     <ClInclude Include="Hit_Rect.hpp" />
     <ClInclude Include="Item.hpp" />
     <ClInclude Include="Menu2.hpp" />
-    <ClInclude Include="Score_Data.hpp" />
+    <ClInclude Include="Save_Data.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerBullet.hpp" />
     <ClInclude Include="stdafx.h" />

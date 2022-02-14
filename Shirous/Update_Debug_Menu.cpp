@@ -283,7 +283,9 @@ void Game::update_edit_enemy() {
 
 
 					if (MouseL.up()) {//Rect 追加
-						enemy_data[edit_enemy_index].plus_rect(edit_enemy_rect);
+						if (edit_enemy_rect.w != 0 && edit_enemy_rect.h != 0) {
+							enemy_data[edit_enemy_index].plus_rect(edit_enemy_rect);
+						}
 						edit_enemy_make_rect_scene = 0;
 						edit_enemy_rect = Rect(-2000, -2000, 0, 0);//見えなくする
 					}

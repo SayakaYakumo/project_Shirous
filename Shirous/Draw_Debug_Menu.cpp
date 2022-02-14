@@ -201,19 +201,16 @@ void Game::draw_edit_enemy() {
 			rect_count++;
 		}
 
-		for (size_t i = 0; i < enemy_data[edit_enemy_index].get_rect_size(); i++) {
-
-			Print << U"y::"<<enemy_data[edit_enemy_index].get_rect(i).y;
-			Print << U"-------";
-		}
-
-
 		if (edit_enemy_make_rect_scene == 1) {//表示用の四角
 			Rect rect = edit_enemy_rect.movedBy(x_display, y_display);
 			rect.drawFrame(2, 2, Palette::White);
 		}
 
-		TextureAsset(U"debug_edit_dark").draw(1050, 120, ColorF(1.0, 0.5));//黒い幕を表示
+		TextureAsset(U"debug_edit_dark").draw(1050, 150, ColorF(1.0, 0.5));//黒い幕を表示
+
+		int size = enemy_data[edit_enemy_index].get_rect_size();
+
+		FontAsset(U"DebugMenuFont")(U"当たり判定の数　"+Format(size)).draw(1920 - 800, 45);
 
 		//ステータス表示
 

@@ -39,6 +39,8 @@ public:
 
 	void set_name(String n) { _name = n; }
 
+	Array<Rect>get_rects() { return _rect; }
+
 	// シリアライズに対応させるためのメンバ関数を定義する
 	template <class Archive>
 	void SIV3D_SERIALIZE(Archive& archive)

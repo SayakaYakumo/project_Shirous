@@ -49,6 +49,7 @@ void Player::Update(double deltaTime)
 		rect.x += now_speed;
 	}
 
+	//画面の移動制限
 
 	if (rect.x<0) {
 		rect.x = 0;
@@ -64,7 +65,7 @@ void Player::Update(double deltaTime)
 		rect.y = 1080 - rect.h;
 	}
 
-
+	//ショットのクールタイム
 	shot_cool_time -= deltaTime;
 
 }
@@ -78,8 +79,13 @@ void Player::Draw()const
 
 	TextureAsset(texture_name).draw(rect.x-10, rect.y-20);
 
-	rect.drawFrame();
 
+
+}
+
+
+void Player::DrawFrame()const {
+	rect.drawFrame();
 }
 
 bool Player::MyHitCheck(Vec2 enemyBulletPos)

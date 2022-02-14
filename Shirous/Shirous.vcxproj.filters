@@ -169,9 +169,6 @@
     <Filter Include="Source Files\Object\Enemy">
       <UniqueIdentifier>{b36d1330-7d61-483c-bf00-53ac13c3075a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Score_Data">
-      <UniqueIdentifier>{1d0debbf-3705-4592-95ab-5a9967bc4067}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Data">
       <UniqueIdentifier>{5d716a04-4faa-44a0-922a-3136eaa3d650}</UniqueIdentifier>
     </Filter>
@@ -234,6 +231,9 @@
     </Filter>
     <Filter Include="Source Files\Data\Enemy_Data">
       <UniqueIdentifier>{31b92654-138a-4951-be03-4c922b1b244d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Save_Data">
+      <UniqueIdentifier>{1d0debbf-3705-4592-95ab-5a9967bc4067}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -986,8 +986,8 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Score_Data.hpp">
-      <Filter>Source Files\Score_Data</Filter>
+    <ClInclude Include="Save_Data.hpp">
+      <Filter>Source Files\Save_Data</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.hpp">
       <Filter>Source Files\Object\Bullet</Filter>

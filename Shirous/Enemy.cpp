@@ -4,7 +4,7 @@
 
 
 
-Enemy::Enemy(String name_,int x,int y,int move,int shot_pattern_)
+Enemy::Enemy(String name_,int x,int y,int move,int shot_pattern_,Array<Rect> rects)
 {
 	rect = Rect(x, y, 100, 100);
 
@@ -21,7 +21,9 @@ Enemy::Enemy(String name_,int x,int y,int move,int shot_pattern_)
 	make_bullet_point_adjust_x = 20;
 	make_bullet_point_adjust_y = 30;
 
-	hit_rect.push_back(Hit_Rect(x, y, 100, 100,0,0));
+	for (size_t i = 0; i < rects.size(); i++) {
+		hit_rect.push_back(Hit_Rect(rects[i]));
+	}
 }
 
 Enemy::~Enemy()
@@ -54,13 +56,16 @@ void Enemy::Draw()const
 
 	TextureAsset(texture_name).draw(rect.x, rect.y);
 
-	/*
-	for (size_t i = 0; i < hit_rect.size(); i++) {
-		hit_rect[i].draw();
-	}*/
+	
 
 }
 
+void Enemy::DrawFrame() const{
+
+	for (size_t i = 0; i < hit_rect.size(); i++) {
+		hit_rect[i].draw();
+	}
+}
 
 void Enemy::move(double deltaTime) {
 

@@ -22,6 +22,8 @@ public:
 
 	void Draw()const;
 
+	void DrawFrame()const;
+
 	//ƒVƒ‡ƒbƒg
 	void Shot();
 

@@ -4,27 +4,24 @@
 class Hit_Rect {
 
 public:
-	Hit_Rect(int x,int y,int w,int h,int ad_x,int ad_y) {
-
-		rect = Rect(x,y,w,h);
-
-		adjust_x = ad_x;
-		adjust_y = ad_y;
+	Hit_Rect(Rect rect) {
+		_adjust_x = rect.x;
+		_adjust_y = rect.y;
 	}
 
-	int get_adjust_x() { return adjust_x; }
-	int get_adjust_y() { return adjust_y; }
+	int get_adjust_x() { return _adjust_x; }
+	int get_adjust_y() { return _adjust_y; }
 
-	void update(int x, int y) { rect.x = x + adjust_x, rect.y=y + adjust_y; }
+	void update(int x, int y) { _rect.x = x + _adjust_x, _rect.y=y + _adjust_y; }
 
-	Rect get_rect() { return rect; }
+	Rect get_rect() { return _rect; }
 
-	void draw()const { rect.drawFrame(); }//デバッグ用
+	void draw()const { _rect.drawFrame(); }//デバッグ用
 
 private:
 
-	Rect rect;
+	Rect _rect;
 
-	int adjust_x = 0;
-	int adjust_y = 0;
+	int _adjust_x = 0;
+	int _adjust_y = 0;
 };
