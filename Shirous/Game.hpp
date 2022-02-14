@@ -6,6 +6,7 @@
 #include "EnemyBullet.hpp"
 #include"EmergeEnemy.hpp"
 #include"Back_Tile.hpp"
+#include"Enemy_Data.hpp"
 
 class Game 
 {
@@ -60,9 +61,20 @@ public:
 	void update_debug_menu_stage_select();
 	void update_debug_menu_mode_select();
 
+
+	void update_edit_player();
+	void draw_edit_player();
+	void update_edit_option();
+	void draw_edit_option();
+	void update_edit_enemy();
+	void draw_edit_enemy();
+
 	void draw_debug_menu_stage_select();
 	void draw_debug_menu_mode_select();
 	
+
+
+
 	//Edit
 	void update_edit();
 	void draw_edit();
@@ -180,8 +192,25 @@ private:
 	int edit_bukket_start_x = 0;
 	int edit_bukket_start_y = 0;
 
-	double edit_saved_diplay_fade = 0;
+	double edit_saved_display_fade = 0;
 	int edit_saved = 0;
+
+	int edit_enemy_scene = 0;
+	int edit_enemy_index = 0;
+
+	int edit_enemy_page = 0;
+	int edit_enemy_page_x = 0;
+	int edit_enemy_page_y = 0;
+
+	int edit_enemy_display = 0;
+
+	int edit_enemy_make_rect_scene = 0;
+	int edit_enemy_make_rect_x = 0;
+	int edit_enemy_make_rect_y = 0;
+	Rect edit_enemy_rect;
+
+	int edit_enemy_select_item = 1;
+	double edit_enemy_saved_display_fade = 0;
 
 	Circle cir;//デバッグ用
 
@@ -215,6 +244,10 @@ private:
 	Array<PlayerBullet> gamePlayerBullet;
 
 	//敵
+
+	//サカナデータ
+	Array<Enemy_Data> enemy_data;
+
 	Array<Enemy> gameEnemys;
 
 	Array<EnemyBullet> gameEnemyBullet;

@@ -10,6 +10,15 @@ void Game::update_debug_menu() {
 	case 1:
 		update_debug_menu_mode_select();
 		break;
+	case 2://プレイヤー編集
+		update_edit_player();
+		break;
+	case 3://オプション編集
+		update_edit_option();
+		break;
+	case 4://敵編集
+		update_edit_enemy();
+		break;
 	default:
 		break;
 	}
@@ -45,18 +54,41 @@ void Game::update_debug_menu_stage_select() {
 		debug_menu_cur_y = 0;
 	}
 
-	if (debug_menu_cur_y > 1) {
-		debug_menu_cur_y = 1;
+	if (debug_menu_cur_y > 2) {
+		debug_menu_cur_y = 2;
 	}
 
 
 	if (KeyZ.down()) {
-		debug_stage_number = debug_menu_cur_y * 5 + debug_menu_cur_x;
 
-		debug_menu_2_cur_x = 1;
+		if (debug_menu_cur_y == 0 || debug_menu_cur_y == 1) {//デバッグステージメニューへ
 
-		debug_menu_scene = 1;
+			debug_stage_number = debug_menu_cur_y * 5 + debug_menu_cur_x;
 
+			debug_menu_2_cur_x = 1;
+
+			debug_menu_scene = 1;
+
+			
+		}
+		else if (debug_menu_cur_y == 2) {
+
+			switch (debug_menu_cur_x)
+			{
+			case 0://プレイヤー編集へ
+				break;
+			case 1://オプション編集へ
+				break;
+			case 2://エネミー編集へ
+				debug_menu_scene = 4;
+				break;
+			case 3:
+				break;
+			default:
+				break;
+			}
+
+		}
 
 	
 	}
@@ -101,3 +133,242 @@ void Game::update_debug_menu_mode_select() {
 
 	}
 }
+
+void Game::update_edit_player() {
+
+}
+
+void Game::update_edit_option() {
+
+}
+
+void Game::update_edit_enemy() {
+
+	if (edit_enemy_scene == 0) {//敵を選択
+
+		if (KeyLeft.down()) {
+			edit_enemy_page_x--;
+		}
+		else if (KeyRight.down()) {
+			edit_enemy_page_x++;
+		}
+
+		if (edit_enemy_page_x < 0) {
+			edit_enemy_page_x = 0;
+		}
+
+		if (edit_enemy_page_x > 4) {
+			edit_enemy_page_x = 4;
+		}
+
+
+		if (KeyUp.down()) {
+			edit_enemy_page_y--;
+		}
+		else if (KeyDown.down()) {
+			edit_enemy_page_y++;
+		}
+
+		if (edit_enemy_page_y < 0) {
+			edit_enemy_page_y = 0;
+		}
+
+		if (edit_enemy_page_y > 2) {
+			edit_enemy_page_y = 2;
+		}
+
+
+		if (KeyZ.down()) {
+
+			edit_enemy_index = 0;
+			edit_enemy_scene = 1;
+		}
+
+
+	}
+	else if (edit_enemy_scene == 1) {//エディタ画面
+
+		if (MouseR.down()) {
+			if (edit_enemy_display == 0) {
+				edit_enemy_display = 1;
+			}
+			else if (edit_enemy_display == 1) {
+				edit_enemy_display = 0;
+			}
+		}
+
+		
+		
+
+		if (edit_enemy_display == 0) {//ツールボックス非表示中
+
+			if (edit_enemy_select_item == 1) {//hit_rectの追加
+			
+				if (edit_enemy_make_rect_scene == 0) {//始点設定
+				
+					if (MouseL.down()) {
+
+						//表示との差分調整
+						int ad_x = 100;
+						int ad_y = 200;
+
+						edit_enemy_make_rect_x = Cursor::Pos().x - ad_x;
+						edit_enemy_make_rect_y = Cursor::Pos().y - ad_y;
+
+						edit_enemy_make_rect_scene = 1;
+					}
+				}
+
+				if (edit_enemy_make_rect_scene == 1) {//選択中
+
+					if (MouseL.pressed()) {
+
+						//表示との差分調整
+						int ad_x = 100;
+						int ad_y = 200;
+
+						int old_x = edit_enemy_make_rect_x;
+						int old_y = edit_enemy_make_rect_y;
+						int now_x = Cursor::Pos().x-ad_x;
+						int now_y = Cursor::Pos().y-ad_y;
+
+						//分かりやすさ重視でこのコードを使います
+						//おそらくabsなどで省略可
+
+						
+
+
+						if (old_x < now_x) {
+							if (old_y < now_y) {
+								edit_enemy_rect.x = old_x;
+								edit_enemy_rect.y = old_y;
+								edit_enemy_rect.w = now_x - old_x;
+								edit_enemy_rect.h = now_y - old_y;
+							}
+						}
+
+						if (old_x < now_x) {
+							if (old_y > now_y) {
+								edit_enemy_rect.x = old_x;
+								edit_enemy_rect.y = now_y;
+								edit_enemy_rect.w = now_x - old_x;
+								edit_enemy_rect.h = old_y - now_y;
+							}
+						}
+
+
+						if (old_x > now_x) {
+							if (old_y < now_y) {
+								edit_enemy_rect.x = now_x;
+								edit_enemy_rect.y = old_y;
+								edit_enemy_rect.w = old_x - now_x;
+								edit_enemy_rect.h = now_y - old_y;
+							}
+						}
+
+						if (old_x > now_x) {
+							if (old_y > now_y) {
+								edit_enemy_rect.x = now_x;
+								edit_enemy_rect.y = now_y;
+								edit_enemy_rect.w = old_x - now_x;
+								edit_enemy_rect.h = old_y - now_y;
+							}
+						}
+
+                        
+						
+
+
+					}
+
+
+					if (MouseL.up()) {//Rect 追加
+						enemy_data[edit_enemy_index].plus_rect(edit_enemy_rect);
+						edit_enemy_make_rect_scene = 0;
+						edit_enemy_rect = Rect(-2000, -2000, 0, 0);//見えなくする
+					}
+
+				}
+
+
+			}
+			else if(edit_enemy_select_item==2){//hit_rectを削除(改善の余地あり)
+				if (MouseL.down()) {
+					enemy_data[edit_enemy_index].back_rect();
+				}
+			}
+			else if (edit_enemy_select_item == 3) {//弾発生点を置く
+				if (MouseL.down()) {
+
+				}
+			}
+
+
+
+
+		}
+		else if (edit_enemy_display == 1) {//ツールボックス表示中
+
+			Array<Circle> circle;
+
+			for (int i = 0; i < 6; i++) {
+				circle.push_back(Circle(60 + 10 + 60 + (120 + 50) * i, 1080 - 150 + 15 - 10 + 60, 60));
+			}
+
+			cir = circle[0];//デバッグ用
+
+			int click_number = -1;
+
+			Cursor::RequestStyle(CursorStyle::Default);
+
+			for (size_t i = 0; i < circle.size(); i++) {
+				if (circle[i].mouseOver()) {
+					Cursor::RequestStyle(CursorStyle::Hand);
+				}
+
+			}
+
+
+			for (size_t i = 0; i < circle.size(); i++) {
+				if (circle[i].leftClicked()) {
+					click_number = i;
+				}
+
+			}
+
+			if (click_number != -1) {//押された
+
+				if (click_number == 0) {//メニュー戻る
+					
+					edit_enemy_scene = 0;
+					edit_enemy_select_item = 1;
+				}
+				else if (click_number == 5) {//セーブ
+
+					// バイナリファイルをオープン
+					Serializer<BinaryWriter> writer{ U"data/database/enemy_data.bin" };
+
+					if (not writer) // もしオープンに失敗したら
+					{
+						throw Error{ U"Failed to open `tutorial4.bin`" };
+					}
+
+					// シリアライズに対応したデータを記録
+					writer(enemy_data);
+
+					edit_enemy_saved_display_fade = 1;
+				}
+				else {//ツール変更
+					edit_enemy_select_item = click_number;
+				}
+			}
+
+
+
+
+		}
+	}
+
+}
+
+

@@ -3,6 +3,7 @@
 # include <Siv3D.hpp>
 # include"Unit.hpp"
 # include"Hit_Rect.hpp"
+#include"Drop_Item.hpp"
 
 class Enemy :
 	public Unit
@@ -32,7 +33,11 @@ private:
 
 	int hp = 3;
 
+	int score = 0;
+
 	Array<Hit_Rect> hit_rect;
+
+	Array<Drop_Item>drop_item;
 
 public:
 
@@ -79,5 +84,6 @@ public:
 
 	Rect get_hit_rect(int v) { return hit_rect[v].get_rect(); }
 
+	int get_score() { return score; }
 
 };

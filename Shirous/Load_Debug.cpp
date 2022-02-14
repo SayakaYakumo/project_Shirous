@@ -18,6 +18,15 @@ void Game::load_debug() {
 	FontAsset::Register(U"DebugMenuFont4", FontMethod::MSDF, 60, Typeface::Bold);
 	FontAsset::Load(U"DebugMenuFont4");
 
+	//デバッグメニューフォント5
+	FontAsset::Register(U"DebugMenuFont5", FontMethod::MSDF, 35, Typeface::Bold);
+	FontAsset::Load(U"DebugMenuFont5");
+
+	//デバッグメニューフォント6
+	FontAsset::Register(U"DebugMenuFont6", FontMethod::MSDF, 70, Typeface::Bold);
+	FontAsset::Load(U"DebugMenuFont6");
+
+
 
 	//メニュー用
 	TextureAsset::Register(U"debug_menu_rect_frame", U"data/image/debug/menu_rect_frame.png");
@@ -25,6 +34,12 @@ void Game::load_debug() {
 
 	TextureAsset::Register(U"debug_menu_rect_select_frame", U"data/image/debug/menu_rect_select_frame.png");
 	TextureAsset::Load(U"debug_menu_rect_select_frame");
+
+	TextureAsset::Register(U"debug_menu_rect_database_frame", U"data/image/debug/menu_rect_database_frame.png");
+	TextureAsset::Load(U"debug_menu_rect_database_frame");
+
+	TextureAsset::Register(U"debug_menu_rect_database_select_frame", U"data/image/debug/menu_rect_database_frame.png");
+	TextureAsset::Load(U"debug_menu_rect_database_select_frame");
 
 	//エディタのリスト
 	TextureAsset::Register(U"debug_edit_list", U"data/image/debug/edit_list.png");
@@ -57,5 +72,29 @@ void Game::load_debug() {
 	//エディタのセーブ
 	TextureAsset::Register(U"debug_edit_save", U"data/image/debug/save.png");
 	TextureAsset::Load(U"debug_edit_save");
+
+	//エディタのダーク
+	TextureAsset::Register(U"debug_edit_dark", U"data/image/debug/edit_dark.png");
+	TextureAsset::Load(U"debug_edit_dark");
+
+	//エディタツールボックスミニ(没)
+	TextureAsset::Register(U"debug_edit_enemy_tool", U"data/image/debug/edit_enemy_tool.png");
+	TextureAsset::Load(U"debug_edit_enemy_tool");
+
+	//エディタの当たり判定の四角形の設置
+	TextureAsset::Register(U"debug_edit_plus_hit_rect", U"data/image/debug/plus_hit_rect.png");
+	TextureAsset::Load(U"debug_edit_plus_hit_rect");
+
+	//エディタの当たり判定の四角形の削除
+	TextureAsset::Register(U"debug_edit_back_hit_rect", U"data/image/debug/back_hit_rect.png");
+	TextureAsset::Load(U"debug_edit_back_hit_rect");
+	
+	//エディタの弾出し位置
+	TextureAsset::Register(U"debug_edit_plus_center", U"data/image/debug/plus_center.png");
+	TextureAsset::Load(U"debug_edit_plus_center");
+
+	//エディタの情報
+	TextureAsset::Register(U"debug_edit_information", U"data/image/debug/information.png");
+	TextureAsset::Load(U"debug_edit_information");
 
 }

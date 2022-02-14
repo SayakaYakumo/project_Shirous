@@ -130,11 +130,32 @@ void Game::ini(){
 	TextureAsset::Register(U"bullet_circle_red_s", U"data/image/bullet/circle/red/s.png");
 	TextureAsset::Load(U"bullet_circle_red_s");
 
+	//背景タイル
 	TextureAsset::Register(U"back_tile", U"data/image/back/back_tile.png");
 	TextureAsset::Load(U"back_tile");
 
+	//敵サカナデータ読み込み
 
+	/**/
 
+	for (size_t y = 0; y < 12; y++) {
+		for (size_t x = 0; x < 5; x++) {
+
+			enemy_data.push_back(Enemy_Data(U"no_data", x, y, 0, 0, 0, 0));
+		}
+	}
+
+	// バイナリファイルをオープン
+	Deserializer<BinaryReader> reader{ U"data/database/enemy_data.bin" };
+
+	if (not reader) // もしオープンに失敗したら
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	// バイナリファイルからシリアライズ対応型のデータを読み込む
+	// （Array は自動でリサイズが行われる）
+	reader(enemy_data);
 }
 
 

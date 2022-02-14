@@ -95,16 +95,16 @@ void Game::stage_0_load() {
 
 	}
 
-	/*
+	
 	for (int x = 0; x < 16; x++) {
 		for (int y = 0; y < 9; y++) {
 			back_tile.push_back(Back_Tile(x, y, 1));
 		}
 	}
-*/
+
 
 	
-
+/**/
 	//背景データ
 
 	// バイナリファイルをオープン
@@ -140,7 +140,15 @@ void Game::stage_0_load() {
 	TextureAsset::Register(U"back_tile", U"data/image/back/back_tile.png");
 	TextureAsset::Load(U"back_tile");
 	
+	//Item
+	TextureAsset::Register(U"item_赤", U"data/image/item/赤.png");
+	TextureAsset::Load(U"item_赤");
 
+	TextureAsset::Register(U"item_青", U"data/image/item/青.png");
+	TextureAsset::Load(U"item_青");
+
+	TextureAsset::Register(U"item_緑", U"data/image/item/緑.png");
+	TextureAsset::Load(U"item_緑");
 
 }
 

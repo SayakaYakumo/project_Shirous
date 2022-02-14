@@ -89,9 +89,9 @@ void Game::draw_edit() {
 		FontAsset(U"DebugMenuFont")(U"右クリックでツールボックスのON・OFF").draw(10, 10);
 	}
 
-	if (edit_saved_diplay_fade > 0) {//save表示
-		FontAsset(U"DebugMenuFont2")(U"セーブしました").drawAt(1920/2, 1080/2,ColorF(1.0,edit_saved_diplay_fade));
-		edit_saved_diplay_fade -= 0.0111;
+	if (edit_saved_display_fade > 0) {//save表示
+		FontAsset(U"DebugMenuFont2")(U"セーブしました").drawAt(1920/2, 1080/2,ColorF(1.0,edit_saved_display_fade));
+		edit_saved_display_fade -= 0.0111;
 	}
 
 	

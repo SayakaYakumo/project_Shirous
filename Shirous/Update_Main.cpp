@@ -213,6 +213,8 @@ void Game::GameEraseUpdate() {
 		{
 			if (e.get_hp()<=0) {
 
+			
+
 				return true;
 			}
 			else {

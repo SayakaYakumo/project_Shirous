@@ -220,6 +220,21 @@
     <Filter Include="Source Files\Scene\Edit">
       <UniqueIdentifier>{7c78018e-add6-40b0-9ede-eae474f04584}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object\Item">
+      <UniqueIdentifier>{979e2c30-3f63-434c-886e-5de7eaae70dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Enemy\Drop_Item">
+      <UniqueIdentifier>{6034fe58-0a8a-42b4-8619-06bc72ba102f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Player_Data">
+      <UniqueIdentifier>{bdcb7371-5ce5-4bef-bac7-17b0c2d8053f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Option_Data">
+      <UniqueIdentifier>{64183a15-1deb-4aea-bc78-006ba184426a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Enemy_Data">
+      <UniqueIdentifier>{31b92654-138a-4951-be03-4c922b1b244d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -257,12 +272,6 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\Scene\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\Scene\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>Source Files\Scene\Title</Filter>
     </ClCompile>
     <ClCompile Include="Load.cpp">
       <Filter>Source Files\Scene\Play\Load</Filter>
@@ -335,6 +344,15 @@
     </ClCompile>
     <ClCompile Include="Draw_Edit.cpp">
       <Filter>Source Files\Scene\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Drop_Item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Data.cpp">
+      <Filter>Source Files\Data\Enemy_Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -998,12 +1016,6 @@
     <ClInclude Include="Game.hpp">
       <Filter>Source Files\Scene\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.hpp">
-      <Filter>Source Files\Scene\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="Title.hpp">
-      <Filter>Source Files\Scene\Title</Filter>
-    </ClInclude>
     <ClInclude Include="EmergeEnemy.hpp">
       <Filter>Source Files\Data\EmergeEnemy</Filter>
     </ClInclude>
@@ -1024,6 +1036,15 @@
     </ClInclude>
     <ClInclude Include="Title2.hpp">
       <Filter>Source Files\Shelter</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.hpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Drop_Item.hpp">
+      <Filter>Source Files\Object\Enemy\Drop_Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Data.hpp">
+      <Filter>Source Files\Data\Enemy_Data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

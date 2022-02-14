@@ -98,7 +98,7 @@ void Game::update_edit_main() {
 				// シリアライズに対応したデータを記録
 				writer(back_tile);
 
-				edit_saved_diplay_fade = 1;
+				edit_saved_display_fade = 1;
 			}
 			else {//ツール変更
 				edit_select_item = click_number;
@@ -108,14 +108,6 @@ void Game::update_edit_main() {
 	}
 
 
-	if (KeyX.down()) {
-		edit_select_item++;
-
-		if (edit_select_item == 3) {
-			edit_select_item = 2;
-		}
-		
-	}
 
 
 	if (edit_display == 0) {//アイテム選択中ではない

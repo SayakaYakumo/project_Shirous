@@ -54,9 +54,10 @@ void Enemy::Draw()const
 
 	TextureAsset(texture_name).draw(rect.x, rect.y);
 
+	/*
 	for (size_t i = 0; i < hit_rect.size(); i++) {
 		hit_rect[i].draw();
-	}
+	}*/
 
 }
 
