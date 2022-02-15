@@ -10,8 +10,14 @@ void EnemyBullet::Draw()const
 {
 	String texture_name = U"bullet_" + shape + U"_" + color + U"_" + size;
 
-	TextureAsset(texture_name).draw(circle.x - (circle.r / 2), circle.y - (circle.r / 2));
+	TextureAsset(texture_name).draw(circle.x - circle.r , circle.y - circle.r);
 
 	//Print << U"x::" << circle.x;
 	//Print << U"y::" << circle.y;
+}
+
+void EnemyBullet::Draw_Frame()const {
+
+	circle.drawFrame(5);
+
 }

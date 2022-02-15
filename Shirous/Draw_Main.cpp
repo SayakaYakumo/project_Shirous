@@ -91,10 +91,16 @@ void Game::draw_bullet()const {
 
 	for (size_t i = 0; i < gamePlayerBullet.size(); i++) {
 		gamePlayerBullet[i].Draw();
+		if (debug_play == 1) {
+			gamePlayerBullet[i].Draw_Frame();
+		}
 	}
 
 	for (size_t i = 0; i < gameEnemyBullet.size(); i++) {
 		gameEnemyBullet[i].Draw();
+		if (debug_play == 1) {
+			gameEnemyBullet[i].Draw_Frame();
+		}
 	}
 
 }

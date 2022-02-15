@@ -1,12 +1,25 @@
 ﻿#pragma once
-#include "Bullet.hpp"
-class EnemyBullet :
-	public Bullet
+
+class EnemyBullet 
 {
 
 private:
 
+	double speed = 0;
 
+	int move = 0;
+
+	Circle circle;
+
+	String color;
+
+	String shape;
+
+	String size;//circle.rとは異なる
+
+	double angle = 0;
+
+	int power = 1;
 
 public:
 
@@ -31,6 +44,8 @@ public:
 	void Update(double deltaTime);
 
 	void Draw()const;
+
+	void Draw_Frame()const;
 
 	Circle get_circle() { return circle; }
 };

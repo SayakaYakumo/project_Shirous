@@ -35,7 +35,7 @@ void Game::draw_debug_menu_stage_select() {
 		for (int y = 0; y < 3; y++) {
 			TextureAsset(U"debug_menu_rect_frame").draw(195 + x * (250 + 70), 150 + y * (250 + 50));
 
-			if (debug_menu_cur_x == x && debug_menu_cur_y == y) {
+			if (debug_cur_cover_x == x && debug_cur_cover_y == y) {
 				TextureAsset(U"debug_menu_rect_select_frame").draw(195 + x * (250 + 70), 150 + y * (250 + 50));
 			}
 
@@ -90,7 +90,7 @@ void Game::draw_debug_menu_mode_select() {
 
 		TextureAsset(U"debug_menu_rect_frame").draw(515 + x * (250 + 70),600);
 
-		if (debug_menu_2_cur_x == x) {
+		if (debug_2_cur_cover == x) {
 			TextureAsset(U"debug_menu_rect_select_frame").draw(515 + x * (250 + 70), 600);
 		}
 
