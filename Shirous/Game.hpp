@@ -179,14 +179,17 @@ private:
 
 	//メニュー（デバッグ）
 	int debug_menu_scene = 0;
-	int debug_menu_cur_x = 0;
-	int debug_menu_cur_y = 0;
-
+	
 	int debug_stage_number = 0;
 
 	int debug_stage_select = 0;
-	int debug_menu_2_cur_x = 0;
 
+	int debug_cur_cover_x = -1;
+	int debug_cur_cover_y = -1;
+
+	int debug_2_cur_cover = -1;
+
+	
 	//エディタ
 	int edit_scene = 0;
 	int edit_scroll = 0;

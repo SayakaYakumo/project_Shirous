@@ -27,53 +27,67 @@ void Game::update_debug_menu() {
 
 void Game::update_debug_menu_stage_select() {
 
-	if (KeyLeft.down()) {
-		debug_menu_cur_x--;
-	}
-	else if (KeyRight.down()) {
-		debug_menu_cur_x++;
-	}
+	class Select_Box {
+	public:
+		Select_Box(int x_,int y_,Rect rect_) {
+			x = x_;
+			y = y_;
+			rect = rect_;
+		}
+		Rect rect;
+		int x, y;
+	};
 
-	if (debug_menu_cur_x < 0) {
-		debug_menu_cur_x = 0;
-	}
-
-	if (debug_menu_cur_x > 4) {
-		debug_menu_cur_x = 4;
-	}
+	Array<Select_Box> select_box;
 
 
-	if (KeyUp.down()) {
-		debug_menu_cur_y--;
-	}
-	else if (KeyDown.down()) {
-		debug_menu_cur_y++;
+
+	for (int x = 0; x < 5; x++) {
+		for (int y = 0; y < 3; y++) {
+			select_box.push_back(Select_Box(x, y,Rect(195 + x * (250 + 70), 150 + y * (250 + 50), 250, 250)));
+		}
 	}
 
-	if (debug_menu_cur_y < 0) {
-		debug_menu_cur_y = 0;
+	int select_box_number_x = -1;
+	int select_box_number_y = -1;
+
+	Cursor::RequestStyle(CursorStyle::Default);
+
+	for (size_t i = 0; i < select_box.size(); i++) {
+		if (select_box[i].rect.mouseOver()) {
+			Cursor::RequestStyle(CursorStyle::Hand);
+			select_box_number_x = select_box[i].x;
+			select_box_number_y = select_box[i].y;
+		}
+
 	}
 
-	if (debug_menu_cur_y > 2) {
-		debug_menu_cur_y = 2;
-	}
+
+	
+
+	//描画用
+	debug_cur_cover_x = -1;
+	debug_cur_cover_y = -1;
+
+	debug_cur_cover_x = select_box_number_x;
+	debug_cur_cover_y = select_box_number_y;
+	
 
 
-	if (KeyZ.down()) {
+	if (MouseL.down()) {
 
-		if (debug_menu_cur_y == 0 || debug_menu_cur_y == 1) {//デバッグステージメニューへ
+		if (select_box_number_y == 0 || select_box_number_y == 1) {//デバッグステージメニューへ
 
-			debug_stage_number = debug_menu_cur_y * 5 + debug_menu_cur_x;
+			debug_stage_number = select_box_number_y * 5 + select_box_number_x;
 
-			debug_menu_2_cur_x = 1;
 
 			debug_menu_scene = 1;
 
 			
 		}
-		else if (debug_menu_cur_y == 2) {
+		else if (select_box_number_y == 2) {//エディタへ
 
-			switch (debug_menu_cur_x)
+			switch (select_box_number_x)
 			{
 			case 0://プレイヤー編集へ
 				break;
@@ -97,25 +111,33 @@ void Game::update_debug_menu_stage_select() {
 
 void Game::update_debug_menu_mode_select() {
 
-	if (KeyLeft.down()) {
-		debug_menu_2_cur_x--;
-	}
-	else if (KeyRight.down()) {
-		debug_menu_2_cur_x++;
-	}
+	Array<Rect> rect;
 
-	if (debug_menu_2_cur_x < 0) {
-		debug_menu_2_cur_x = 0;
+	for (int i = 0; i < 3; i++) {
+		rect.push_back(Rect(515 + i * (250 + 70), 600, 250, 250));
 	}
 
-	if (debug_menu_2_cur_x > 2) {
-		debug_menu_2_cur_x = 2;
+	int click_number = -1;
+
+	Cursor::RequestStyle(CursorStyle::Default);
+
+	for (size_t i = 0; i < rect.size(); i++) {
+		if (rect[i].mouseOver()) {
+			Cursor::RequestStyle(CursorStyle::Hand);
+			click_number = i;
+		}
+
 	}
 
 
-	if (KeyZ.down()) {
+	debug_2_cur_cover = -1;
+
+	debug_2_cur_cover = click_number;
+
+
+	if (MouseL.down()) {
 		
-		switch (debug_menu_2_cur_x)
+		switch (click_number)
 		{
 		case 0://戻る
 			debug_menu_scene = 0;

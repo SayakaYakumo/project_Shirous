@@ -88,14 +88,7 @@ void Player::DrawFrame()const {
 	rect.drawFrame();
 }
 
-bool Player::MyHitCheck(Vec2 enemyBulletPos)
-{
-	if (enemyBulletPos.distanceFrom(Vec2(rect.x,rect.y)) <= 20)
-	{
-		return true;
-	}
-	return false;
-}
+
 
 void Player::first() {
 	rect.x = 300;

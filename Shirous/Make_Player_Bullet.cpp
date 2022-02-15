@@ -2,7 +2,7 @@
 
 void Game::make_player_bullet() {
 
-	String name = gamePlayer.name;
+	String name = gamePlayer.get_name();
 
 	    int x = 0;
 		int y = 0;
@@ -19,7 +19,7 @@ void Game::make_player_bullet() {
 
 		x = gamePlayer.get_rect().x;
 		y = gamePlayer.get_rect().y;
-		r = 5;
+		r = 30;
 		speed = 1000;
 		move = 0;
 		angle = ToRadians(0);

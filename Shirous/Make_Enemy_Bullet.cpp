@@ -17,7 +17,7 @@ void Game::make_enemy_bullet(int e,int kind) {
 
 		x = gameEnemys[e].get_make_bullet_point().x;
 		y = gameEnemys[e].get_make_bullet_point().y;
-		r = 5;
+		r = 30;
 		speed = 450;
 		move = 0;
 		angle = ToRadians(180);

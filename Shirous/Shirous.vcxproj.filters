@@ -163,9 +163,6 @@
     <Filter Include="Source Files\Object\Player">
       <UniqueIdentifier>{13470d00-6c49-48ee-aeb8-6150513569d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object\Unit">
-      <UniqueIdentifier>{a00ac693-4624-4635-84c0-7ce9ae0ceda2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Object\Enemy">
       <UniqueIdentifier>{b36d1330-7d61-483c-bf00-53ac13c3075a}</UniqueIdentifier>
     </Filter>
@@ -246,9 +243,6 @@
     <ClCompile Include="Draw_UI.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files\Object\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Object\Enemy</Filter>
     </ClCompile>
@@ -260,9 +254,6 @@
     </ClCompile>
     <ClCompile Include="PlayerBullet.cpp">
       <Filter>Source Files\Object\Bullet\PlayerBullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Unit.cpp">
-      <Filter>Source Files\Object\Unit</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\Scene\Game</Filter>
@@ -989,9 +980,6 @@
     <ClInclude Include="Save_Data.hpp">
       <Filter>Source Files\Save_Data</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.hpp">
-      <Filter>Source Files\Object\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.hpp">
       <Filter>Source Files\Object\Enemy</Filter>
     </ClInclude>
@@ -1003,9 +991,6 @@
     </ClInclude>
     <ClInclude Include="PlayerBullet.hpp">
       <Filter>Source Files\Object\Bullet\PlayerBullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Unit.hpp">
-      <Filter>Source Files\Object\Unit</Filter>
     </ClInclude>
     <ClInclude Include="Common.hpp">
       <Filter>Source Files</Filter>

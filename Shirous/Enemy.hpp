@@ -1,18 +1,16 @@
 ﻿#pragma once
 
 # include <Siv3D.hpp>
-# include"Unit.hpp"
+
 # include"Hit_Rect.hpp"
 #include"Drop_Item.hpp"
 
-class Enemy :
-	public Unit
+class Enemy 	
 {
-
 
 private:
 
-	double mySpeed = 100.0;
+	
 
 	int move_pattern = 0;
 
@@ -38,6 +36,17 @@ private:
 	Array<Hit_Rect> hit_rect;
 
 	Array<Drop_Item>drop_item;
+
+	//unitより
+	RectF rect;
+
+	Texture texture;
+
+	int count = 0;
+
+	String name;
+
+    double speed = 100.0;
 
 public:
 
@@ -74,7 +83,7 @@ public:
 
 	void reset_bullet_flag() { make_bullet_flag = -1; }
 
-	Rect get_rect() { return rect; }
+	RectF get_rect() { return rect; }
 
 	Vec2 get_make_bullet_point() {return make_bullet_point; }
 

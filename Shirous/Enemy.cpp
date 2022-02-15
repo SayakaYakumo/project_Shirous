@@ -10,7 +10,7 @@ Enemy::Enemy(String name_,int x,int y,int move,int shot_pattern_,Array<Rect> rec
 
 	name = name_;
 
-	speed = mySpeed;
+	speed = 200;
 
 	move_pattern = move;
 
@@ -71,6 +71,8 @@ void Enemy::DrawFrame() const{
 
 void Enemy::move(double deltaTime) {
 
+	move_0(deltaTime);
+	
 	switch (move_pattern)
 	{
 	case 0:
@@ -102,7 +104,10 @@ void Enemy::move(double deltaTime) {
 
 void Enemy::move_0(double deltaTime) {
 	rect.x -= deltaTime * speed;
-	Print << U"x::" << rect.x;
+
+	//Print<<U"speed::"<< speed;
+	//Print << U"x" << rect.x;
+	//Print << U"-------";
 }
 
 void Enemy::move_1(double deltaTime) {

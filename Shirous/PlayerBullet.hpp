@@ -1,14 +1,28 @@
 ﻿#pragma once
-#pragma once
-#include "Bullet.hpp"
-class PlayerBullet :
-	public Bullet
+
+class PlayerBullet 
 {
 private:
 
-public:
+	double speed = 0;
+
+	int move = 0;
+
+	Circle circle;
+
+	String color;
+
+	String shape;
+
+	String size;//circle.rとは異なる
+
+	double angle = 0;
 
 	int power = 1;
+
+public:
+
+	
 
 	PlayerBullet(int x,int y,int r,int speed_,int move_,double angle_,String shape_,String color_,String size_) {
 		circle = Circle(x, y, r);
@@ -29,6 +43,8 @@ public:
 	void Update(double deltaTime);
 
 	void Draw()const;
+
+	void Draw_Frame()const;
 
 	Circle get_circle() { return circle; }
 
