@@ -198,6 +198,9 @@ private:
 	int edit_bukket_start_x = 0;
 	int edit_bukket_start_y = 0;
 
+	String  edit_plus_enemy_name ;
+	
+
 	double edit_saved_display_fade = 0;
 	int edit_saved = 0;
 

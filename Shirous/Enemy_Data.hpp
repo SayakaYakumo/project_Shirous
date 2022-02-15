@@ -4,7 +4,9 @@ class Enemy_Data
 {
 public:
 
-	Enemy_Data(){}
+	Enemy_Data(){
+	
+	}
 
 	Enemy_Data(String name,int x,int y,int hp,int act,int move,int shot) {
 
@@ -51,10 +53,10 @@ public:
 
 private:
 	String _name;
-	int _hp;
-	int _act;
-	int _move;
-	int _shot;
+	int _hp = 0;
+	int _act = 0;
+	int _move = 0;
+	int _shot = 0;
 	Array<Rect> _rect;
 
 	int _x = 0;

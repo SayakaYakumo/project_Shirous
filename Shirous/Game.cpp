@@ -137,6 +137,8 @@ void Game::ini(){
 	TextureAsset::Register(U"back_tile", U"data/image/back/back_tile.png");
 	TextureAsset::Load(U"back_tile");
 
+	//デバッグ以外でファイルに書き込まない
+
 	//敵サカナデータ読み込み
 
 	/*
@@ -150,39 +152,30 @@ void Game::ini(){
 
 
 
+	//敵情報読み込み
 
-
-	// バイナリファイルをオープン
 	Deserializer<BinaryReader> Ereader{ U"data/database/enemy_data.bin" };
 
-	if (not Ereader) // もしオープンに失敗したら
+	if (not Ereader)
 	{
 		throw Error{ U"Failed to open `tutorial4.bin`" };
 	}
 
-	
-	// バイナリファイルからシリアライズ対応型のデータを読み込む
-	// （Array は自動でリサイズが行われる）
 	Ereader(enemy_data);
 
 
 
 
 /*
-	// バイナリファイルをオープン
+	//セーブデータ書き込み
 	Serializer<BinaryWriter> Swriter{ U"save_data/save_data.bin" };
 
-	if (not Swriter) // もしオープンに失敗したら
+	if (not Swriter) 
 	{
 		throw Error{ U"Failed to open `tutorial4.bin`" };
 	}
 
-	// シリアライズに対応したデータを記録
 	Swriter(save_data);*/
-
-
-
-
 
 
 
@@ -190,17 +183,33 @@ void Game::ini(){
 
 	//セーブデータ読み込み
 
-	// バイナリファイルをオープン
+	
 	Deserializer<BinaryReader> Sreader{ U"save_data/save_data.bin" };
 
-	if (not Sreader) // もしオープンに失敗したら
+	if (not Sreader) 
 	{
 		throw Error{ U"Failed to open `tutorial4.bin`" };
 	}
 
-	// バイナリファイルからシリアライズ対応型のデータを読み込む
-	// （Array は自動でリサイズが行われる）
 	Sreader(save_data);
+
+	/*
+
+	//敵配置情報書き込み
+
+	Serializer<BinaryWriter> EEwriter{ U"data/stage/0/emerge_enemy.bin" };
+
+	if (not EEwriter) 
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	
+	EEwriter(emergeEnemys); */
+
+
+	
+
 }
 
 

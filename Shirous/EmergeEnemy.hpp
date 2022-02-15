@@ -6,13 +6,13 @@ class EmergeEnemy {
 
 public:
 
-	EmergeEnemy(String name, int x, int y, int move,int shot_pattern,int time) {
+	EmergeEnemy(){}
+
+	EmergeEnemy(String name, int x, int y,int time) {
 
 		_name = name;
 		_x = x;
 		_y = y;
-		_move = move;
-		_shot_pattern = shot_pattern;
 		_time = time;
 		
 	}
@@ -23,25 +23,34 @@ public:
 
 	String get_name() { return _name; }
 
-	int get_move() { return _move; }
-
 	int get_time() { return _time; }
 
 	int get_done() { return _done; }
 
 	void set_done() { _done = 1; }
 
-	int get_shot_pattern() { return _shot_pattern; }
+	void set_edit_mark(int v) { _edit_mark = v; }
+
+	int get_edit_mark() { return _edit_mark; }
+
+	// シリアライズに対応させるためのメンバ関数を定義する
+	template <class Archive>
+	void SIV3D_SERIALIZE(Archive& archive)
+	{
+		archive(_name, _x, _y,_time);
+	}
 
 private:
 
 	int _x = 0;
 	int _y = 0;
 	String _name;
-	int _move = 0;
 	int _time = 0;
-	int _shot_pattern = 0;
+
 
 	int _done = 0;
+
+
+	int _edit_mark = 0;
 
 };

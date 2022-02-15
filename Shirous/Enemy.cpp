@@ -56,7 +56,9 @@ void Enemy::Draw()const
 
 	TextureAsset(texture_name).draw(rect.x, rect.y);
 
-	
+	Rect rect_d(rect.x,rect.y,5,5);
+
+	rect_d.draw();
 
 }
 
@@ -100,6 +102,7 @@ void Enemy::move(double deltaTime) {
 
 void Enemy::move_0(double deltaTime) {
 	rect.x -= deltaTime * speed;
+	Print << U"x::" << rect.x;
 }
 
 void Enemy::move_1(double deltaTime) {

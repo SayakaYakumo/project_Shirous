@@ -20,12 +20,15 @@ void Game::update_main() {
 				String name = emergeEnemys[i].get_name();
 				int x = emergeEnemys[i].get_x();
 				int y = emergeEnemys[i].get_y();
-				int move = emergeEnemys[i].get_move();
-				int shot_pattern = emergeEnemys[i].get_shot_pattern();
+
+				int move = 0;
+				int shot_pattern = 0;
 
 				Array<Rect> rects;
 				for (size_t e = 0; e < enemy_data.size(); e++) {
 					if (enemy_data[e].get_name() == name) {
+						move = enemy_data[e].get_move();
+						shot_pattern = enemy_data[e].get_shot();
 						rects = enemy_data[e].get_rects();
 					}
 				}
@@ -131,6 +134,22 @@ void Game::GameShotUpdate(const double _time)
 			}
 
 		});
+
+	//画面外の敵の削除
+
+	gameEnemys.remove_if([&](Enemy e)
+		{
+			if (e.get_rect().x<-2000||2000<e.get_rect().x|| e.get_rect().y < -2000 || 2000 < e.get_rect().y) {
+
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		});
+
+
 }
 
 

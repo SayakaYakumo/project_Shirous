@@ -39,11 +39,27 @@ void Game::draw_edit() {
 		break;
 	}
 
-
+	//背景タイル描画
 	for (size_t i = 0; i < back_tile.size(); i++) {
 
 			back_tile[i].draw(edit_scroll);		
 	}
+
+	//敵描画
+	for (size_t i = 0; i < emergeEnemys.size(); i++) {
+		String name = U"アンモナイト";
+		String texture_name = U"enemy_" + name;
+		int x = 0;
+		int y = 0;
+		int time = 0;
+
+		x = emergeEnemys[i].get_x() - edit_scroll;
+		y = emergeEnemys[i].get_y();
+
+		TextureAsset(texture_name).draw(x,y);
+	}
+
+
 
 
 
@@ -79,7 +95,10 @@ void Game::draw_edit() {
 		TextureAsset(U"debug_edit_eraser").draw(10+60 + (120 + 50) * 2, 1080 - 150 + 15 - 10);
 		TextureAsset(U"debug_edit_bukket").draw(10 + 60 + (120 + 50) * 3, 1080 - 150 + 15 - 10);
 		TextureAsset(U"debug_edit_bukket_erase").draw(10 + 60 + (120 + 50) * 4, 1080 - 150 + 15 - 10);
-		TextureAsset(U"debug_edit_save").draw(10 + 60 + (120 + 50) * 5, 1080 - 150 + 15 - 10);
+		TextureAsset(U"debug_edit_plus_fish").draw(10 + 60 + (120 + 50) * 5, 1080 - 150 + 15 - 10);
+		TextureAsset(U"debug_edit_minus_fish").draw(10 + 60 + (120 + 50) * 6, 1080 - 150 + 15 - 10);
+		TextureAsset(U"debug_edit_information").draw(10 + 60 + (120 + 50) * 7, 1080 - 150 + 15 - 10);
+		TextureAsset(U"debug_edit_save").draw(10 + 60 + (120 + 50) * 8, 1080 - 150 + 15 - 10);
 
 		if (edit_select_item != 0) {//backではない
 			TextureAsset(U"debug_edit_select").draw(10 + 60 + (120 + 50) * edit_select_item, 1080 - 150 + 15 - 10);

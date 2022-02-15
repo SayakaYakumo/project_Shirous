@@ -45,79 +45,43 @@ void Game::stage_0_load() {
 
 	/**/
 	
-	//敵生成データ
-
-	const CSV csv_EMERGE_ENEMY(U"data/stage/0/EmergeEnemy.csv");
-	if (not csv_EMERGE_ENEMY) {
-		throw Error(U"Failed to load 'magic_data.csv'");
-	}
-
-
-
-	//縦
-	for (int y = 0; y < csv_EMERGE_ENEMY.rows() - 1; y++) {
-
-		String name = U"no_data";
-		int pos_x = 0;
-		int pos_y = 0;
-		int move = 0;
-		int shot_pattern = 0;
-		int time = 0;
-
-		//横
-		for (int x = 0; x < 6; x++) {
-
-			switch (x)
-			{
-			case 0:
-				name = Parse<String>(csv_EMERGE_ENEMY[y + 1][x]);
-				break;
-			case 1:
-				pos_x = Parse<int>(csv_EMERGE_ENEMY[y + 1][x]);
-				break;
-			case 2:
-				pos_y = Parse<int>(csv_EMERGE_ENEMY[y + 1][x]);
-				break;
-			case 3:
-				move = Parse<int>(csv_EMERGE_ENEMY[y + 1][x]);
-				break;
-			case 4:
-				shot_pattern = Parse<int>(csv_EMERGE_ENEMY[y + 1][x]);
-				break;
-			case 5:
-				time = Parse<int>(csv_EMERGE_ENEMY[y + 1][x]);
-				break;
-			}
-
-		}
-
-		emergeEnemys.push_back(EmergeEnemy(name, pos_x, pos_y, move,shot_pattern,time));
-
-	}
-
 	
+
+
+	/*
 	for (int x = 0; x < 16; x++) {
 		for (int y = 0; y < 9; y++) {
 			back_tile.push_back(Back_Tile(x, y, 1));
 		}
 	}
-
+*/
 
 	
-/**/
+
 	//背景データ
 
-	// バイナリファイルをオープン
+	
 	Deserializer<BinaryReader> reader{ U"data/stage/0/BackTile.bin" };
 
-	if (not reader) // もしオープンに失敗したら
+	if (not reader)
 	{
 		throw Error{ U"Failed to open `tutorial4.bin`" };
 	}
 
-	// バイナリファイルからシリアライズ対応型のデータを読み込む
-	// （Array は自動でリサイズが行われる）
 	reader(back_tile);
+
+    //敵生成データ
+
+
+	Deserializer<BinaryReader> EEreader{ U"data/stage/0/emerge_enemy.bin" };
+
+	if (not EEreader)
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	EEreader(emergeEnemys);
+
 
 
 	// アセットの登録

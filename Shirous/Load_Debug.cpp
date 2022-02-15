@@ -97,4 +97,12 @@ void Game::load_debug() {
 	TextureAsset::Register(U"debug_edit_information", U"data/image/debug/information.png");
 	TextureAsset::Load(U"debug_edit_information");
 
+	//エディタの敵追加
+	TextureAsset::Register(U"debug_edit_plus_fish", U"data/image/debug/plus_fish.png");
+	TextureAsset::Load(U"debug_edit_plus_fish");
+
+	//エディタの敵削除
+	TextureAsset::Register(U"debug_edit_minus_fish", U"data/image/debug/minus_fish.png");
+	TextureAsset::Load(U"debug_edit_minus_fish");
+
 }

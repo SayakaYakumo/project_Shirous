@@ -33,10 +33,7 @@ public:
 
 	}
 
-	void draw_edit(int scroll)const {
-
-		
-	}
+	
 
 	int get_x() { return x; }
 	int get_y() { return y; }
