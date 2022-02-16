@@ -26,11 +26,32 @@ void Game::load_debug() {
 	FontAsset::Register(U"DebugMenuFont6", FontMethod::MSDF, 70, Typeface::Bold);
 	FontAsset::Load(U"DebugMenuFont6");
 
+	//デバッグメニューフォント7
+	FontAsset::Register(U"DebugMenuFont7", FontMethod::MSDF, 50, Typeface::Bold);
+	FontAsset::Load(U"DebugMenuFont7");
 
+	//デバッグメニューフォント7
+	FontAsset::Register(U"DebugMenuFont8", FontMethod::MSDF, 120, Typeface::Bold);
+	FontAsset::Load(U"DebugMenuFont8");
 
 	//メニュー用
 	TextureAsset::Register(U"debug_menu_rect_frame", U"data/image/debug/menu_rect_frame.png");
 	TextureAsset::Load(U"debug_menu_rect_frame");
+
+	TextureAsset::Register(U"debug_menu_rect_frame_mini", U"data/image/debug/menu_rect_frame_mini.png");
+	TextureAsset::Load(U"debug_menu_rect_frame_mini");
+
+	TextureAsset::Register(U"debug_menu_rect_frame_mini_select", U"data/image/debug/menu_rect_frame_mini_select.png");
+	TextureAsset::Load(U"debug_menu_rect_frame_mini_select");
+
+	TextureAsset::Register(U"debug_menu_rect_frame_mini_2", U"data/image/debug/menu_rect_frame_mini_2.png");
+	TextureAsset::Load(U"debug_menu_rect_frame_mini_2");
+
+	TextureAsset::Register(U"debug_menu_rect_frame_mini_2_select", U"data/image/debug/menu_rect_frame_mini_2_select.png");
+	TextureAsset::Load(U"debug_menu_rect_frame_mini_2_select");
+
+	TextureAsset::Register(U"debug_menu_rect_frame_enemy", U"data/image/debug/menu_rect_frame_enemy.png");
+	TextureAsset::Load(U"debug_menu_rect_frame_enemy");
 
 	TextureAsset::Register(U"debug_menu_rect_select_frame", U"data/image/debug/menu_rect_select_frame.png");
 	TextureAsset::Load(U"debug_menu_rect_select_frame");

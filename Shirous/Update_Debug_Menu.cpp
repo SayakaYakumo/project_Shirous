@@ -168,44 +168,88 @@ void Game::update_edit_enemy() {
 
 	if (edit_enemy_scene == 0) {//敵を選択
 
-		if (KeyLeft.down()) {
-			edit_enemy_page_x--;
-		}
-		else if (KeyRight.down()) {
-			edit_enemy_page_x++;
-		}
-
-		if (edit_enemy_page_x < 0) {
-			edit_enemy_page_x = 0;
-		}
-
-		if (edit_enemy_page_x > 4) {
-			edit_enemy_page_x = 4;
-		}
-
-
-		if (KeyUp.down()) {
-			edit_enemy_page_y--;
-		}
-		else if (KeyDown.down()) {
-			edit_enemy_page_y++;
-		}
-
-		if (edit_enemy_page_y < 0) {
-			edit_enemy_page_y = 0;
-		}
-
-		if (edit_enemy_page_y > 2) {
-			edit_enemy_page_y = 2;
-		}
-
-
-		if (KeyZ.down()) {
-
-			edit_enemy_index = 0;
+		if (KeyZ.down()) {//エディタのデバッグ用
 			edit_enemy_scene = 1;
 		}
 
+
+		Array<Rect>rect;
+
+		for (int i = 0; i < 3; i++) {
+			rect.push_back(Rect(30+(250*i), 1080 - 180 - 30,180,180));
+		}
+
+
+		Cursor::RequestStyle(CursorStyle::Default);
+
+		int click_number = -1;
+		edit_enemy_cur_cover = -1;
+
+		for (size_t i = 0; i < rect.size(); i++) {
+			if (rect[i].mouseOver()) {
+				click_number = i;
+				Cursor::RequestStyle(CursorStyle::Hand);
+				edit_enemy_cur_cover = i;
+			}
+		}
+
+
+		if (MouseL.down()) {
+
+			switch (click_number)
+			{
+			case 0://デバッグメニューへ
+				debug_menu_scene = 0;
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			default:
+				break;
+			}
+		}
+
+
+
+		Array<Rect>rect_2;
+
+		
+		rect_2.push_back(Rect(1000, 900,120,120));
+		rect_2.push_back(Rect(1000 + 750 - 120, 900,120,120));
+
+
+		Cursor::RequestStyle(CursorStyle::Default);
+
+		int click_number_2 = -1;
+		edit_enemy_cur_cover_2 = -1;
+
+		for (size_t i = 0; i < rect_2.size(); i++) {
+			if (rect_2[i].mouseOver()) {
+				click_number_2 = i;
+				Cursor::RequestStyle(CursorStyle::Hand);
+				edit_enemy_cur_cover_2 = i;
+			}
+		}
+
+
+		if (MouseL.down()) {
+			if (click_number_2 == 0) {//ページ減少
+				edit_enemy_page--;
+			}
+			else if (click_number_2 == 1) {//ページ増加
+				edit_enemy_page++;
+			}
+		}
+
+
+		if (edit_enemy_page==-1) {
+			edit_enemy_page = 0;
+		}
+
+		if (edit_enemy_page == 4) {
+			edit_enemy_page = 3;
+		}
 
 	}
 	else if (edit_enemy_scene == 1) {//エディタ画面

@@ -211,6 +211,8 @@ private:
 	int edit_enemy_index = 0;
 
 	int edit_enemy_page = 0;
+	int edit_enemy_cur_cover = -1;
+	int edit_enemy_cur_cover_2 = -1;
 	int edit_enemy_page_x = 0;
 	int edit_enemy_page_y = 0;
 

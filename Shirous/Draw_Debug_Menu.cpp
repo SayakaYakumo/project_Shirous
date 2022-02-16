@@ -126,57 +126,58 @@ void Game::draw_edit_enemy() {
 
 	if (edit_enemy_scene == 0) {//enemy一覧を表示
 
-		for (int x = 0; x < 5; x++) {
-			for (int y = 0; y < 3; y++) {
-				TextureAsset(U"debug_menu_rect_frame").draw(195 + x * (250 + 70), 150 + y * (250 + 50));
+		TextureAsset(U"debug_menu_rect_frame_mini").draw(30,1080-180-30);
+		FontAsset(U"DebugMenuFont7")(U"Back").draw(30+30, 1080-180 - 30+50);
+		
+		TextureAsset(U"debug_menu_rect_frame_mini").draw(30+200+50, 1080 - 180 - 30);
+		FontAsset(U"DebugMenuFont8")(U"＋").draw(30 + 30+200+50, 1080 - 180 - 30 + 0);
+
+		TextureAsset(U"debug_menu_rect_frame_mini").draw(30+400+100, 1080 - 180 - 30);
+		FontAsset(U"DebugMenuFont8")(U"－").draw(30 + 30+400+100, 1080 - 180 - 30 + 0);
+
+		if (edit_enemy_cur_cover != -1) {
+			int x = edit_enemy_cur_cover;
+			TextureAsset(U"debug_menu_rect_frame_mini_select").draw(30+(250*x), 1080 - 180 - 30);
+		}
+		
+
+		FontAsset(U"DebugMenuFont6")(U"Page　" + Format(edit_enemy_page)).draw(1250, 900);
+
+		TextureAsset(U"debug_menu_rect_frame_mini_2").draw(1000,900);
+		FontAsset(U"DebugMenuFont6")(U"－").draw(1000+25 , 900+10);
+
+		TextureAsset(U"debug_menu_rect_frame_mini_2").draw(1000+750-120, 900);
+		FontAsset(U"DebugMenuFont6")(U"＋").draw(1000 + 750 - 120+25, 900+10 );
+
+		if (edit_enemy_cur_cover_2 != -1) {
+			if (edit_enemy_cur_cover_2 == 0) {
+				TextureAsset(U"debug_menu_rect_frame_mini_2_select").draw(1000, 900);
+			}
+			else if (edit_enemy_cur_cover_2 == 1) {
+				TextureAsset(U"debug_menu_rect_frame_mini_2_select").draw(1000 + 750 - 120, 900);
 			}
 		}
 
+		for (int i = 0; i < 7; i++) {
+			TextureAsset(U"debug_menu_rect_frame_enemy").draw(1000, 30 + i * (100 + 20));
+		}
 
-		int page_y_begin = edit_enemy_page * 3;
-		int page_y_end = (edit_enemy_page * 3) + 2;
+		int page = edit_enemy_page;
+		int page_begin = page * 7;
+		int page_end = page * 7 + 6;
 
 		for (size_t i = 0; i < enemy_data.size(); i++) {
 
-			int v = enemy_data[i].get_y();
-
-			if (page_y_begin <= v && v <= page_y_end) {//ページ内なので描画
-
-				int x_pos = enemy_data[i].get_x();
-				int y_pos = enemy_data[i].get_y() - edit_enemy_page * 3;
-
+			if (page_begin <= i && i <= page_end) {
 				String name = enemy_data[i].get_name();
-
-				//Print << U"i::" << i;
-				//Print << U"x::" << enemy_data[i].get_x();
-				//Print << U"y::" << enemy_data[i].get_y();
-				//Print << U"=======";
-
-				int y_v = 200;
-
-				FontAsset(U"DebugMenuFont5")(name).drawAt(195 + x_pos * (250 + 70) + 120, 150 + y_pos * (250 + 50) + 150);
-
-				//FontAsset(U"DebugMenuFont5")(i).draw(195 + x_pos * (250 + 70)+50, 150 + y_pos * (250 + 50)+100);
+				int y = i - page_begin;
+				FontAsset(U"DebugMenuFont6")(name).draw(1000+50, 30 + y * (100 + 20));
 			}
 
 		}
 
-		if (KeyZ.down()) {
 
-			enemy_data[0].set_name(U"アンモナイト");
 
-			//Print << U"save";
-			// バイナリファイルをオープン
-			Serializer<BinaryWriter> writer{ U"data/database/fish_data.bin" };
-
-			if (not writer) // もしオープンに失敗したら
-			{
-				throw Error{ U"Failed to open `tutorial4.bin`" };
-			}
-
-			// シリアライズに対応したデータを記録
-			writer(enemy_data);
-		}
 
 	}
 	else if (edit_enemy_scene == 1) {//エディタ画面
