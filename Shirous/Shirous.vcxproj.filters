@@ -139,29 +139,8 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{c7cc33ee-72fa-4197-814d-4508042a8ea7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game_Data">
-      <UniqueIdentifier>{1d0debbf-3705-4592-95ab-5a9967bc4067}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Bullet">
-      <UniqueIdentifier>{f70e8f5b-2241-40ee-be0b-3b2af9f8d89c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Enemy">
-      <UniqueIdentifier>{b36d1330-7d61-483c-bf00-53ac13c3075a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\EnemyBullet">
-      <UniqueIdentifier>{2bcdf60d-e6f0-4897-ba18-a8a292e551ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Player">
-      <UniqueIdentifier>{13470d00-6c49-48ee-aeb8-6150513569d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\PlayerBullet">
-      <UniqueIdentifier>{6c035220-45be-441f-991b-2c29af9ad2ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameMain">
       <UniqueIdentifier>{35a570a7-c45b-43e3-b7e6-5c9a40d4bdaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Unit">
-      <UniqueIdentifier>{a00ac693-4624-4635-84c0-7ce9ae0ceda2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{ea0d61a1-0db2-45a1-bf51-e86f0cab6606}</UniqueIdentifier>
@@ -175,6 +154,84 @@
     <Filter Include="Source Files\Scene\Game">
       <UniqueIdentifier>{78acd28e-ab9e-4461-8699-6160692756a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{55aac8d1-68d8-4c74-b6d3-aa1ab834b40e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Bullet">
+      <UniqueIdentifier>{f70e8f5b-2241-40ee-be0b-3b2af9f8d89c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Player">
+      <UniqueIdentifier>{13470d00-6c49-48ee-aeb8-6150513569d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Enemy">
+      <UniqueIdentifier>{b36d1330-7d61-483c-bf00-53ac13c3075a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data">
+      <UniqueIdentifier>{5d716a04-4faa-44a0-922a-3136eaa3d650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\EmergeEnemy">
+      <UniqueIdentifier>{8f4c9645-5da1-43ad-8f40-779fe74cbc06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Function">
+      <UniqueIdentifier>{dee21017-c9bb-4734-901f-143ea791bcfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Bullet\EnemyBullet">
+      <UniqueIdentifier>{2bcdf60d-e6f0-4897-ba18-a8a292e551ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Bullet\PlayerBullet">
+      <UniqueIdentifier>{6c035220-45be-441f-991b-2c29af9ad2ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Enemy\Hit_Rect">
+      <UniqueIdentifier>{d197ea05-087b-420b-92c5-2cc59a74f9d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Back_Tile">
+      <UniqueIdentifier>{4d26cb52-2284-47ce-93a1-800687738ad7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shelter">
+      <UniqueIdentifier>{99e09acc-5bd4-465c-a4fd-396321ddd4bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play">
+      <UniqueIdentifier>{5c23082e-9156-492a-9dc0-b9ce4f4857c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play\Main">
+      <UniqueIdentifier>{2e2d0871-a989-4de4-ba6d-ad83962de134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play\Game_Over">
+      <UniqueIdentifier>{32156c52-5f36-4357-a653-b5121d89990e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play\Pose">
+      <UniqueIdentifier>{5335a154-a30d-44b9-946c-2045a28f280a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Change_Scene">
+      <UniqueIdentifier>{ca3c0a6c-344f-45ce-869b-f5c3e02942b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Play\Load">
+      <UniqueIdentifier>{0fa9a028-9cab-469b-872d-f82c238693fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Menu\Debug">
+      <UniqueIdentifier>{1f6f1fc6-bd3d-4b1f-a00a-aa4bcb83c3f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Edit">
+      <UniqueIdentifier>{7c78018e-add6-40b0-9ede-eae474f04584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item">
+      <UniqueIdentifier>{979e2c30-3f63-434c-886e-5de7eaae70dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Enemy\Drop_Item">
+      <UniqueIdentifier>{6034fe58-0a8a-42b4-8619-06bc72ba102f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Player_Data">
+      <UniqueIdentifier>{bdcb7371-5ce5-4bef-bac7-17b0c2d8053f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Option_Data">
+      <UniqueIdentifier>{64183a15-1deb-4aea-bc78-006ba184426a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Enemy_Data">
+      <UniqueIdentifier>{31b92654-138a-4951-be03-4c922b1b244d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Save_Data">
+      <UniqueIdentifier>{1d0debbf-3705-4592-95ab-5a9967bc4067}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -186,41 +243,107 @@
     <ClCompile Include="Draw_UI.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Enemy</Filter>
+      <Filter>Source Files\Object\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyBullet.cpp">
-      <Filter>Source Files\EnemyBullet</Filter>
+      <Filter>Source Files\Object\Bullet\EnemyBullet</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Player</Filter>
+      <Filter>Source Files\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerBullet.cpp">
-      <Filter>Source Files\PlayerBullet</Filter>
-    </ClCompile>
-    <ClCompile Include="Unit.cpp">
-      <Filter>Source Files\Unit</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\Scene\Menu</Filter>
+      <Filter>Source Files\Object\Bullet\PlayerBullet</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\Scene\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
+    <ClCompile Include="Update_Title.cpp">
       <Filter>Source Files\Scene\Title</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\Scene\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="Load.cpp">
+      <Filter>Source Files\Scene\Play\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Main.cpp">
+      <Filter>Source Files\Scene\Play\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Main.cpp">
+      <Filter>Source Files\Scene\Play\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Pose.cpp">
+      <Filter>Source Files\Scene\Play\Pose</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Pose.cpp">
+      <Filter>Source Files\Scene\Play\Pose</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_GameOver.cpp">
+      <Filter>Source Files\Scene\Play\Game_Over</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_GameOver.cpp">
+      <Filter>Source Files\Scene\Play\Game_Over</Filter>
+    </ClCompile>
+    <ClCompile Include="Make_Player_Bullet.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Make_Enemy_Bullet.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Game2.cpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu2.cpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Menu.cpp">
       <Filter>Source Files\Scene\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
+    <ClCompile Include="Update_Menu.cpp">
+      <Filter>Source Files\Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Title2.cpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Title.cpp">
       <Filter>Source Files\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Play.cpp">
+      <Filter>Source Files\Scene\Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Play.cpp">
+      <Filter>Source Files\Scene\Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Main2.cpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClCompile>
+    <ClCompile Include="Change_Scene.cpp">
+      <Filter>Source Files\Change_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Debug_Menu.cpp">
+      <Filter>Source Files\Scene\Menu\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Debug_Menu.cpp">
+      <Filter>Source Files\Scene\Menu\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Load_Debug.cpp">
+      <Filter>Source Files\Scene\Menu\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Update_Edit.cpp">
+      <Filter>Source Files\Scene\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw_Edit.cpp">
+      <Filter>Source Files\Scene\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Drop_Item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Data.cpp">
+      <Filter>Source Files\Data\Enemy_Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -854,32 +977,20 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Siv3D.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game_Data.hpp">
-      <Filter>Source Files\Game_Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.hpp">
-      <Filter>Source Files\Bullet</Filter>
+    <ClInclude Include="Save_Data.hpp">
+      <Filter>Source Files\Save_Data</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.hpp">
-      <Filter>Source Files\Enemy</Filter>
+      <Filter>Source Files\Object\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBullet.hpp">
-      <Filter>Source Files\EnemyBullet</Filter>
+      <Filter>Source Files\Object\Bullet\EnemyBullet</Filter>
     </ClInclude>
     <ClInclude Include="Player.hpp">
-      <Filter>Source Files\Player</Filter>
+      <Filter>Source Files\Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerBullet.hpp">
-      <Filter>Source Files\PlayerBullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Unit.hpp">
-      <Filter>Source Files\Unit</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.hpp">
-      <Filter>Source Files\Scene\Menu</Filter>
+      <Filter>Source Files\Object\Bullet\PlayerBullet</Filter>
     </ClInclude>
     <ClInclude Include="Common.hpp">
       <Filter>Source Files</Filter>
@@ -887,17 +998,38 @@
     <ClInclude Include="Game.hpp">
       <Filter>Source Files\Scene\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Title.hpp">
-      <Filter>Source Files\Scene\Title</Filter>
-    </ClInclude>
     <ClInclude Include="Game.hpp">
       <Filter>Source Files\Scene\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.hpp">
-      <Filter>Source Files\Scene\Menu</Filter>
+    <ClInclude Include="EmergeEnemy.hpp">
+      <Filter>Source Files\Data\EmergeEnemy</Filter>
     </ClInclude>
-    <ClInclude Include="Title.hpp">
-      <Filter>Source Files\Scene\Title</Filter>
+    <ClInclude Include="Hit_Rect.hpp">
+      <Filter>Source Files\Object\Enemy\Hit_Rect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\デスクトップ\OpenSiv3D_0.6.3\include\Siv3D.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Back_Tile.hpp">
+      <Filter>Source Files\Data\Back_Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Game2.hpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu2.hpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClInclude>
+    <ClInclude Include="Title2.hpp">
+      <Filter>Source Files\Shelter</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.hpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Drop_Item.hpp">
+      <Filter>Source Files\Object\Enemy\Drop_Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Data.hpp">
+      <Filter>Source Files\Data\Enemy_Data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

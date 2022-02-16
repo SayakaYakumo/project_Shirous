@@ -1,244 +1,221 @@
 ﻿#include "Game.hpp"
 
-Game::Game(const InitData& init)
-	: IScene{ init }
-{
-	// 背景のいろ
-	Scene::SetBackground(ColorF(0.1, 0.2, 0.7));
-
-	font = Font(30);
-	gameoverfont = Font(60);
-
-	//プレイヤーの生成
-	gamePlayer = Player();
-}
 
 void Game::update()
 {
-	if (MouseL.down())
-	{
-		// タイトルシーンに遷移
-		changeScene(State::Title);
-	}
-	// ゲームオーバー画面
-	if (gameover)
-	{
-		if (KeyA.down())
+	//関数の本体は別フォルダに記述
+
+	if (change_scene_count == 0) {//シーン変更中ではない
+
+		switch (game_scene)
 		{
-			effect.clear();
-			gamePlayer.pos = Vec2(400, 500);
-			gameEnemys.clear();
-			gamePlayerBullet.clear();
-			gameEnemyBullet.clear();
-			enemySpawnTime = initialEnemySpawnTime;
-			highScore = Max(highScore, score);
-			score = 0;
-			gameover = false;
-		}
-
-		return;
-	}
-
-	const double deltaTime = Scene::DeltaTime();
-
-	// 敵の発生
-	while (enemySpawnTimer > enemySpawnTime)
-	{
-		enemySpawnTimer -= enemySpawnTime;
-		enemySpawnTime = Max(enemySpawnTime * 0.95, 0.3);
-		gameEnemys << GenerateEnemy();
-	}
-
-	//攻撃のヒット判定
-	GameHitCheck(deltaTime);
-
-	//Shot周り
-	GameShotUpdate(deltaTime);
-
-	//移動
-	GameMoveUpdate(deltaTime);
-
-	//描画のみ
-	//GameDrow(deltaTime);
-}
-
-void Game::draw() const
-{
-	GameDraw(Scene::DeltaTime());
-}
-
-void Game::GameMoveUpdate(const double _time)
-{
-	//自機の移動と描画
-	gamePlayer.Update(_time);
-
-	//敵の移動と描画
-	for (auto& enemy : gameEnemys)
-	{
-
-		enemy.Update(_time, gameover);
-	}
-}
-
-void Game::GameShotUpdate(const double _time)
-{
-	//プレイヤーのショットタイム周り
-	playerShotTimer = Min(playerShotTimer + _time, playerShotCoolTime);
-
-	enemyShotTimer += _time;
-	enemySpawnTimer += _time;
-
-
-	// 敵ショットの発射
-	if (enemyShotTimer >= enemyShotCoolTime)
-	{
-		enemyShotTimer -= enemyShotCoolTime;
-
-		for (const auto& enemy : gameEnemys)
-		{
-			gameEnemyBullet << EnemyBullet(enemy.pos);
-		}
-	}
-
-	// 敵ショットの移動
-	for (auto& enemyBullet : gameEnemyBullet)
-	{
-		enemyBullet.Update(_time);
-
-	}
-
-	// 画面外の敵ショットの削除
-	gameEnemyBullet.remove_if([](const EnemyBullet& e_b) {return e_b.BulletEnd(); });
-
-	//自機ショット
-
-	if (playerShotTimer >= playerShotCoolTime)
-	{
-		playerShotTimer = 0.0;
-		gamePlayerBullet << PlayerBullet(gamePlayer.pos.movedBy(50, 0));
-	}
-
-	for (auto& playerBullet : gamePlayerBullet)
-	{
-		playerBullet.Update(_time);
-	}
-
-	// 画面外の自機ショットの削除
-	gamePlayerBullet.remove_if([](const PlayerBullet& p_b) {return p_b.BulletEnd(); });
-
-
-}
-
-void Game::GameDraw(const double _time) const
-{
-	if (gameover) {
-		//  文字表示
-		gameoverfont(U"Press Key A to continue").drawAt(Scene::Center(), Palette::Black);
-		return;
-	}
-	// 背景のアニメーション
-	for (auto i : step(12))
-	{
-		const double a = Periodic::Sine0_1(2s, Scene::Time() - (2.0 / 12 * i));
-		Rect(0, i * 90, 1920, 90).draw(ColorF(1.0, a * 0.2));
-	}
-
-	effect.update();
-}
-
-
-void Game::GameHitCheck(const double _time)
-{
-
-	// 敵 vs 自機ショット
-	for (auto itEnemy = gameEnemys.begin(); itEnemy != gameEnemys.end();)
-	{
-		bool skip = false;
-
-		for (auto itBullet = gamePlayerBullet.begin(); itBullet != gamePlayerBullet.end();)
-		{
-			if (itEnemy->MyHitCheck(itBullet->GetPos()))
-			{
-				// 爆発エフェクトを追加
-				effect.add([enemy_pos = *itEnemy](double t)
-				{
-					double t2 = (1.0 - t);
-					Circle(enemy_pos.pos, 10 + t * 70).drawFrame(20 * t2, AlphaF(t2 * 0.5));
-					return t < 1.0;
-				});
-
-				itEnemy = gameEnemys.erase(itEnemy);
-				gamePlayerBullet.erase(itBullet);
-				++score;
-				skip = true;
-				break;
-
+		case 0://タイトル
+			update_title();
+			break;
+		case 1://メニュー
+			if (debug == 0) {
+				update_menu();
 			}
+			else if (debug == 1) {
+				update_debug_menu();
+			}
+			break;
+		case 2://ゲーム
+			update_play();
+			break;
+		case 3://エディタ
+			update_edit();
+			break;
 
-			++itBullet;
-		}
-
-		if (skip)
-		{
-			continue;
-		}
-
-		++itEnemy;
-	}
-
-	// 敵ショット vs 自機
-	for (auto& enemyBullet : gameEnemyBullet)
-	{
-		// 敵ショットが playerPos の 20 ピクセル以内に接近したら
-		if (gamePlayer.MyHitCheck(enemyBullet.GetPos()))
-		{
-			// ゲームオーバーにする
-			gameover = true;
+		default:
 			break;
 		}
+
 	}
+
+	update_change_scene();
+
 }
 
-Enemy Game::GenerateEnemy()
+void Game::draw()
 {
-	Enemy set;
-	return set;
-}
-//参考にしたプログラムのホーミング弾があったときの名残、使うかもしれないので一応残しておく
-Enemy Game::NearEnemy()
-{
-	Enemy set;
-	double checkDis = 1000;
+	
 
-	for (auto& enemy : gameEnemys)
+	switch (game_scene)
 	{
-
-		auto _dis = dist(gamePlayer.pos, enemy.pos);
-
-		if (_dis < checkDis)
-		{
-			checkDis = _dis;
-			set = enemy;
+	case 0://タイトル
+		draw_title();
+		break;
+	case 1://メニュー
+		if (debug == 0) {
+			draw_menu();
 		}
+		else if (debug == 1) {
+			draw_debug_menu();
+		}
+		break;
+	case 2://ゲーム
+		draw_play();
+		break;
+	case 3:
+		draw_edit();
+		break;
+
+	default:
+		break;
 	}
-	return set;
+
+	draw_change_scene();
+
+}
+
+void Game::ini(){
+
+	///デバッグ用
+	if (debug == 1) {
+		load_debug();
+	}
+
+	// ウィンドウを最大化
+
+	Scene::Resize(1920, 1080);
+	Scene::SetResizeMode(ResizeMode::Keep);
+	Window::SetFullscreen(true);
+
+	//FontAsset
+
+	FontAsset::Register(U"TitleFont", FontMethod::MSDF, 70, Typeface::Light);
+	FontAsset::Load(U"TitleFont");
+
+	FontAsset::Register(U"PoseFont", FontMethod::MSDF, 70, Typeface::Bold);
+	FontAsset::Load(U"PoseFont");
+
+	FontAsset::Register(U"ScoreFont", FontMethod::MSDF, 50, Typeface::Bold);
+	FontAsset::Load(U"ScoreFont");
+
+
+	// Textureアセットの登録
+
+	//チェンジシーン
+	TextureAsset::Register(U"change_scene_fade", U"data/image/ui/change_scene_fade.png");
+	TextureAsset::Load(U"change_scene_fade");
+
+
+	//タイトル
+	TextureAsset::Register(U"title_back", U"data/image/title/back.png");
+	TextureAsset::Load(U"title_back");
+
+	//メニュー
+	TextureAsset::Register(U"menu_back", U"data/image/menu/back.png");
+	TextureAsset::Load(U"menu_back");
+
+	//ポーズ
+	TextureAsset::Register(U"pose_back", U"data/image/pose/back.png");
+	TextureAsset::Load(U"pose_back");
+
+
+	//自機
+	TextureAsset::Register(U"player_シラス", U"data/image/fish/player/シラス.png");
+	TextureAsset::Load(U"player_シラス");
+
+	//ステージ１
+	TextureAsset::Register(U"stage_1_back", U"data/image/back/1.png");
+	TextureAsset::Load(U"stage_1_back");
+
+	//敵
+	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
+	TextureAsset::Load(U"enemy_アンモナイト");
+
+	//弾
+	TextureAsset::Register(U"bullet_circle_blue_s", U"data/image/bullet/circle/blue/s.png");
+	TextureAsset::Load(U"bullet_circle_blue_s");
+
+	TextureAsset::Register(U"bullet_circle_red_s", U"data/image/bullet/circle/red/s.png");
+	TextureAsset::Load(U"bullet_circle_red_s");
+
+	//背景タイル
+	TextureAsset::Register(U"back_tile", U"data/image/back/back_tile.png");
+	TextureAsset::Load(U"back_tile");
+
+	//デバッグ以外でファイルに書き込まない
+
+	//敵サカナデータ読み込み
+
+	/*
+
+	for (size_t y = 0; y < 12; y++) {
+		for (size_t x = 0; x < 5; x++) {
+
+			enemy_data.push_back(Enemy_Data(U"no_data", x, y, 0, 0, 0, 0));
+		}
+	}*/
+
+
+
+	//敵情報読み込み
+
+	Deserializer<BinaryReader> Ereader{ U"data/database/enemy_data.bin" };
+
+	if (not Ereader)
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	Ereader(enemy_data);
+
+
+
+
+/*
+	//セーブデータ書き込み
+	Serializer<BinaryWriter> Swriter{ U"save_data/save_data.bin" };
+
+	if (not Swriter) 
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	Swriter(save_data);*/
+
+
+
+	/**/
+
+	//セーブデータ読み込み
+
+	
+	Deserializer<BinaryReader> Sreader{ U"save_data/save_data.bin" };
+
+	if (not Sreader) 
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	Sreader(save_data);
+
+	/*
+
+	//敵配置情報書き込み
+
+	Serializer<BinaryWriter> EEwriter{ U"data/stage/0/emerge_enemy.bin" };
+
+	if (not EEwriter) 
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	
+	EEwriter(emergeEnemys); */
+
+
+	
+
 }
 
 
-double Game::dist(Vec2 _SetPos, Vec2 _TargetPos)
-{
 
-	return dist(_SetPos.x, _SetPos.y, _TargetPos.x, _TargetPos.y);
-}
 
-double Game::dist(double x1, double y1, double x2, double y2)
-{
 
-	double dx, dy;
 
-	dx = x2 - x1;
-	dy = y2 - y1;
 
-	return Math::Sqrt(dx * dx + dy * dy);
 
-}

@@ -100,6 +100,7 @@
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>C:\Users\sunri\OneDrive\ドキュメント\OpenSiv3D_0.6.3</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -113,21 +114,45 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Change_Scene.cpp" />
+    <ClCompile Include="Draw_Debug_Menu.cpp" />
+    <ClCompile Include="Draw_Edit.cpp" />
+    <ClCompile Include="Draw_GameOver.cpp" />
+    <ClCompile Include="Draw_Menu.cpp" />
+    <ClCompile Include="Draw_Play.cpp" />
+    <ClCompile Include="Draw_Pose.cpp" />
+    <ClCompile Include="Draw_Title.cpp" />
+    <ClCompile Include="Drop_Item.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBullet.cpp" />
+    <ClCompile Include="Enemy_Data.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Game2.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Load_Debug.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Main2.cpp" />
+    <ClCompile Include="Make_Enemy_Bullet.cpp" />
+    <ClCompile Include="Make_Player_Bullet.cpp" />
+    <ClCompile Include="Menu2.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerBullet.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Update_Debug_Menu.cpp" />
+    <ClCompile Include="Update_Edit.cpp" />
+    <ClCompile Include="Update_Play.cpp" />
+    <ClCompile Include="Update_Title.cpp" />
     <ClCompile Include="Draw_UI.cpp" />
-    <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="Title2.cpp" />
+    <ClCompile Include="Draw_Main.cpp" />
+    <ClCompile Include="Load.cpp" />
+    <ClCompile Include="Update_GameOver.cpp" />
+    <ClCompile Include="Update_Main.cpp" />
+    <ClCompile Include="Update_Menu.cpp" />
+    <ClCompile Include="Update_Pose.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -323,19 +348,24 @@
     <Xml Include="App\example\xml\test.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bullet.hpp" />
+    <ClInclude Include="..\..\..\デスクトップ\OpenSiv3D_0.6.3\include\Siv3D.hpp" />
+    <ClInclude Include="Back_Tile.hpp" />
     <ClInclude Include="Common.hpp" />
+    <ClInclude Include="Drop_Item.hpp" />
+    <ClInclude Include="EmergeEnemy.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyBullet.hpp" />
+    <ClInclude Include="Enemy_Data.hpp" />
     <ClInclude Include="Game.hpp" />
-    <ClInclude Include="Game_Data.hpp" />
-    <ClInclude Include="Menu.hpp" />
+    <ClInclude Include="Game2.hpp" />
+    <ClInclude Include="Hit_Rect.hpp" />
+    <ClInclude Include="Item.hpp" />
+    <ClInclude Include="Menu2.hpp" />
+    <ClInclude Include="Save_Data.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerBullet.hpp" />
-    <ClInclude Include="Siv3D.hpp" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Title.hpp" />
-    <ClInclude Include="Unit.hpp" />
+    <ClInclude Include="Title2.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App\example\obj\blacksmith.obj">
