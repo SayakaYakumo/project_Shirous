@@ -178,9 +178,6 @@
     <Filter Include="Source Files\Object\Bullet\EnemyBullet">
       <UniqueIdentifier>{2bcdf60d-e6f0-4897-ba18-a8a292e551ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object\Bullet\PlayerBullet">
-      <UniqueIdentifier>{6c035220-45be-441f-991b-2c29af9ad2ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Object\Enemy\Hit_Rect">
       <UniqueIdentifier>{d197ea05-087b-420b-92c5-2cc59a74f9d0}</UniqueIdentifier>
     </Filter>
@@ -231,6 +228,12 @@
     </Filter>
     <Filter Include="Source Files\Save_Data">
       <UniqueIdentifier>{1d0debbf-3705-4592-95ab-5a9967bc4067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Bullet\PlayerBullet">
+      <UniqueIdentifier>{6c035220-45be-441f-991b-2c29af9ad2ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Player\Player_Fish">
+      <UniqueIdentifier>{a5fa040d-eea2-4c72-a730-a9a0c93318af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -344,6 +347,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_Data.cpp">
       <Filter>Source Files\Data\Enemy_Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_Fish.cpp">
+      <Filter>Source Files\Object\Player\Player_Fish</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1030,6 +1036,9 @@
     </ClInclude>
     <ClInclude Include="Enemy_Data.hpp">
       <Filter>Source Files\Data\Enemy_Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_Fish.hpp">
+      <Filter>Source Files\Object\Player\Player_Fish</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
