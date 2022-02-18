@@ -38,7 +38,9 @@ public:
 	int get_fish_size() { return fish.size(); }
 
 	double get_cool_time(int i) { return fish[i].get_cool_time(); }
+	double get_shot_timer(int i) { return fish[i].get_shot_timer(); }
 
-	void set_cool_time(int i, double v) { fish[i].set_cool_time(v); }
+	//void set_cool_time(int i, double v) { fish[i].set_cool_time(v); }
+	void reset_shot_timer(int i) { fish[i].reset_shot_timer(); }
 
 };

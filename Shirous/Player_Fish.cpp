@@ -85,7 +85,7 @@ void Fish::myUpdate(double deltaTime)
 	}
 
 	//ショットのクールタイム
-	shot_cool_time -= deltaTime;
+	shot_timer += deltaTime;
 
 }
 
@@ -123,7 +123,7 @@ void Fish::opUpdate(int i, RectF player ,double deltaTime)
 	}
 
 	//ショットのクールタイム
-	shot_cool_time -= deltaTime;
+	shot_timer += deltaTime/2;
 
 	//移動速度減衰のクールタイム
 	option_slow_timer += deltaTime;

@@ -10,7 +10,7 @@ private:
 
 	double mySpeed = 550.0;
 
-	double shot_cool_time = 0;
+	double shot_cool_time = 0.2;
 
 	double shot_timer = 0;
 
@@ -52,8 +52,10 @@ public:
 	void first(RectF rect);
 
 	double get_cool_time() { return shot_cool_time; }
+	double get_shot_timer() { return shot_timer; }
 
 	void set_cool_time(double v) { shot_cool_time = v; }
+	void reset_shot_timer() { shot_timer = 0; }
 
 	RectF get_rect() { return rect; }
 

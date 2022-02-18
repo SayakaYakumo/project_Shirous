@@ -29,7 +29,7 @@ void Game::make_player_bullet(int i) {
 
 		gamePlayerBullet.push_back(PlayerBullet(x,y,r,speed,move,angle,shape,color,size));
 
-		gamePlayer.set_cool_time(i, 0.2);
+		gamePlayer.reset_shot_timer(i);
 	}
 
 }
