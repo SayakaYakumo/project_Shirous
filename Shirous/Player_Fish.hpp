@@ -18,6 +18,10 @@ private:
 
 	Vec2 option_speed = Vec2(0, 0);
 
+	double option_pos_timer = 0.0;
+
+	double option_slow_timer = 0.0;
+
 	//unitより
 	RectF rect;
 
@@ -32,17 +36,20 @@ private:
 public:
 
 	Fish();
+	Fish(RectF rect);
+	Fish(String name);
 	~Fish();
 
 	void myUpdate(double deltaTime);
 
-	void opUpdate(RectF player, double deltaTime);
+	void opUpdate(int i, RectF player, double deltaTime);
 
 	void Draw()const;
 
 	void DrawFrame()const;
 
 	void first();
+	void first(RectF rect);
 
 	double get_cool_time() { return shot_cool_time; }
 

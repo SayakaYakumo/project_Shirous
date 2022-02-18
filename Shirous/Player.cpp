@@ -20,9 +20,11 @@ void Player::Update(double deltaTime)
 	{
 		for (int i = 1; i < fish.size(); i++)
 		{
-			fish[i].opUpdate(fish[0].get_rect(), deltaTime);
+			fish[i].opUpdate(i, fish[0].get_rect(), deltaTime);
 		}
 	}
+
+	Spawn(deltaTime);
 
 }
 
@@ -45,9 +47,20 @@ void Player::DrawFrame()const
 	}
 }
 
-void Player::Spawn()
+void Player::Spawn(double deltaTime)
 {
+	if (spawn_cool_time <=0 && KeyC.pressed())
+	{
+		spawn_Timer += deltaTime;
+	}
+	else spawn_Timer = 0.0;
 
+	if (spawn_Timer > 2.0)
+	{
+		fish.push_back(Fish(fish[0].get_rect()));
+		spawn_cool_time = 2.0;
+	}
+	if (spawn_cool_time > 0) spawn_cool_time -= deltaTime;
 }
 
 void Player::first() {

@@ -6,12 +6,13 @@
 class Player 
 {
 
-
 private:
 
 	Array<Fish> fish;
 
 	int HP = 3;//３回被弾で自機がやられてオプションと交代
+	double spawn_Timer = 0.0;
+	double spawn_cool_time = 1.0;
 
 public:
 
@@ -26,7 +27,7 @@ public:
 
 	void first();
 
-	void Spawn();
+	void Spawn(double deltaTime);
 
 	RectF get_rect() { return fish[0].get_rect(); }
 	RectF get_rect(int i) { return fish[i].get_rect(); }

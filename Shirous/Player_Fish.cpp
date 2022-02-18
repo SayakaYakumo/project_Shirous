@@ -9,6 +9,25 @@ Fish::Fish()
 	speed = mySpeed;
 
 }
+Fish::Fish(RectF r)
+{
+	first(r);
+
+	name = U"シラス";
+
+	speed = mySpeed;
+
+}
+Fish::Fish(String n)
+{
+	first();
+
+	name = n;
+
+	speed = mySpeed;
+
+}
+
 
 Fish::~Fish()
 {
@@ -70,14 +89,22 @@ void Fish::myUpdate(double deltaTime)
 
 }
 
-void Fish::opUpdate(RectF player ,double deltaTime)
+void Fish::opUpdate(int i, RectF player ,double deltaTime)
 {
+	option_pos_timer += deltaTime;
+	if (option_pos_timer > 20*Math::Pi)option_pos_timer -= 20*Math::Pi;
+	Vec2 moved = Vec2(-50*i, 15*i*Math::Sin(option_pos_timer/i));
 
-	option_speed += Vec2(player.x - rect.x, player.y - rect.y) / 30 * deltaTime;
-	if (option_speed.length() > mySpeed / 2 * deltaTime)option_speed = option_speed / option_speed.length() * mySpeed / 2 * deltaTime;
+	option_speed += Vec2(player.x - rect.x + moved.x, player.y - rect.y + moved.y) / 5;
+	if (option_speed.length() > mySpeed)option_speed = option_speed / option_speed.length() * mySpeed;
+	if (option_slow_timer > 0.1)
+	{
+		option_speed /= 2.0;
+		option_slow_timer -= 0.1;
+	}
 
-	rect.x += option_speed.x;
-	rect.y += option_speed.y;
+	rect.x += option_speed.x * deltaTime;
+	rect.y += option_speed.y * deltaTime;
 
 	//画面の移動制限
 
@@ -97,6 +124,9 @@ void Fish::opUpdate(RectF player ,double deltaTime)
 
 	//ショットのクールタイム
 	shot_cool_time -= deltaTime;
+
+	//移動速度減衰のクールタイム
+	option_slow_timer += deltaTime;
 
 }
 
@@ -125,4 +155,9 @@ void Fish::first() {
 	rect.y = 300;
 	rect.w = 160;
 	rect.h = 30;
+
+}
+void Fish::first(RectF r) {
+	rect = r;
+
 }
