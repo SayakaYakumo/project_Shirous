@@ -8,6 +8,7 @@
 #include"Back_Tile.hpp"
 #include"Enemy_Data.hpp"
 #include"Save_Data.hpp"
+#include "Bomb.hpp"
 
 class Game 
 {
@@ -259,6 +260,11 @@ private:
 	Player gamePlayer;
 
 	Array<PlayerBullet> gamePlayerBullet;
+
+	//ボム
+	Bomb bomb;
+
+	int bombNum = 3;
 
 	//敵
 

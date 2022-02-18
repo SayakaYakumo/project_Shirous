@@ -122,6 +122,13 @@ void Game::GameShotUpdate(const double _time)
 		playerBullet.Update(_time);
 	}
 
+	//ボム発射
+	if (KeyX.down() && !bomb.isActive()) {
+		bomb.Start();
+	}
+	//ボム更新
+	bomb.Update(_time, gamePlayer.get_rect().center());
+
 	// 画面外の自機ショットの削除
 	gamePlayerBullet.remove_if([&](PlayerBullet p)
 		{
@@ -187,6 +194,8 @@ void Game::GameHitUpdate() {
 						}
 
 					}
+
+
 			}
 		}
 	}
@@ -207,6 +216,22 @@ void Game::GameHitUpdate() {
 
 	}
 
+	//ボムvs敵
+	for (size_t i = 0; i < gameEnemys.size(); i++) {
+
+		for (size_t s = 0; s < gameEnemys[i].get_hit_rect_size(); s++) {
+
+			Rect e_rect = gameEnemys[i].get_hit_rect(s);
+
+			if (bomb.intercects(e_rect)) {
+				gameEnemys[i].damage(bomb.get_power());
+				break;
+			}
+
+
+		}
+	}
+
 
 	//自機vs敵
 
@@ -223,6 +248,19 @@ void Game::GameHitUpdate() {
 	gameEnemyBullet.remove_if([&](EnemyBullet e)
 		{
 			if (e.get_circle().intersects(gamePlayer.get_rect())) {//敵の弾が当たった
+
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		});
+
+	//ボムと敵弾
+	gameEnemyBullet.remove_if([&](EnemyBullet e)
+		{
+			if (bomb.intercects(e.get_circle())) {//敵の弾が当たった
 
 				return true;
 			}
