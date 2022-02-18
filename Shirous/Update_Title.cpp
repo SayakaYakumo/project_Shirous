@@ -7,7 +7,7 @@ void Game::update_title() {
 	}
 	else if (debug == 1) {//デバッグ中はクリックでも可
 		if (MouseL.down()) {
-			change_scene(1);
+			game_scene = 1;
 		}
 	}
 	

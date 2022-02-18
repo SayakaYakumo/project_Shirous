@@ -21,12 +21,17 @@ void Game::update_main() {
 				int x = emergeEnemys[i].get_x();
 				int y = emergeEnemys[i].get_y();
 
+			
+				int hp = 1;
+				int act = 0;
 				int move = 0;
 				int shot_pattern = 0;
 
 				Array<Rect> rects;
 				for (size_t e = 0; e < enemy_data.size(); e++) {
 					if (enemy_data[e].get_name() == name) {
+						hp = enemy_data[e].get_hp();
+						act = enemy_data[e].get_act();
 						move = enemy_data[e].get_move();
 						shot_pattern = enemy_data[e].get_shot();
 						rects = enemy_data[e].get_rects();
@@ -34,7 +39,7 @@ void Game::update_main() {
 				}
 				
 
-				gameEnemys.push_back(Enemy(name,x,y,move,shot_pattern,rects));//敵を生成する！！
+				gameEnemys.push_back(Enemy(name,x,y,hp,act,move,shot_pattern,rects));//敵を生成する！！
 			}
 		}
 	}

@@ -143,6 +143,7 @@
     </ClCompile>
     <ClCompile Include="Update_Debug_Menu.cpp" />
     <ClCompile Include="Update_Edit.cpp" />
+    <ClCompile Include="edit_input_number.cpp" />
     <ClCompile Include="Update_Play.cpp" />
     <ClCompile Include="Update_Title.cpp" />
     <ClCompile Include="Draw_UI.cpp" />
@@ -364,6 +365,7 @@
     <ClInclude Include="Save_Data.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerBullet.hpp" />
+    <ClInclude Include="Stage_Data.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title2.hpp" />
   </ItemGroup>

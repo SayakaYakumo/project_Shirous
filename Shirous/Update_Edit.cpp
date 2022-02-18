@@ -27,8 +27,7 @@ void Game::update_edit_ini() {
 	edit_display = 1;//ツールボックス表示
 	edit_select_item = 1;//ペンに設定
 
-	back_tile.clear();//データ初期化
-	emergeEnemys.clear();//データ初期化
+	
 
 	//ステージデータ読み込み
 	play_load(debug_stage_number);
@@ -84,6 +83,15 @@ void Game::update_edit_main() {
 			if(click_number==0) {//メニュー戻る
 				edit_scene = 0;
 				game_scene = 1;
+			}
+			else if (click_number==7) {//インフォメーション
+
+				if (edit_information == 0) {
+					edit_information = 1;
+				}
+				else if (edit_information == 1) {
+					edit_information = 0;
+				}
 			}
 			else if (click_number == 8) {//セーブ
 

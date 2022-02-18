@@ -163,7 +163,18 @@ void Game::ini(){
 
 	Ereader(enemy_data);
 
+	/*
+	stage_data.set_wide(16);
+	stage_data.set_speed(200);
 
+	Serializer<BinaryWriter> STwriter{ U"data/stage/0/Stage_Data.bin" };
+
+	if (not STwriter)
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	STwriter(stage_data);*/
 
 
 /*

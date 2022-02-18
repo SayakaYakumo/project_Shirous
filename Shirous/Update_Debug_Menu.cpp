@@ -168,10 +168,7 @@ void Game::update_edit_enemy() {
 
 	if (edit_enemy_scene == 0) {//敵を選択
 
-		if (KeyZ.down()) {//エディタのデバッグ用
-			edit_enemy_scene = 1;
-		}
-
+        Cursor::RequestStyle(CursorStyle::Default);
 
 		Array<Rect>rect;
 
@@ -180,7 +177,7 @@ void Game::update_edit_enemy() {
 		}
 
 
-		Cursor::RequestStyle(CursorStyle::Default);
+		
 
 		int click_number = -1;
 		edit_enemy_cur_cover = -1;
@@ -219,7 +216,7 @@ void Game::update_edit_enemy() {
 		rect_2.push_back(Rect(1000 + 750 - 120, 900,120,120));
 
 
-		Cursor::RequestStyle(CursorStyle::Default);
+		
 
 		int click_number_2 = -1;
 		edit_enemy_cur_cover_2 = -1;
@@ -251,8 +248,52 @@ void Game::update_edit_enemy() {
 			edit_enemy_page = 3;
 		}
 
+
+		Array<Rect>rect_3;
+
+
+		for (int i = 0; i < 7; i++) {
+			rect_3.push_back(Rect(1000, 30 + i * (100 + 20),750,100));
+		}
+
+		int click_number_3 = -1;
+		edit_enemy_cur_cover_3 = -1;
+
+
+		for (size_t i = 0; i < rect_3.size(); i++) {
+			if (rect_3[i].mouseOver()) {
+				click_number_3 = i;
+				Cursor::RequestStyle(CursorStyle::Hand);
+				edit_enemy_cur_cover_3 = i;
+			}
+		}
+
+
+		if (click_number_3 != -1) {
+
+			if (MouseL.down()) {
+
+				int number = 0;
+				number = edit_enemy_page * 7 + click_number_3;
+
+				int exist = 0;
+
+				for (size_t i = 0; i < enemy_data.size(); i++) {
+					if (i == number) {
+						edit_enemy_index = number;
+						
+						exist = 1;
+					}
+				}
+
+				if (exist == 1) {//該当データあり
+					edit_enemy_scene = 1;
+				}
+
+			}
+		}
 	}
-	else if (edit_enemy_scene == 1) {//エディタ画面
+	else if (edit_enemy_scene == 1) {//エネミーエディタ画面
 
 		if (MouseR.down()) {
 			if (edit_enemy_display == 0) {
@@ -426,13 +467,189 @@ void Game::update_edit_enemy() {
 
 					edit_enemy_saved_display_fade = 1;
 				}
+				else if (click_number == 4) {//インフォメーション
+
+					if (edit_enemy_information == 0) {
+						edit_enemy_information = 1;
+						
+					}
+					else if (edit_enemy_information == 1) {
+						edit_enemy_information = 0;
+					}
+					
+				}
 				else {//ツール変更
 					edit_enemy_select_item = click_number;
 				}
 			}
 
+			if (edit_enemy_information == 1) {//インフォメーション表示中
+
+			
+
+				Array<Rect>rectI;
+
+				for (int i = 0; i < 4; i++) {
+					rectI.push_back(Rect(1100 + 500, 210 + i * (120),90,90));
+				}
+
+				Rect rectI2(800, 30, 90, 90);//名前変更
 
 
+
+				int click_number_I = -1;
+				edit_enemy_information_cover = -1;
+
+				for (size_t i = 0; i < rectI.size(); i++) {
+					if (rectI[i].mouseOver()) {
+						click_number_I = i;
+						edit_enemy_information_cover = i;
+						Cursor::RequestStyle(CursorStyle::Hand);
+					}
+				}
+
+				if (rectI2.mouseOver()) {
+					click_number_I = 100;
+					edit_enemy_information_cover = 100;
+					Cursor::RequestStyle(CursorStyle::Hand);
+				}
+
+				if (click_number_I != -1) {
+
+					if (MouseL.down()) {
+
+						edit_enemy_information_scene = click_number_I;
+						edit_enemy_display = 2;
+						
+					}
+				}
+
+			}
+
+
+		}
+		else if (edit_enemy_display == 2) {//ツールボックス表示中・インフォメーション表示//数値入力
+
+		Array<Rect> rect;//名前用
+		int click_number = -1;
+
+		switch (edit_enemy_information_scene)
+		{
+		case 0://hp
+			update_edit_input_number();
+
+			if (edit_input_end == 1) {
+				int v = Parse<double>(edit_input_v);
+				enemy_data[edit_enemy_index].set_hp(v);
+				edit_input_end = 0;
+				edit_input_v = U"";
+				edit_enemy_display = 1;
+			}
+			else if (edit_input_end == 2) {
+				edit_input_end = 0;
+				edit_input_v = U"";
+				edit_enemy_display = 1;
+			}
+			break;
+		case 1://act
+			update_edit_input_number();
+
+			if (edit_input_end == 1) {
+				int v = Parse<double>(edit_input_v);
+				enemy_data[edit_enemy_index].set_act(v);
+				edit_input_end = 0;
+				edit_input_v = U"";
+				edit_enemy_display = 1;
+			}
+			else if (edit_input_end == 2) {
+				edit_input_end = 0;
+				edit_input_v = U"";
+				edit_enemy_display = 1;
+			}
+			break;
+		case 2://move
+			update_edit_input_number();
+
+			if (edit_input_end == 1) {
+				int v = Parse<double>(edit_input_v);
+				enemy_data[edit_enemy_index].set_move(v);
+				edit_input_end = 0;
+				edit_input_v = U"";
+				edit_enemy_display = 1;
+			}
+			else if (edit_input_end == 2) {
+				edit_input_end = 0;
+				edit_input_v = U"";
+				edit_enemy_display = 1;
+			}
+			break;
+		case 3://shot
+			update_edit_input_number();
+
+			if (edit_input_end == 1) {
+				int v = Parse<double>(edit_input_v);
+				enemy_data[edit_enemy_index].set_shot(v);
+				edit_input_end = 0;
+				edit_input_v = U"";
+				edit_enemy_display = 1;
+			}
+			else if (edit_input_end == 2) {
+				edit_input_end = 0;
+				edit_input_v = U"";
+				edit_enemy_display = 1;
+			}
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 100://名前
+			
+			// キーボードからテキストを入力
+			TextInput::UpdateText(edit_enemy_name);
+			// 未変換の文字入力を取得
+			 edit_enemy_name_editing= TextInput::GetEditingText();
+
+			
+
+			rect.push_back(Rect(10,1080-10-180,180,180));
+			rect.push_back(Rect(10+180+30, 1080 - 10-180, 180, 180));
+
+			edit_enemy_name_cover = -1;
+
+			for (size_t i = 0; i < rect.size(); i++) {
+				if (rect[i].mouseOver()) {
+					edit_enemy_name_cover = i;
+					click_number = i;
+					Cursor::RequestStyle(CursorStyle::Hand);
+				}
+			}
+
+			if (MouseL.down()) {
+
+				if (click_number != -1) {
+
+
+					if (click_number == 0) {//決定
+						enemy_data[edit_enemy_index].set_name(edit_enemy_name);
+
+						edit_enemy_name = U"";
+						edit_enemy_name_editing = U"";
+
+						edit_enemy_display = 1;
+
+					}
+					else if (click_number == 1) {
+						edit_enemy_name = U"";
+						edit_enemy_display = 1;
+					}
+				}
+			}
+
+			break;
+		default:
+			break;
+		}
 
 		}
 	}

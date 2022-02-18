@@ -21,9 +21,9 @@ public:
 
 	String get_name() { return _name; }
 	int get_hp() { return _hp; }
-	int get_act() { return _hp; }
-	int get_move() { return _hp; }
-	int get_shot() { return _hp; }
+	int get_act() { return _act; }
+	int get_move() { return _move; }
+	int get_shot() { return _shot; }
 
 	int get_x() { return _x; }
 	int get_y() { return _y; }
@@ -40,6 +40,10 @@ public:
 	}
 
 	void set_name(String n) { _name = n; }
+	void set_hp(int v) { _hp = v; }
+	void set_act(int v) { _act = v; }
+	void set_move(int v) { _move = v; }
+	void set_shot(int v) { _shot = v; }
 
 	Array<Rect>get_rects() { return _rect; }
 

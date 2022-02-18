@@ -36,7 +36,7 @@ public:
 
 	void DrawFrame()const;
 
-	void first();
+	void start();
 
 	double get_cool_time() { return shot_cool_time; }
 
