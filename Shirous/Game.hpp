@@ -90,6 +90,9 @@ public:
 	void make_player_bullet();
 	void make_enemy_bullet(int,int);
 
+	//自機狙い
+	double get_player_angle(int);
+
 	//ショットの移動関係
 	void GameShotUpdate(const double _time);
 	//移動関係
@@ -231,6 +234,10 @@ private:
 
 	String edit_enemy_name;
 	String edit_enemy_name_editing;
+
+	String edit_enemy_name_2;
+	String edit_enemy_name_editing_2;
+
 	int edit_enemy_name_cover = 0;
 
 	int edit_enemy_page_x = 0;

@@ -9,7 +9,7 @@ Enemy::Enemy(String name_,int x,int y,int hp_,int act_,int move_,int shot_patter
 	name = name_;
 	rect = Rect(x, y, 100, 100);
 	
-	speed = 40;
+	speed = 120;
 
 	hp = hp_;
 	act_pattern = act_;
@@ -173,7 +173,7 @@ void Enemy::move(double deltaTime) {
 }
 
 
-void Enemy::move_0(double deltaTime) {
+void Enemy::move_0(double deltaTime) {//まっすぐ
 	rect.x -= deltaTime * speed;
 
 	//Print<<U"speed::"<< speed;
@@ -181,8 +181,12 @@ void Enemy::move_0(double deltaTime) {
 	//Print << U"-------";
 }
 
-void Enemy::move_1(double deltaTime) {
+void Enemy::move_1(double deltaTime) {//sin波
 	rect.x -= deltaTime * speed;
+	count_2 += deltaTime;
+
+	rect.y += sin(3.14 * 2 / 120 * (count_2*60)) * 8;
+	
 }
 
 void Enemy::move_2(double deltaTime) {
@@ -292,6 +296,11 @@ void Enemy::shot_1() {//三連射
 
 void Enemy::shot_2() {
 
+	if (shot_count > 1) {
+		make_bullet_flag = 1;
+
+		shot_count = 0;
+	}
 }
 
 void Enemy::shot_3() {

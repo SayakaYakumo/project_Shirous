@@ -117,6 +117,14 @@ void Game::load_debug() {
 	TextureAsset::Register(U"debug_name_button_batu_select", U"data/image/debug/name_button_batu_select.png");
 	TextureAsset::Load(U"debug_name_button_batu_select");
 
+	TextureAsset::Register(U"debug_name_button_batu_select", U"data/image/debug/name_button_batu_select.png");
+	TextureAsset::Load(U"debug_name_button_batu_select");
+
+	TextureAsset::Register(U"debug_spanner_mini", U"data/image/debug/spanner_mini.png");
+	TextureAsset::Load(U"debug_spanner_mini");
+
+	TextureAsset::Register(U"debug_spanner_mini_select", U"data/image/debug/spanner_mini_select.png");
+	TextureAsset::Load(U"debug_spanner_mini_select");
 
 	//エディタのバック
 	TextureAsset::Register(U"debug_edit_back", U"data/image/debug/back.png");

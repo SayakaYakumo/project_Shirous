@@ -9,14 +9,19 @@ void Game::update_main() {
 
 	//ステージスクロール
 	stage_scroll += deltaTime * stage_speed;
+
 	
 
 	// 敵の発生
 	for (size_t i = 0; i < emergeEnemys.size(); i++) {
-		if (emergeEnemys[i].get_time() > stage_time) {//時間を超えた
+		if (emergeEnemys[i].get_time() < stage_time) {//時間を超えた
+
 			if (emergeEnemys[i].get_done() == 0) {//まだ使われていない
 				emergeEnemys[i].set_done();//使われたフラグをたてる
 
+				double time = emergeEnemys[i].get_time();
+
+				
 				String name = emergeEnemys[i].get_name();
 				String name_2 = emergeEnemys[i].get_name_2();
 				int x = emergeEnemys[i].get_x();
@@ -133,7 +138,7 @@ void Game::GameShotUpdate(const double _time)
 	// 画面外の自機ショットの削除
 	gamePlayerBullet.remove_if([&](PlayerBullet p)
 		{
-			if (p.get_circle().x>2000|| p.get_circle().x < -100|| p.get_circle().y>1100|| p.get_circle().y < -100) {
+			if (p.get_circle().x>3000|| p.get_circle().x < -500|| p.get_circle().y>1500|| p.get_circle().y < -500) {
 
 				return true;
 			}
@@ -147,7 +152,7 @@ void Game::GameShotUpdate(const double _time)
 
 	gameEnemys.remove_if([&](Enemy e)
 		{
-			if (e.get_rect().x<-2000||2000<e.get_rect().x|| e.get_rect().y < -2000 || 2000 < e.get_rect().y) {
+			if (e.get_rect().x<-3000||3000<e.get_rect().x|| e.get_rect().y < -3000 || 3000 < e.get_rect().y) {
 
 				return true;
 			}
@@ -157,6 +162,7 @@ void Game::GameShotUpdate(const double _time)
 
 		});
 
+	
 
 }
 

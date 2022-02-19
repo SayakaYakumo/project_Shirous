@@ -256,9 +256,22 @@ void Game::draw_edit_enemy() {
 
 				TextureAsset(U"debug_spanner").draw(800,30);//名前変更
 
+				
+
 				if (edit_enemy_information_cover==100) {
 					TextureAsset(U"debug_spanner_select").draw(800, 30);
 				}
+
+				
+				TextureAsset(U"debug_spanner_mini").draw(700, 100);//名前2変更
+
+				if (edit_enemy_information_cover == 1000) {
+					TextureAsset(U"debug_spanner_mini_select").draw(700, 100);
+				}
+
+				
+
+
 
 				for (int i = 0; i < 4; i++) {
 					TextureAsset(U"debug_spanner").draw(1100 + 500, 210 + i * (120));
@@ -357,7 +370,7 @@ void Game::draw_edit_enemy() {
 
 
 		if (edit_enemy_display == 2) {//数値入力画面
-			if (edit_enemy_information_scene!=100) {//数値入力
+			if (edit_enemy_information_scene!=100&& edit_enemy_information_scene != 1000) {//数値入力
 				draw_edit_input_number();
 			}
 			else if (edit_enemy_information_scene == 100) {//文字入力
@@ -385,6 +398,30 @@ void Game::draw_edit_enemy() {
 				}
 
 
+			}
+			else if (edit_enemy_information_scene==1000) {
+				TextureAsset(U"change_scene_fade").draw(0, 0, ColorF(1.0, 0.8));
+				FontAsset(U"DebugMenuFont")(U"キーボードで入力").drawAt(1920 / 2, (1080 - 600) / 2);
+				FontAsset(U"DebugMenuFont")(U"（「CAPS LOCK」に注意）").drawAt(1920 / 2, (1080 - 400) / 2);
+
+				String name = enemy_data[edit_enemy_index].get_name2();//名前を取得
+				FontAsset(U"DebugMenuFont")(name).drawAt(1920 / 2, (1080) / 2);
+
+				FontAsset(U"DebugMenuFont")(U"↓").drawAt(1920 / 2, (1080 + 200) / 2);
+
+				FontAsset(U"DebugMenuFont")(edit_enemy_name_2 + edit_enemy_name_editing_2).drawAt(1920 / 2, (1080 + 400) / 2);//新しい名前
+
+				TextureAsset(U"debug_name_button_maru").draw(10, 1080 - 10 - 180);
+
+				if (edit_enemy_name_cover == 0) {
+					TextureAsset(U"debug_name_button_maru_select").draw(10, 1080 - 10 - 180);
+				}
+
+				TextureAsset(U"debug_name_button_batu").draw(10 + 180 + 30, 1080 - 10 - 180);
+
+				if (edit_enemy_name_cover == 1) {
+					TextureAsset(U"debug_name_button_batu_select").draw(10 + 180 + 30, 1080 - 10 - 180);
+				}
 			}
 		}
 
