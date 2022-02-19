@@ -53,6 +53,9 @@ void Game::load_debug() {
 	TextureAsset::Register(U"debug_menu_rect_frame_enemy", U"data/image/debug/menu_rect_frame_enemy.png");
 	TextureAsset::Load(U"debug_menu_rect_frame_enemy");
 
+	TextureAsset::Register(U"debug_menu_rect_select_frame_enemy", U"data/image/debug/menu_rect_select_frame_enemy.png");
+	TextureAsset::Load(U"debug_menu_rect_select_frame_enemy");
+
 	TextureAsset::Register(U"debug_menu_rect_select_frame", U"data/image/debug/menu_rect_select_frame.png");
 	TextureAsset::Load(U"debug_menu_rect_select_frame");
 
@@ -62,9 +65,58 @@ void Game::load_debug() {
 	TextureAsset::Register(U"debug_menu_rect_database_select_frame", U"data/image/debug/menu_rect_database_frame.png");
 	TextureAsset::Load(U"debug_menu_rect_database_select_frame");
 
-	//エディタのリスト
+	TextureAsset::Register(U"debug_number_botton", U"data/image/debug/number_button.png");
+	TextureAsset::Load(U"debug_number_botton");
+
+	TextureAsset::Register(U"debug_number_botton_select", U"data/image/debug/number_button_select.png");
+	TextureAsset::Load(U"debug_number_botton_select");
+
+	TextureAsset::Register(U"debug_number_input", U"data/image/debug/number_input.png");
+	TextureAsset::Load(U"debug_number_input");
+
+	TextureAsset::Register(U"debug_number_input_select", U"data/image/debug/number_input_select.png");
+	TextureAsset::Load(U"debug_number_input_select");
+
+	TextureAsset::Register(U"debug_number_input_back", U"data/image/debug/number_input_back.png");
+	TextureAsset::Load(U"debug_number_input_back");
+
+	TextureAsset::Register(U"debug_number_input_back_select", U"data/image/debug/number_input_back_select.png");
+	TextureAsset::Load(U"debug_number_input_back_select");
+
+	TextureAsset::Register(U"debug_number_input_minus", U"data/image/debug/number_input_minus.png");
+	TextureAsset::Load(U"debug_number_input_minus");
+
+	TextureAsset::Register(U"debug_number_input_minus_select", U"data/image/debug/number_input_minus_select.png");
+	TextureAsset::Load(U"debug_number_input_minus_select");
+
+	TextureAsset::Register(U"debug_number_input_end", U"data/image/debug/number_input_end.png");
+	TextureAsset::Load(U"debug_number_input_end");
+
+	TextureAsset::Register(U"debug_number_input_end_select", U"data/image/debug/number_input_end_select.png");
+	TextureAsset::Load(U"debug_number_input_end_select");
+
+    //エディタのリスト
 	TextureAsset::Register(U"debug_edit_list", U"data/image/debug/edit_list.png");
 	TextureAsset::Load(U"debug_edit_list");
+
+	TextureAsset::Register(U"debug_edit_enemy", U"data/image/debug/enemy.png");
+	TextureAsset::Load(U"debug_edit_enemy");
+
+	TextureAsset::Register(U"debug_edit_tile", U"data/image/debug/tile.png");
+	TextureAsset::Load(U"debug_edit_tile");
+
+	TextureAsset::Register(U"debug_name_button_maru", U"data/image/debug/name_button_maru.png");
+	TextureAsset::Load(U"debug_name_button_maru");
+
+	TextureAsset::Register(U"debug_name_button_maru_select", U"data/image/debug/name_button_maru_select.png");
+	TextureAsset::Load(U"debug_name_button_maru_select");
+
+	TextureAsset::Register(U"debug_name_button_batu", U"data/image/debug/name_button_batu.png");
+	TextureAsset::Load(U"debug_name_button_batu");
+
+	TextureAsset::Register(U"debug_name_button_batu_select", U"data/image/debug/name_button_batu_select.png");
+	TextureAsset::Load(U"debug_name_button_batu_select");
+
 
 	//エディタのバック
 	TextureAsset::Register(U"debug_edit_back", U"data/image/debug/back.png");
@@ -125,5 +177,13 @@ void Game::load_debug() {
 	//エディタの敵削除
 	TextureAsset::Register(U"debug_edit_minus_fish", U"data/image/debug/minus_fish.png");
 	TextureAsset::Load(U"debug_edit_minus_fish");
+
+	//エディタの編集
+	TextureAsset::Register(U"debug_spanner", U"data/image/debug/spanner.png");
+	TextureAsset::Load(U"debug_spanner");
+
+	//エディタの編集選択
+	TextureAsset::Register(U"debug_spanner_select", U"data/image/debug/spanner_select.png");
+	TextureAsset::Load(U"debug_spanner_select");
 
 }

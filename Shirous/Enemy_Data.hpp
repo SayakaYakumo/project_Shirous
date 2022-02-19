@@ -8,25 +8,26 @@ public:
 	
 	}
 
-	Enemy_Data(String name,int x,int y,int hp,int act,int move,int shot) {
+	Enemy_Data(String name,String name2,int hp,int act,int move,int shot,int speed,int score) {
 
-		 _x = x;
-		 _y = y;
 		_name = name;
+		_name2 = name2;
 		_hp = hp;
 		_act = act;
 		_move = move;
 		_shot = shot;
+		_speed = speed;
+		_score = score;
 	}
 
 	String get_name() { return _name; }
+	String get_name2() { return _name2; }
 	int get_hp() { return _hp; }
-	int get_act() { return _hp; }
-	int get_move() { return _hp; }
-	int get_shot() { return _hp; }
+	int get_act() { return _act; }
+	int get_move() { return _move; }
+	int get_shot() { return _shot; }
 
-	int get_x() { return _x; }
-	int get_y() { return _y; }
+	
 
 	int get_rect_size() { return _rect.size(); }
 	Rect get_rect(int v) { return _rect[v]; }
@@ -40,6 +41,11 @@ public:
 	}
 
 	void set_name(String n) { _name = n; }
+	void set_name2(String n) { _name2 = n; }
+	void set_hp(int v) { _hp = v; }
+	void set_act(int v) { _act = v; }
+	void set_move(int v) { _move = v; }
+	void set_shot(int v) { _shot = v; }
 
 	Array<Rect>get_rects() { return _rect; }
 
@@ -47,19 +53,22 @@ public:
 	template <class Archive>
 	void SIV3D_SERIALIZE(Archive& archive)
 	{
-		archive(_name,_x,_y,_hp,_act,_move,_shot,_rect);
+		archive(_name,_name2,_hp,_act,_move,_shot,_speed,_score,_item,_rect);
 	}
 
 
 private:
 	String _name;
+	String _name2;
 	int _hp = 0;
 	int _act = 0;
 	int _move = 0;
 	int _shot = 0;
+	int _speed = 0;
+	int _score = 0;
+	Array<String>_item;
 	Array<Rect> _rect;
 
-	int _x = 0;
-	int _y = 0;
+
 };
 

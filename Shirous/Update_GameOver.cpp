@@ -5,7 +5,7 @@ void Game::update_gameover() {
 	if (KeyA.down())
 	{
 		effect.clear();
-		gamePlayer.first();
+		gamePlayer.start();
 		gameEnemys.clear();
 		gamePlayerBullet.clear();
 		gameEnemyBullet.clear();

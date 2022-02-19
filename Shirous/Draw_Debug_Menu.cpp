@@ -162,6 +162,34 @@ void Game::draw_edit_enemy() {
 			TextureAsset(U"debug_menu_rect_frame_enemy").draw(1000, 30 + i * (100 + 20));
 		}
 
+		if (edit_enemy_cur_cover_3 != -1) {
+			int y = edit_enemy_cur_cover_3;
+			TextureAsset(U"debug_menu_rect_select_frame_enemy").draw(1000, 30 +  y* (100 + 20));
+
+			String name = U"no_data";
+
+			int page = edit_enemy_page;
+			int page_begin = page * 7;
+			int number = page_begin+ edit_enemy_cur_cover_3;
+
+			if (number <= enemy_data.size() - 1) {
+				name = enemy_data[number].get_name();
+				
+			}
+
+			if (name != U"no_data") {
+				String texture_name = U"enemy_" + name;
+
+				TextureAsset(texture_name).draw(100, 200);
+
+
+
+			}
+		
+		}
+
+
+
 		int page = edit_enemy_page;
 		int page_begin = page * 7;
 		int page_end = page * 7 + 6;
@@ -171,7 +199,10 @@ void Game::draw_edit_enemy() {
 			if (page_begin <= i && i <= page_end) {
 				String name = enemy_data[i].get_name();
 				int y = i - page_begin;
-				FontAsset(U"DebugMenuFont6")(name).draw(1000+50, 30 + y * (100 + 20));
+				FontAsset(U"DebugMenuFont6")(name).draw(1000+20, 30 + y * (100 + 20));
+				String name2 = enemy_data[i].get_name2();
+				int v=name.size();
+				FontAsset(U"DebugMenuFont")(name2).draw(1000 +20+(70)*(v+1)-50, 30 + y * (100 + 20)+30);
 			}
 
 		}
@@ -180,11 +211,15 @@ void Game::draw_edit_enemy() {
 
 
 	}
-	else if (edit_enemy_scene == 1) {//エディタ画面
+	else if (edit_enemy_scene ==1 || edit_enemy_scene == 2) {//エディタ画面
 
 		String name = enemy_data[edit_enemy_index].get_name();//名前を取得
 
 		FontAsset(U"DebugMenuFont6")(name).draw(50,20);//名前を記述
+
+		String name2 = enemy_data[edit_enemy_index].get_name2();//名前を取得
+
+		FontAsset(U"DebugMenuFont")(name2).draw(70, 120);//名前を記述
 
 		String texture_name = U"enemy_" + name;
 
@@ -192,8 +227,9 @@ void Game::draw_edit_enemy() {
 		int x_display = 100;
 		int y_display = 200;
 
-		TextureAsset(texture_name).draw(x_display, y_display);//画像を描画
-
+		if (name != U"no_data") {
+			TextureAsset(texture_name).draw(x_display, y_display);//画像を描画
+		}
 		int rect_count = 0;//色変える用
 
 		for (size_t i = 0; i < enemy_data[edit_enemy_index].get_rect_size(); i++) {//当たり判定の四角を描画
@@ -207,33 +243,91 @@ void Game::draw_edit_enemy() {
 			rect.drawFrame(2, 2, Palette::White);
 		}
 
-		TextureAsset(U"debug_edit_dark").draw(1050, 150, ColorF(1.0, 0.5));//黒い幕を表示
+		if (edit_enemy_display == 1 || edit_enemy_display == 2) {//ツールボックス表示中
+			if (edit_enemy_information == 1) {//インフォメーション表示中
 
-		int size = enemy_data[edit_enemy_index].get_rect_size();
+				TextureAsset(U"debug_edit_dark").draw(1050, 150, ColorF(1.0, 0.5));//黒い幕を表示
 
-		FontAsset(U"DebugMenuFont")(U"当たり判定の数　"+Format(size)).draw(1920 - 800, 45);
+				int size = enemy_data[edit_enemy_index].get_rect_size();
 
-		//ステータス表示
+				FontAsset(U"DebugMenuFont")(U"当たり判定の数　" + Format(size)).draw(1920 - 800, 45);
 
-		int hp = enemy_data[edit_enemy_index].get_hp();
+				//ステータス表示
 
-		FontAsset(U"DebugMenuFont6")(U"HP").draw(1100, 200);
-		FontAsset(U"DebugMenuFont6")(Format(hp)).draw(1100+400, 200);
+				TextureAsset(U"debug_spanner").draw(800,30);//名前変更
 
-		int act = enemy_data[edit_enemy_index].get_act();
+				if (edit_enemy_information_cover==100) {
+					TextureAsset(U"debug_spanner_select").draw(800, 30);
+				}
 
-		FontAsset(U"DebugMenuFont6")(U"Act").draw(1100, 300);
-		FontAsset(U"DebugMenuFont6")(Format(act)).draw(1100+400, 300);
+				for (int i = 0; i < 4; i++) {
+					TextureAsset(U"debug_spanner").draw(1100 + 500, 210 + i * (120));
+				}
 
-		int move = enemy_data[edit_enemy_index].get_move();
+				if (edit_enemy_information_cover != -1&& edit_enemy_information_cover != 100) {
+					TextureAsset(U"debug_spanner_select").draw(1100 + 500, 210 + edit_enemy_information_cover * (120));
+				}
 
-		FontAsset(U"DebugMenuFont6")(U"Move").draw(1100, 400);
-		FontAsset(U"DebugMenuFont6")(Format(move)).draw(1100+400, 400);
 
-		int shot = enemy_data[edit_enemy_index].get_shot();
 
-		FontAsset(U"DebugMenuFont6")(U"Shot").draw(1100, 500);
-		FontAsset(U"DebugMenuFont6")(Format(shot)).draw(1100+400, 500);
+				for (int y = 0; y < 5; y++) {//敵情報
+
+					int y_v = 200;
+					int y_v2 = 120;
+
+					if (y == 0) {
+
+						int hp = enemy_data[edit_enemy_index].get_hp();
+						FontAsset(U"DebugMenuFont6")(U"HP").draw(1100, y_v);
+						FontAsset(U"DebugMenuFont6")(Format(hp)).draw(1100 + 300, y_v);
+					}
+					else if (y == 1) {
+
+						int act = enemy_data[edit_enemy_index].get_act();
+						if (act != -1) {
+							FontAsset(U"DebugMenuFont6")(U"Act").draw(1100, y_v + y_v2 * y);
+							FontAsset(U"DebugMenuFont6")(Format(act)).draw(1100 + 300, y_v + y_v2 * y);
+						}
+						else if (act == -1) {
+							FontAsset(U"DebugMenuFont6")(U"Act").draw(1100, y_v + y_v2 * y, ColorF(1.0, 0.5));
+							FontAsset(U"DebugMenuFont6")(Format(act)).draw(1100 + 300, y_v + y_v2 * y, ColorF(1.0, 0.5));
+						}
+					}
+					else if (y == 2) {
+
+						int move = enemy_data[edit_enemy_index].get_move();
+
+						int act = enemy_data[edit_enemy_index].get_act();
+						if (act == -1) {
+							FontAsset(U"DebugMenuFont6")(U"Move").draw(1100, y_v + y_v2 * y);
+							FontAsset(U"DebugMenuFont6")(Format(move)).draw(1100 + 300, y_v + y_v2 * y);
+						}
+						else if (act != -1) {
+							FontAsset(U"DebugMenuFont6")(U"Move").draw(1100, y_v + y_v2 * y, ColorF(1.0, 0.5));
+							FontAsset(U"DebugMenuFont6")(Format(move)).draw(1100 + 300, y_v + y_v2 * y, ColorF(1.0, 0.5));
+						}
+					}
+					else if (y == 3) {
+
+						int shot = enemy_data[edit_enemy_index].get_shot();
+
+						int act = enemy_data[edit_enemy_index].get_act();
+						if (act == -1) {
+							FontAsset(U"DebugMenuFont6")(U"Shot").draw(1100, y_v + y_v2 * y);
+							FontAsset(U"DebugMenuFont6")(Format(shot)).draw(1100 + 300, y_v + y_v2 * y);
+						}
+						else if (act != -1) {
+							FontAsset(U"DebugMenuFont6")(U"Shot").draw(1100, y_v + y_v2 * y, ColorF(1.0, 0.5));
+							FontAsset(U"DebugMenuFont6")(Format(shot)).draw(1100 + 300, y_v + y_v2 * y, ColorF(1.0, 0.5));
+						}
+					}
+
+				}
+
+
+			}
+
+		}
 
 		if (edit_enemy_display == 1) {//ツールボックスを表示
 
@@ -246,8 +340,12 @@ void Game::draw_edit_enemy() {
 			TextureAsset(U"debug_edit_information").draw(10 + 60 + (120 + 50) * 4, 1080 - 150 + 15 - 10);
 			TextureAsset(U"debug_edit_save").draw(10 + 60 + (120 + 50) * 5, 1080 - 150 + 15 - 10);
 
-			if (edit_enemy_select_item != 0) {//backではない
+			if (edit_enemy_select_item != 0&& edit_enemy_select_item != 4) {//backではない
 				TextureAsset(U"debug_edit_select").draw(10 + 60 + (120 + 50) * edit_enemy_select_item, 1080 - 150 + 15 - 10);
+			}
+
+			if (edit_enemy_information == 1) {
+				TextureAsset(U"debug_edit_select").draw(10 + 60 + (120 + 50) * 4, 1080 - 150 + 15 - 10);
 			}
 
 		}
@@ -256,6 +354,40 @@ void Game::draw_edit_enemy() {
 			FontAsset(U"DebugMenuFont2")(U"セーブしました").drawAt(1920 / 2, 1080 / 2, ColorF(1.0, edit_enemy_saved_display_fade));
 			edit_enemy_saved_display_fade -= 0.0111;
 		}
+
+
+		if (edit_enemy_display == 2) {//数値入力画面
+			if (edit_enemy_information_scene!=100) {//数値入力
+				draw_edit_input_number();
+			}
+			else if (edit_enemy_information_scene == 100) {//文字入力
+				TextureAsset(U"change_scene_fade").draw(0,0,ColorF(1.0,0.8));
+				FontAsset(U"DebugMenuFont")(U"キーボードで入力").drawAt(1920 / 2, (1080-600) / 2);
+				FontAsset(U"DebugMenuFont")(U"（「CAPS LOCK」に注意）").drawAt(1920 / 2, (1080 - 400) / 2);
+
+				String name = enemy_data[edit_enemy_index].get_name();//名前を取得
+				FontAsset(U"DebugMenuFont")(name).drawAt(1920 / 2, (1080) / 2);
+
+				FontAsset(U"DebugMenuFont")(U"↓").drawAt(1920 / 2, (1080+200) / 2);
+				
+				FontAsset(U"DebugMenuFont")(edit_enemy_name+edit_enemy_name_editing).drawAt(1920 / 2, (1080 + 400) / 2);//新しい名前
+
+				TextureAsset(U"debug_name_button_maru").draw(10, 1080 - 10 - 180);
+
+				if (edit_enemy_name_cover==0) {
+					TextureAsset(U"debug_name_button_maru_select").draw(10, 1080 - 10 - 180);
+				}
+
+				TextureAsset(U"debug_name_button_batu").draw(10 + 180 + 30, 1080 - 10 - 180);
+
+				if (edit_enemy_name_cover==1) {
+					TextureAsset(U"debug_name_button_batu_select").draw(10 + 180 + 30, 1080 - 10 - 180);
+				}
+
+
+			}
+		}
+
 	}
 
 }
