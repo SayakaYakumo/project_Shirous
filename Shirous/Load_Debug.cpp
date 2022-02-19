@@ -99,7 +99,12 @@ void Game::load_debug() {
 	TextureAsset::Register(U"debug_edit_list", U"data/image/debug/edit_list.png");
 	TextureAsset::Load(U"debug_edit_list");
 
-	
+	TextureAsset::Register(U"debug_edit_enemy", U"data/image/debug/enemy.png");
+	TextureAsset::Load(U"debug_edit_enemy");
+
+	TextureAsset::Register(U"debug_edit_tile", U"data/image/debug/tile.png");
+	TextureAsset::Load(U"debug_edit_tile");
+
 	TextureAsset::Register(U"debug_name_button_maru", U"data/image/debug/name_button_maru.png");
 	TextureAsset::Load(U"debug_name_button_maru");
 

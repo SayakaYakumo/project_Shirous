@@ -96,7 +96,7 @@ void Game::stage_0_load() {
 
     //敵生成データ
 
-
+	/*
 	Deserializer<BinaryReader> EEreader{ U"data/stage/0/emerge_enemy.bin" };
 
 	if (not EEreader)
@@ -105,7 +105,55 @@ void Game::stage_0_load() {
 	}
 
 	EEreader(emergeEnemys);
+*/
 
+
+//Enemyデータ
+
+	const CSV csv_ED(U"data/stage/0/emerge_enemy.csv");
+	if (!csv_ED) {
+		throw Error(U"Failed to load 'magic_data.csv'");
+	}
+
+	//縦
+	for (int y = 0; y < csv_ED.rows() - 1; y++) {
+
+		String name = U"no_data";
+		String name2 = U"no_data";
+		int x_pos = 0;
+		int y_pos = 0;
+		double time = 0;
+
+		//横
+		for (int x = 0; x < 5; x++) {
+
+			switch (x)
+			{
+			case 0:
+				name = Parse<String>(csv_ED[y + 1][x]);
+				break;
+			case 1:
+				name2 = Parse<String>(csv_ED[y + 1][x]);
+				break;
+			case 2:
+				x_pos = Parse<int>(csv_ED[y + 1][x]);
+				break;
+			case 3:
+				y_pos = Parse<int>(csv_ED[y + 1][x]);
+				break;
+			case 4:
+				time=Parse<double>(csv_ED[y + 1][x]);
+				break;
+			
+			default:
+				break;
+			}
+
+		}
+
+		emergeEnemys.push_back(EmergeEnemy(name,name2,x_pos,y_pos,time));
+
+	}
 
 
 	// アセットの登録

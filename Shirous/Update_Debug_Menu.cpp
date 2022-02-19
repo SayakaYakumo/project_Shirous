@@ -244,8 +244,8 @@ void Game::update_edit_enemy() {
 			edit_enemy_page = 0;
 		}
 
-		if (edit_enemy_page == 4) {
-			edit_enemy_page = 3;
+		if (edit_enemy_page == 20) {
+			edit_enemy_page = 19;
 		}
 
 

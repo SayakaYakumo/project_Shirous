@@ -18,6 +18,7 @@ void Game::update_main() {
 				emergeEnemys[i].set_done();//使われたフラグをたてる
 
 				String name = emergeEnemys[i].get_name();
+				String name_2 = emergeEnemys[i].get_name_2();
 				int x = emergeEnemys[i].get_x();
 				int y = emergeEnemys[i].get_y();
 
@@ -30,11 +31,13 @@ void Game::update_main() {
 				Array<Rect> rects;
 				for (size_t e = 0; e < enemy_data.size(); e++) {
 					if (enemy_data[e].get_name() == name) {
-						hp = enemy_data[e].get_hp();
-						act = enemy_data[e].get_act();
-						move = enemy_data[e].get_move();
-						shot_pattern = enemy_data[e].get_shot();
-						rects = enemy_data[e].get_rects();
+						if (enemy_data[e].get_name2() == name_2) {
+							hp = enemy_data[e].get_hp();
+							act = enemy_data[e].get_act();
+							move = enemy_data[e].get_move();
+							shot_pattern = enemy_data[e].get_shot();
+							rects = enemy_data[e].get_rects();
+						}
 					}
 				}
 				

@@ -174,12 +174,16 @@ void Game::draw_edit_enemy() {
 
 			if (number <= enemy_data.size() - 1) {
 				name = enemy_data[number].get_name();
+				
 			}
 
 			if (name != U"no_data") {
 				String texture_name = U"enemy_" + name;
 
 				TextureAsset(texture_name).draw(100, 200);
+
+
+
 			}
 		
 		}
@@ -195,7 +199,10 @@ void Game::draw_edit_enemy() {
 			if (page_begin <= i && i <= page_end) {
 				String name = enemy_data[i].get_name();
 				int y = i - page_begin;
-				FontAsset(U"DebugMenuFont6")(name).draw(1000+50, 30 + y * (100 + 20));
+				FontAsset(U"DebugMenuFont6")(name).draw(1000+20, 30 + y * (100 + 20));
+				String name2 = enemy_data[i].get_name2();
+				int v=name.size();
+				FontAsset(U"DebugMenuFont")(name2).draw(1000 +20+(70)*(v+1)-50, 30 + y * (100 + 20)+30);
 			}
 
 		}
@@ -209,6 +216,10 @@ void Game::draw_edit_enemy() {
 		String name = enemy_data[edit_enemy_index].get_name();//名前を取得
 
 		FontAsset(U"DebugMenuFont6")(name).draw(50,20);//名前を記述
+
+		String name2 = enemy_data[edit_enemy_index].get_name2();//名前を取得
+
+		FontAsset(U"DebugMenuFont")(name2).draw(70, 120);//名前を記述
 
 		String texture_name = U"enemy_" + name;
 

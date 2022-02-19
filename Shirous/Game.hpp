@@ -195,6 +195,7 @@ private:
 	
 	//エディタ
 	int edit_scene = 0;
+	int edit_scene_2 = 0;
 	int edit_scroll = 0;
 	int edit_display = 0;
 	int edit_select_item = 0;
@@ -206,7 +207,7 @@ private:
 	int edit_bukket_start_y = 0;
 
 	String  edit_plus_enemy_name ;
-	
+	String  edit_plus_enemy_name_2;
 
 	double edit_saved_display_fade = 0;
 	int edit_saved = 0;
@@ -220,6 +221,8 @@ private:
 	int edit_enemy_cur_cover = -1;
 	int edit_enemy_cur_cover_2 = -1;
 	int edit_enemy_cur_cover_3 = -1;
+
+	
 
 	String edit_input_v;
 	int edit_input_over = -1;
