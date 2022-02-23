@@ -67,4 +67,7 @@ public:
 
 	//一ヒットあたりのダメージを調べる
 	int get_power() { return power; }
+
+	//ボム取得時
+	void chatch_bomb() { bombNum++; }
 };

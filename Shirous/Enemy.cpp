@@ -24,6 +24,9 @@ Enemy::Enemy(String name_,int x,int y,int move,int shot_pattern_,Array<Rect> rec
 	for (size_t i = 0; i < rects.size(); i++) {
 		hit_rect.push_back(Hit_Rect(rects[i]));
 	}
+	//アイテムを出すテストをしたいので入れてるやつ
+	drop_item.push_back(Drop_Item(Bomb_I, 3));
+	drop_item.push_back(Drop_Item(Life_I, 2));
 }
 
 Enemy::~Enemy()
@@ -198,3 +201,14 @@ void Enemy::shot_6() {
 
 }
 
+Array<Item> Enemy::get_items() {
+	Array<Item> items;
+	for (size_t i = 0; i < drop_item.size(); i++) {
+
+		for (int j = 0; j < drop_item[i].get_amount(); j++) {
+			Item item_new = Item(rect.center(), drop_item[i].get_item());
+			items.push_back(item_new);
+		}
+	}
+	return items;
+}

@@ -64,7 +64,7 @@ struct LineEffect : IEffect {
 		double x_begin = baseLine.begin.x;
 		double y_cent = baseLine.center().y;
 
-		Line{ Vec2(x_begin +add_x, y_cent+y_pos), Vec2(x_begin + add_x + 150, y_cent+y_pos) }.draw(5, Palette::Black.withAlpha(128*(1-e)));
+		Line{ Vec2(x_begin +add_x, y_cent+y_pos), Vec2(x_begin + add_x + 150, y_cent+y_pos) }.draw(5, Palette::Darkblue.withAlpha(128*(1-e)));
 
 		return (t < 1.0);
 	}

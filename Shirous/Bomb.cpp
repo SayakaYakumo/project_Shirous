@@ -34,7 +34,7 @@ void Bomb::Update(double deltaTime, Vec2 playerPos) {
 }
 
 void Bomb::setArea() {
-
+	//ここでは使わないが、継承した際には使う
 }
 
 bool Bomb::intercects(Rect rect) {

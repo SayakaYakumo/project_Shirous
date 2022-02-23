@@ -10,6 +10,8 @@ void Game::draw_main() const {
 
 	draw_bullet();//弾描画
 
+	draw_item();//アイテム描画
+
 	effect.update();//エフェクト描画
 
 	draw_ui();//UI描画
@@ -107,6 +109,11 @@ void Game::draw_bullet()const {
 	bomb->Draw();
 }
 
+void Game::draw_item()const {
+	for (size_t i = 0; i < gameItems.size(); i++) {
+		gameItems[i].Draw();
+	}
+}
 
 void Game::draw_ui()const {
 
