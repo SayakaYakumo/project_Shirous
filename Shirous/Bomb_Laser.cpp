@@ -13,6 +13,8 @@ Bomb_Laser::~Bomb_Laser() {
 
 }
 
+Line baseLine;
+
 void Bomb_Laser::setArea() {
 	Vec2 launchPos = basePos + Vec2(160, 0);
 	hitAreas[0].setPos(launchPos - Vec2(0,270));
@@ -21,6 +23,7 @@ void Bomb_Laser::setArea() {
 	deg_up = (15 + 5 * sin(bombTime * Math::Pi * 0.8)) * 1_deg;
 	deg_down = (-15 - 5 * sin(bombTime * Math::Pi * 0.8)) * 1_deg;
 	size_minus = bombTime > 0.5 ? 0 : (0.5 - bombTime) * 400;
+	baseLine.set(hitAreas[0].stretched(0, -size_minus).left());
 	if (!bombActive) effect_count = 0;
 }
 
@@ -42,11 +45,11 @@ bool Bomb_Laser::intercects(Circle circle) {
 
 struct LineEffect : IEffect {
 	Vec2 m_pos;
-	double Y_per;
+	double y_per;
 
 	explicit LineEffect(const Vec2& pos)
 		: m_pos{ pos } {
-		Y_per = Random(0.0, 100.0);
+		y_per = Random(-0.5, 0.5);
 	}
 
 	bool update(double t) override
@@ -56,7 +59,12 @@ struct LineEffect : IEffect {
 
 		double add_x = 2000 * e;
 
-		Line{ m_pos + Vec2(add_x, 0), m_pos + Vec2(add_x + 200, 0) }.draw(5, Palette::Black.withAlpha(128*(1-e)));
+		double y_pos = baseLine.length() * y_per;
+
+		double x_begin = baseLine.begin.x;
+		double y_cent = baseLine.center().y;
+
+		Line{ Vec2(x_begin +add_x, y_cent+y_pos), Vec2(x_begin + add_x + 150, y_cent+y_pos) }.draw(5, Palette::Black.withAlpha(128*(1-e)));
 
 		return (t < 1.0);
 	}
@@ -95,7 +103,7 @@ void Bomb_Laser::addEffect() {
 void Bomb_Laser::Draw()const {
 	if (bombActive) {
 		const ScopedRenderStates2D blend{ BlendState::Additive };
-		Color laserColor(255, 192, 192, bombSustainTime * 0.95 > bombTime ? 220 : 220 * (bombSustainTime - bombTime)/(0.05*bombSustainTime));
+		Color laserColor(255, 192, 192, bombSustainTime * 0.9 > bombTime ? 220 : 220 * (bombSustainTime - bombTime)/(0.1*bombSustainTime));
 		hitAreas[0].stretched(0, -size_minus).draw(laserColor);
 		hitAreas[1].rotatedAt(basePos + Vec2(100, 0), deg_up).draw(laserColor);
 		hitAreas[2].rotatedAt(basePos + Vec2(100, 0), deg_down).draw(laserColor);
