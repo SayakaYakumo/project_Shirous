@@ -19,6 +19,7 @@ void Bomb::Start() {
 void Bomb::Update(double deltaTime, Vec2 playerPos) {
 	hit = false;
 	basePos = playerPos;
+	setArea();
 	if (!bombActive) return;
 
 	if ((bombSustainTime * (double)hitCount / (double)bombHitNum) < bombTime) {
@@ -30,6 +31,10 @@ void Bomb::Update(double deltaTime, Vec2 playerPos) {
 	addEffect();
 
 	bombTime += deltaTime;
+}
+
+void Bomb::setArea() {
+
 }
 
 bool Bomb::intercects(Rect rect) {

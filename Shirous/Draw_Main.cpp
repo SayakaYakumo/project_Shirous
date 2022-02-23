@@ -104,7 +104,7 @@ void Game::draw_bullet()const {
 	}
 
 	//ボム
-	bomb.Draw();
+	bomb->Draw();
 }
 
 

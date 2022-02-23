@@ -123,11 +123,11 @@ void Game::GameShotUpdate(const double _time)
 	}
 
 	//ボム発射
-	if (KeyX.down() && !bomb.isActive()) {
-		bomb.Start();
+	if (KeyX.down() && !bomb->isActive()) {
+		bomb->Start();
 	}
 	//ボム更新
-	bomb.Update(_time, gamePlayer.get_rect().center());
+	bomb->Update(_time, gamePlayer.get_rect().center());
 
 	// 画面外の自機ショットの削除
 	gamePlayerBullet.remove_if([&](PlayerBullet p)
@@ -223,8 +223,8 @@ void Game::GameHitUpdate() {
 
 			Rect e_rect = gameEnemys[i].get_hit_rect(s);
 
-			if (bomb.intercects(e_rect)) {
-				gameEnemys[i].damage(bomb.get_power());
+			if (bomb->intercects(e_rect)) {
+				gameEnemys[i].damage(bomb->get_power());
 				break;
 			}
 
@@ -260,7 +260,7 @@ void Game::GameHitUpdate() {
 	//ボムと敵弾
 	gameEnemyBullet.remove_if([&](EnemyBullet e)
 		{
-			if (bomb.intercects(e.get_circle())) {//敵の弾が当たった
+			if (bomb->intercects(e.get_circle())) {//敵の弾が当たった
 
 				return true;
 			}

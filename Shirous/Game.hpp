@@ -9,6 +9,7 @@
 #include"Enemy_Data.hpp"
 #include"Save_Data.hpp"
 #include "Bomb.hpp"
+#include "Bomb_Laser.hpp"
 
 class Game 
 {
@@ -262,7 +263,9 @@ private:
 	Array<PlayerBullet> gamePlayerBullet;
 
 	//ボム
-	Bomb bomb;
+	Bomb_Laser laser;
+
+	Bomb *bomb = &laser;
 
 	int bombNum = 3;
 
