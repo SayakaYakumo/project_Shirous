@@ -166,6 +166,12 @@ void Game::stage_0_load() {
 	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
 	TextureAsset::Load(U"enemy_アンモナイト");
 
+	TextureAsset::Register(U"enemy_サケ", U"data/image/fish/enemy/サケ.png");
+	TextureAsset::Load(U"enemy_サケ");
+
+	
+
+
 	//弾の登録
 	TextureAsset::Register(U"bullet_circle_blue_s", U"data/image/bullet/circle/blue/s.png");
 	TextureAsset::Load(U"bullet_circle_blue_s");
