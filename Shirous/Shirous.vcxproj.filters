@@ -232,6 +232,12 @@
     <Filter Include="Source Files\Save_Data">
       <UniqueIdentifier>{1d0debbf-3705-4592-95ab-5a9967bc4067}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object\Bomb">
+      <UniqueIdentifier>{ac8b2fa5-7617-4d63-b33c-30b651cddb65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Bomb\Variation">
+      <UniqueIdentifier>{9dd4c6d9-fbc8-49e0-a5ba-816417680072}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Scene\Menu\Debug\Input_Number">
       <UniqueIdentifier>{73740a66-2956-4502-b276-dcbc27352eb5}</UniqueIdentifier>
     </Filter>
@@ -350,6 +356,12 @@
     </ClCompile>
     <ClCompile Include="Enemy_Data.cpp">
       <Filter>Source Files\Data\Enemy_Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>Source Files\Object\Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb_Laser.cpp">
+      <Filter>Source Files\Object\Bomb\Variation</Filter>
     </ClCompile>
     <ClCompile Include="edit_input_number.cpp">
       <Filter>Source Files\Scene\Menu\Debug\Input_Number</Filter>
@@ -1039,6 +1051,12 @@
     </ClInclude>
     <ClInclude Include="Enemy_Data.hpp">
       <Filter>Source Files\Data\Enemy_Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb.hpp">
+      <Filter>Source Files\Object\Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb_Laser.hpp">
+      <Filter>Source Files\Object\Bomb\Variation</Filter>
     </ClInclude>
     <ClInclude Include="Stage_Data.hpp">
       <Filter>Source Files\Data\Stage_Data</Filter>

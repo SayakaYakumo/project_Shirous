@@ -3,6 +3,7 @@
 # include <Siv3D.hpp>
 
 # include"Hit_Rect.hpp"
+# include"Item.hpp"
 #include"Drop_Item.hpp"
 
 class Enemy 	
@@ -115,4 +116,5 @@ public:
 
 	int get_score() { return score; }
 
+	Array<Item> get_items();
 };

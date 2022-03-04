@@ -9,6 +9,9 @@
 #include"Enemy_Data.hpp"
 #include"Save_Data.hpp"
 #include"Stage_Data.hpp"
+#include "Bomb.hpp"
+#include "Bomb_Laser.hpp"
+#include "Item.hpp"
 
 class Game 
 {
@@ -104,7 +107,8 @@ public:
 	//敵などを消す
 	void GameEraseUpdate();
 
-	
+	//アイテムの取得
+	void GameItemCatch();
 
 	//一番近い敵を取得
 
@@ -119,6 +123,7 @@ public:
 	void draw_player()const;
 	void draw_enemy()const;
 	void draw_bullet()const;
+	void draw_item()const;
 	void draw_ui()const;
 
 	//ステージデータ読み込み
@@ -295,6 +300,15 @@ private:
 
 	Array<PlayerBullet> gamePlayerBullet;
 
+	//ボム
+	Bomb bomb_normal;
+	Bomb_Laser laser;
+
+	Bomb* bomb = &laser;
+	//Bomb* bomb = &bomb_normal;
+
+	int bombNum = 3;
+
 	//敵
 
 	//サカナデータ
@@ -316,6 +330,9 @@ private:
 	double enemyShotCoolTime = 0.90;
 	// 敵ショットのクールタイムタイマー
 	double enemyShotTimer = 0.0;
+
+	//アイテム
+	Array<Item> gameItems;
 
 
 	// ハイスコア

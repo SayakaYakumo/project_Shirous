@@ -1,17 +1,18 @@
 ﻿#pragma once
 #include<Siv3D.hpp>
+#include "Item.hpp"
 
 class Drop_Item
 {
 public:
 
-	Drop_Item(String name, int amount) { _name = name, _amount = amount; }
+	Drop_Item(ItemType type, int amount) { _type = type, _amount = amount; }
 
-	String get_item() { return _name; }
+	ItemType get_item() { return _type; }
 	int get_amount() { return _amount; }
 
 private:
-	String _name;
+	ItemType _type;
 
 	int _amount = 0;
 };

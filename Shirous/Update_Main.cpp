@@ -63,6 +63,9 @@ void Game::update_main() {
 	//攻撃のヒット判定
 	GameHitUpdate();
 
+	//アイテムの取得
+	GameItemCatch();
+
 	//敵などを消す
 	GameEraseUpdate();
 
@@ -85,6 +88,12 @@ void Game::GameMoveUpdate(const double _time)
 	for (auto& enemy : gameEnemys)
 	{
 		enemy.Update(_time);
+	}
+
+	//敵の移動と描画
+	for (auto& item : gameItems)
+	{
+		item.Update(_time, gamePlayer.get_rect().center());
 	}
 }
 
@@ -134,6 +143,13 @@ void Game::GameShotUpdate(const double _time)
 	{
 		playerBullet.Update(_time);
 	}
+
+	//ボム発射
+	if (KeyX.down() && !bomb->isActive()) {
+		bomb->Start();
+	}
+	//ボム更新
+	bomb->Update(_time, gamePlayer.get_rect().center());
 
 	// 画面外の自機ショットの削除
 	gamePlayerBullet.remove_if([&](PlayerBullet p)
@@ -201,6 +217,8 @@ void Game::GameHitUpdate() {
 						}
 
 					}
+
+
 			}
 		}
 	}
@@ -219,6 +237,22 @@ void Game::GameHitUpdate() {
 
 		}
 
+	}
+
+	//ボムvs敵
+	for (size_t i = 0; i < gameEnemys.size(); i++) {
+
+		for (size_t s = 0; s < gameEnemys[i].get_hit_rect_size(); s++) {
+
+			Rect e_rect = gameEnemys[i].get_hit_rect(s);
+
+			if (bomb->intercects(e_rect)) {
+				gameEnemys[i].damage(bomb->get_power());
+				break;
+			}
+
+
+		}
 	}
 
 
@@ -246,11 +280,34 @@ void Game::GameHitUpdate() {
 
 		});
 
+	//ボムと敵弾
+	gameEnemyBullet.remove_if([&](EnemyBullet e)
+		{
+			if (bomb->intercects(e.get_circle())) {//敵の弾が当たった
+
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		});
+
 }
 
-
-
 void Game::GameEraseUpdate() {
+
+	//体力のなくなった敵からアイテムを出す
+	for (auto& enemy : gameEnemys)
+	{
+		if (enemy.get_hp() <= 0) {
+			Array<Item> items = enemy.get_items();
+			for (size_t i = 0; i < items.size(); i++) {
+				gameItems.push_back(items[i]);
+			}
+			//gameItems.append(items);
+		}
+	}
 
 	//体力のなくなった敵を消す
 	gameEnemys.remove_if([&](Enemy e)
@@ -268,6 +325,32 @@ void Game::GameEraseUpdate() {
 		});
 
 }
+
+void Game::GameItemCatch() {
+
+	//取得チェック
+	for (auto& item : gameItems) {
+		if (gamePlayer.get_rect().intersects(item.get_rect())) {
+			item.alive = false;
+
+			//ここに取得時の処理を書く
+
+		}
+	}
+	
+	//取得したモノと左に流れたモノは消す
+	gameItems.remove_if([&](Item i)
+		{
+			if (!i.alive || i.get_rect().x < -100) {
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		});
+}
+
 
 //参考にしたプログラムのホーミング弾があったときの名残、使うかもしれないので一応残しておく
 /*
