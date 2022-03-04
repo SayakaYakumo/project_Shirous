@@ -1,4 +1,5 @@
-﻿#include "Menu.hpp"
+﻿/*
+#include "Menu.hpp"
 
 Menu::Menu(const InitData& init)
 	: IScene{ init }
@@ -26,4 +27,4 @@ void Menu::draw() const
 	//m_texture.drawAt(Cursor::Pos());
 
 	FontAsset(U"TitleFont")(U"Menu").drawAt(400, 100);
-}
+}*/

@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿/*
+#pragma once
 #include "Common.hpp"
 
 class Title : public App::Scene
@@ -10,4 +11,4 @@ public:
 	void update() override;
 
 	void draw() const override;
-};
+};*/

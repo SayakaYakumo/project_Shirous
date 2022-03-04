@@ -4,34 +4,34 @@
 class Bullet
 {
 
-private:
-
-protected:
-	Vec2 pos;
-
-	double speed;
-
-	double spawnTime;
-
-
-
 public:
 
 
-	Bullet() {
 
+	double speed=0;
+
+	int move=0;
+
+	Circle circle;
+
+	String color;
+
+	String shape;
+
+	String size;//circle.rとは異なる
+
+	double angle=0;
+
+
+	Bullet() {
+		circle = Circle(0, 0, 0);
 	}
 	~Bullet() {
 
 	}
 
-	Vec2 GetPos()
-	{
-		return pos;
-	}
+	
 
-	virtual void Update(double deltaTime) = 0;
-
-	virtual void Draw() = 0;
+	
 
 };
