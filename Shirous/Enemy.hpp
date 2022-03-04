@@ -50,6 +50,8 @@ private:
 
 	int count = 0;
 
+	double count_2 = 0;
+
 	String name;
 
     double speed = 100.0;

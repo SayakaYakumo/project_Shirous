@@ -495,7 +495,7 @@ void Game::update_edit_enemy() {
 
 				Rect rectI2(800, 30, 90, 90);//名前変更
 
-
+				Rect rectI3(700, 100, 45, 45);//名前変更
 
 				int click_number_I = -1;
 				edit_enemy_information_cover = -1;
@@ -513,6 +513,14 @@ void Game::update_edit_enemy() {
 					edit_enemy_information_cover = 100;
 					Cursor::RequestStyle(CursorStyle::Hand);
 				}
+
+				if (rectI3.mouseOver()) {
+					click_number_I = 1000;
+					edit_enemy_information_cover = 1000;
+					Cursor::RequestStyle(CursorStyle::Hand);
+				
+				}
+
 
 				if (click_number_I != -1) {
 
@@ -646,6 +654,50 @@ void Game::update_edit_enemy() {
 				}
 			}
 
+			break;
+		case 1000://名前２
+		
+
+		// キーボードからテキストを入力
+			TextInput::UpdateText(edit_enemy_name_2);
+			// 未変換の文字入力を取得
+			edit_enemy_name_editing_2 = TextInput::GetEditingText();
+
+
+
+			rect.push_back(Rect(10, 1080 - 10 - 180, 180, 180));
+			rect.push_back(Rect(10 + 180 + 30, 1080 - 10 - 180, 180, 180));
+
+			edit_enemy_name_cover = -1;
+
+			for (size_t i = 0; i < rect.size(); i++) {
+				if (rect[i].mouseOver()) {
+					edit_enemy_name_cover = i;
+					click_number = i;
+					Cursor::RequestStyle(CursorStyle::Hand);
+				}
+			}
+
+			if (MouseL.down()) {
+
+				if (click_number != -1) {
+
+
+					if (click_number == 0) {//決定
+						enemy_data[edit_enemy_index].set_name2(edit_enemy_name_2);
+
+						edit_enemy_name_2 = U"";
+						edit_enemy_name_editing_2 = U"";
+
+						edit_enemy_display = 1;
+
+					}
+					else if (click_number == 1) {
+						edit_enemy_name_2 = U"";
+						edit_enemy_display = 1;
+					}
+				}
+			}
 			break;
 		default:
 			break;

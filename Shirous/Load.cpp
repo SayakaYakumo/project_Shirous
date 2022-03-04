@@ -152,7 +152,7 @@ void Game::stage_0_load() {
 		}
 
 		emergeEnemys.push_back(EmergeEnemy(name,name2,x_pos,y_pos,time));
-
+		
 	}
 
 
