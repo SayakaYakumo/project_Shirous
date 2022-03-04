@@ -100,6 +100,10 @@ void Game::draw_edit() {
 		TextureAsset(U"debug_edit_information").draw(10 + 60 + (120 + 50) * 7, 1080 - 150 + 15 - 10);
 		TextureAsset(U"debug_edit_save").draw(10 + 60 + (120 + 50) * 8, 1080 - 150 + 15 - 10);
 
+		TextureAsset(U"debug_edit_tile").draw(60, 1080 - 150 - 10 - 10 - 180);
+		TextureAsset(U"debug_edit_enemy").draw(60+20+180, 1080 - 150 - 10 - 10 - 180);
+
+
 		if (edit_select_item != 0) {//backではない
 			TextureAsset(U"debug_edit_select").draw(10 + 60 + (120 + 50) * edit_select_item, 1080 - 150 + 15 - 10);
 		}
@@ -113,6 +117,28 @@ void Game::draw_edit() {
 		edit_saved_display_fade -= 0.0111;
 	}
 
-	
+
+	if (edit_scene_2 == 1) {
+		TextureAsset(U"change_scene_fade").draw(0, 0, ColorF(1.0, 0.7));
+
+
+		TextureAsset(U"back_tile").draw(360,100);
+
+		Array<Rect> rect;//Lineにすると軽くなるかも
+
+		for (int x = 0; x < 11; x++) {//縦線(16+4)//両サイド分
+			rect.push_back(Rect(360+(x) * 120, 100, 1, 1080));
+
+		}
+
+		for (int y = 0; y < 8; y++) {//横線
+			rect.push_back(Rect(360, 100+(y) * 120, 1200, 1));
+		}
+
+		for (size_t i = 0; i < rect.size(); i++) {
+			rect[i].draw(Palette::Red);
+		}
+	}
+
 	
 }

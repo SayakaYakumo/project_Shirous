@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-	first();
+	start();//初期位置
 
 	name = U"シラス";
 
@@ -90,9 +90,11 @@ void Player::DrawFrame()const {
 
 
 
-void Player::first() {
+void Player::start() {
 	rect.x = 300;
 	rect.y = 300;
 	rect.w = 160;
 	rect.h = 30;
+
+	shot_cool_time = 0;
 }

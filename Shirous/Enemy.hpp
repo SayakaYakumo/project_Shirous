@@ -13,24 +13,30 @@ private:
 
 	
 
-	int move_pattern = 0;
+	
 
 	int make_bullet_flag = -1;
 
-	int shot_pattern = 0;
+	
 
 	Vec2 make_bullet_point;
 
 	int make_bullet_point_adjust_x;
-
 	int make_bullet_point_adjust_y;
 
+	int act_scene = 0;
+	int shot_scene = 0;
+	int move_scene = 0;
 
+	double act_count = 0;
 	double shot_count = 0;
-
 	double move_count = 0;
 
+
 	int hp = 3;
+	int act_pattern = 0;
+	int move_pattern = 0;
+	int shot_pattern = 0;
 
 	int score = 0;
 
@@ -45,13 +51,15 @@ private:
 
 	int count = 0;
 
+	double count_2 = 0;
+
 	String name;
 
     double speed = 100.0;
 
 public:
 
-	Enemy(String,int,int,int,int,Array<Rect>);//名前、ｘ、ｙ、移動パターン,ショットパターン
+	Enemy(String,int,int,int,int,int,int,Array<Rect>);//名前、ｘ、ｙ、体力,行動パータン,移動パターン,ショットパターン
 	~Enemy();
 
 	void Update(double deltaTime);
@@ -59,6 +67,16 @@ public:
 	void Draw()const;
 
 	void DrawFrame()const;
+
+	void act(double);
+
+	void act_0(double);
+	void act_1(double);
+	void act_2(double);
+	void act_3(double);
+	void act_4(double);
+	void act_5(double);
+	void act_6(double);
 
 	void move(double);
 

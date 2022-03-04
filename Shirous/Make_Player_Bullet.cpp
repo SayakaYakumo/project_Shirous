@@ -17,8 +17,8 @@ void Game::make_player_bullet() {
 	if (name == U"シラス") {
 
 
-		x = gamePlayer.get_rect().x;
-		y = gamePlayer.get_rect().y;
+		x = gamePlayer.get_rect().x+ gamePlayer.get_rect().w;
+		y = gamePlayer.get_rect().y+ gamePlayer.get_rect().h/2;
 		r = 30;
 		speed = 1000;
 		move = 0;
