@@ -184,8 +184,6 @@ void Game::draw_edit_enemy() {
 
 				//Print << U"t_name::" << texture_name;
 
-				TextureAsset(U"enemy_サケ").draw(100, 200);
-
 			}
 		
 		}
