@@ -80,7 +80,7 @@ void Game::ini(){
 
 	Scene::Resize(1920, 1080);
 	Scene::SetResizeMode(ResizeMode::Keep);
-	Window::SetFullscreen(true);
+	//Window::SetFullscreen(true);
 
 	//FontAsset
 
