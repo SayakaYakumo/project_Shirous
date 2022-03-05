@@ -63,6 +63,7 @@ void Player::Spawn(double deltaTime)
 	if (spawn_cool_time > 0) spawn_cool_time -= deltaTime;
 }
 
-void Player::first() {
+
+void Player::start() {
 	
 }

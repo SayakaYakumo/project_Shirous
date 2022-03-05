@@ -25,7 +25,7 @@ public:
 
 	void DrawFrame()const;
 
-	void first();
+	void start();
 
 	void Spawn(double deltaTime);
 

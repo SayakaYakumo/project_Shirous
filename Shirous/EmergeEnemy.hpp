@@ -8,9 +8,10 @@ public:
 
 	EmergeEnemy(){}
 
-	EmergeEnemy(String name, int x, int y,int time) {
+	EmergeEnemy(String name,String name2, int x, int y,double time) {
 
 		_name = name;
+		_name_2 = name2;
 		_x = x;
 		_y = y;
 		_time = time;
@@ -23,7 +24,9 @@ public:
 
 	String get_name() { return _name; }
 
-	int get_time() { return _time; }
+	String get_name_2() { return _name_2; }
+
+	double get_time() { return _time; }
 
 	int get_done() { return _done; }
 
@@ -45,7 +48,8 @@ private:
 	int _x = 0;
 	int _y = 0;
 	String _name;
-	int _time = 0;
+	String _name_2;
+	double _time = 0;
 
 
 	int _done = 0;

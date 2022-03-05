@@ -8,6 +8,10 @@
 #include"Back_Tile.hpp"
 #include"Enemy_Data.hpp"
 #include"Save_Data.hpp"
+#include"Stage_Data.hpp"
+#include "Bomb.hpp"
+#include "Bomb_Laser.hpp"
+#include "Item.hpp"
 
 class Game 
 {
@@ -73,7 +77,8 @@ public:
 	void draw_debug_menu_stage_select();
 	void draw_debug_menu_mode_select();
 	
-
+	void update_edit_input_number();
+	void draw_edit_input_number();
 
 
 	//Edit
@@ -88,6 +93,9 @@ public:
 	void make_player_bullet(int i);
 	void make_enemy_bullet(int,int);
 
+	//自機狙い
+	double get_player_angle(int);
+
 	//ショットの移動関係
 	void GameShotUpdate(const double _time);
 	//移動関係
@@ -99,7 +107,8 @@ public:
 	//敵などを消す
 	void GameEraseUpdate();
 
-	
+	//アイテムの取得
+	void GameItemCatch();
 
 	//一番近い敵を取得
 
@@ -114,6 +123,7 @@ public:
 	void draw_player()const;
 	void draw_enemy()const;
 	void draw_bullet()const;
+	void draw_item()const;
 	void draw_ui()const;
 
 	//ステージデータ読み込み
@@ -189,20 +199,23 @@ private:
 
 	int debug_2_cur_cover = -1;
 
+
 	
 	//エディタ
 	int edit_scene = 0;
+	int edit_scene_2 = 0;
 	int edit_scroll = 0;
 	int edit_display = 0;
 	int edit_select_item = 0;
 	int edit_select_tile_kind = 0;
+	int edit_information = 0;
 
 	int edit_bukket = 0;
 	int edit_bukket_start_x = 0;
 	int edit_bukket_start_y = 0;
 
 	String  edit_plus_enemy_name ;
-	
+	String  edit_plus_enemy_name_2;
 
 	double edit_saved_display_fade = 0;
 	int edit_saved = 0;
@@ -211,17 +224,39 @@ private:
 	int edit_enemy_index = 0;
 
 	int edit_enemy_page = 0;
+	int edit_enemy_information = 1;
+	int edit_enemy_information_scene = 0;
 	int edit_enemy_cur_cover = -1;
 	int edit_enemy_cur_cover_2 = -1;
+	int edit_enemy_cur_cover_3 = -1;
+
+	
+
+	String edit_input_v;
+	int edit_input_over = -1;
+	int edit_input_point = 0;
+	int edit_input_end = 0;
+
+	String edit_enemy_name;
+	String edit_enemy_name_editing;
+
+	String edit_enemy_name_2;
+	String edit_enemy_name_editing_2;
+
+	int edit_enemy_name_cover = 0;
+
 	int edit_enemy_page_x = 0;
 	int edit_enemy_page_y = 0;
 
-	int edit_enemy_display = 0;
+	int edit_enemy_display = 1;
 
 	int edit_enemy_make_rect_scene = 0;
 	int edit_enemy_make_rect_x = 0;
 	int edit_enemy_make_rect_y = 0;
 	Rect edit_enemy_rect;
+
+	int edit_enemy_information_cover = -1;
+	
 
 	int edit_enemy_select_item = 1;
 	double edit_enemy_saved_display_fade = 0;
@@ -231,8 +266,13 @@ private:
 	//セーブデータ
 	Save_Data save_data;
 
+	Stage_Data stage_data;
+
 	//ステージスクロールスピード
 	double stage_speed = 200;
+
+	//ステージワイド
+	int stage_wide = 1;
 
 	//スクロール
 	double stage_scroll = 0;
@@ -260,6 +300,15 @@ private:
 
 	Array<PlayerBullet> gamePlayerBullet;
 
+	//ボム
+	Bomb bomb_normal;
+	Bomb_Laser laser;
+
+	Bomb* bomb = &laser;
+	//Bomb* bomb = &bomb_normal;
+
+	int bombNum = 3;
+
 	//敵
 
 	//サカナデータ
@@ -284,6 +333,9 @@ private:
 	double enemyShotCoolTime = 0.90;
 	// 敵ショットのクールタイムタイマー
 	double enemyShotTimer = 0.0;
+
+	//アイテム
+	Array<Item> gameItems;
 
 
 	// ハイスコア

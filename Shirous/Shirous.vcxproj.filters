@@ -235,6 +235,18 @@
     <Filter Include="Source Files\Object\Player\Player_Fish">
       <UniqueIdentifier>{a5fa040d-eea2-4c72-a730-a9a0c93318af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object\Bomb">
+      <UniqueIdentifier>{ac8b2fa5-7617-4d63-b33c-30b651cddb65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Bomb\Variation">
+      <UniqueIdentifier>{9dd4c6d9-fbc8-49e0-a5ba-816417680072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Menu\Debug\Input_Number">
+      <UniqueIdentifier>{73740a66-2956-4502-b276-dcbc27352eb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Stage_Data">
+      <UniqueIdentifier>{00d917b2-bea5-4146-9c79-0ca96b05e431}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -350,6 +362,15 @@
     </ClCompile>
     <ClCompile Include="Player_Fish.cpp">
       <Filter>Source Files\Object\Player\Player_Fish</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>Source Files\Object\Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb_Laser.cpp">
+      <Filter>Source Files\Object\Bomb\Variation</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_input_number.cpp">
+      <Filter>Source Files\Scene\Menu\Debug\Input_Number</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1039,6 +1060,15 @@
     </ClInclude>
     <ClInclude Include="Player_Fish.hpp">
       <Filter>Source Files\Object\Player\Player_Fish</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb.hpp">
+      <Filter>Source Files\Object\Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb_Laser.hpp">
+      <Filter>Source Files\Object\Bomb\Variation</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage_Data.hpp">
+      <Filter>Source Files\Data\Stage_Data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

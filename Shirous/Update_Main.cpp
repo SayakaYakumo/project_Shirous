@@ -9,32 +9,45 @@ void Game::update_main() {
 
 	//ステージスクロール
 	stage_scroll += deltaTime * stage_speed;
+
 	
 
 	// 敵の発生
 	for (size_t i = 0; i < emergeEnemys.size(); i++) {
-		if (emergeEnemys[i].get_time() > stage_time) {//時間を超えた
+		if (emergeEnemys[i].get_time() < stage_time) {//時間を超えた
+
 			if (emergeEnemys[i].get_done() == 0) {//まだ使われていない
 				emergeEnemys[i].set_done();//使われたフラグをたてる
 
+				double time = emergeEnemys[i].get_time();
+
+				
 				String name = emergeEnemys[i].get_name();
+				String name_2 = emergeEnemys[i].get_name_2();
 				int x = emergeEnemys[i].get_x();
 				int y = emergeEnemys[i].get_y();
 
+			
+				int hp = 1;
+				int act = 0;
 				int move = 0;
 				int shot_pattern = 0;
 
 				Array<Rect> rects;
 				for (size_t e = 0; e < enemy_data.size(); e++) {
 					if (enemy_data[e].get_name() == name) {
-						move = enemy_data[e].get_move();
-						shot_pattern = enemy_data[e].get_shot();
-						rects = enemy_data[e].get_rects();
+						if (enemy_data[e].get_name2() == name_2) {
+							hp = enemy_data[e].get_hp();
+							act = enemy_data[e].get_act();
+							move = enemy_data[e].get_move();
+							shot_pattern = enemy_data[e].get_shot();
+							rects = enemy_data[e].get_rects();
+						}
 					}
 				}
 				
 
-				gameEnemys.push_back(Enemy(name,x,y,move,shot_pattern,rects));//敵を生成する！！
+				gameEnemys.push_back(Enemy(name,x,y,hp,act,move,shot_pattern,rects));//敵を生成する！！
 			}
 		}
 	}
@@ -49,6 +62,9 @@ void Game::update_main() {
 
 	//攻撃のヒット判定
 	GameHitUpdate();
+
+	//アイテムの取得
+	GameItemCatch();
 
 	//敵などを消す
 	GameEraseUpdate();
@@ -72,6 +88,12 @@ void Game::GameMoveUpdate(const double _time)
 	for (auto& enemy : gameEnemys)
 	{
 		enemy.Update(_time);
+	}
+
+	//敵の移動と描画
+	for (auto& item : gameItems)
+	{
+		item.Update(_time, gamePlayer.get_rect().center());
 	}
 }
 
@@ -129,10 +151,17 @@ void Game::GameShotUpdate(const double _time)
 		playerBullet.Update(_time);
 	}
 
+	//ボム発射
+	if (KeyX.down() && !bomb->isActive()) {
+		bomb->Start();
+	}
+	//ボム更新
+	bomb->Update(_time, gamePlayer.get_rect().center());
+
 	// 画面外の自機ショットの削除
 	gamePlayerBullet.remove_if([&](PlayerBullet p)
 		{
-			if (p.get_circle().x>2000|| p.get_circle().x < -100|| p.get_circle().y>1100|| p.get_circle().y < -100) {
+			if (p.get_circle().x>3000|| p.get_circle().x < -500|| p.get_circle().y>1500|| p.get_circle().y < -500) {
 
 				return true;
 			}
@@ -146,7 +175,7 @@ void Game::GameShotUpdate(const double _time)
 
 	gameEnemys.remove_if([&](Enemy e)
 		{
-			if (e.get_rect().x<-2000||2000<e.get_rect().x|| e.get_rect().y < -2000 || 2000 < e.get_rect().y) {
+			if (e.get_rect().x<-3000||3000<e.get_rect().x|| e.get_rect().y < -3000 || 3000 < e.get_rect().y) {
 
 				return true;
 			}
@@ -156,6 +185,7 @@ void Game::GameShotUpdate(const double _time)
 
 		});
 
+	
 
 }
 
@@ -194,6 +224,8 @@ void Game::GameHitUpdate() {
 						}
 
 					}
+
+
 			}
 		}
 	}
@@ -212,6 +244,22 @@ void Game::GameHitUpdate() {
 
 		}
 
+	}
+
+	//ボムvs敵
+	for (size_t i = 0; i < gameEnemys.size(); i++) {
+
+		for (size_t s = 0; s < gameEnemys[i].get_hit_rect_size(); s++) {
+
+			Rect e_rect = gameEnemys[i].get_hit_rect(s);
+
+			if (bomb->intercects(e_rect)) {
+				gameEnemys[i].damage(bomb->get_power());
+				break;
+			}
+
+
+		}
 	}
 
 
@@ -239,11 +287,34 @@ void Game::GameHitUpdate() {
 
 		});
 
+	//ボムと敵弾
+	gameEnemyBullet.remove_if([&](EnemyBullet e)
+		{
+			if (bomb->intercects(e.get_circle())) {//敵の弾が当たった
+
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		});
+
 }
 
-
-
 void Game::GameEraseUpdate() {
+
+	//体力のなくなった敵からアイテムを出す
+	for (auto& enemy : gameEnemys)
+	{
+		if (enemy.get_hp() <= 0) {
+			Array<Item> items = enemy.get_items();
+			for (size_t i = 0; i < items.size(); i++) {
+				gameItems.push_back(items[i]);
+			}
+			//gameItems.append(items);
+		}
+	}
 
 	//体力のなくなった敵を消す
 	gameEnemys.remove_if([&](Enemy e)
@@ -261,6 +332,32 @@ void Game::GameEraseUpdate() {
 		});
 
 }
+
+void Game::GameItemCatch() {
+
+	//取得チェック
+	for (auto& item : gameItems) {
+		if (gamePlayer.get_rect().intersects(item.get_rect())) {
+			item.alive = false;
+
+			//ここに取得時の処理を書く
+
+		}
+	}
+	
+	//取得したモノと左に流れたモノは消す
+	gameItems.remove_if([&](Item i)
+		{
+			if (!i.alive || i.get_rect().x < -100) {
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		});
+}
+
 
 //参考にしたプログラムのホーミング弾があったときの名残、使うかもしれないので一応残しておく
 /*

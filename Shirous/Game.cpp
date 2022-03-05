@@ -80,7 +80,7 @@ void Game::ini(){
 
 	Scene::Resize(1920, 1080);
 	Scene::SetResizeMode(ResizeMode::Keep);
-	Window::SetFullscreen(true);
+	//Window::SetFullscreen(true);
 
 	//FontAsset
 
@@ -139,18 +139,29 @@ void Game::ini(){
 
 	//デバッグ以外でファイルに書き込まない
 
-	//敵サカナデータ読み込み
+	//敵サカナデータ書きこみ
 
 	/*
 
-	for (size_t y = 0; y < 12; y++) {
-		for (size_t x = 0; x < 5; x++) {
+	for (size_t i = 0; i < 140; i++) {
+			enemy_data.push_back(Enemy_Data(U"no_data",U"no_data",1,-1, 0, 1, 100,100));
+		
+	}
 
-			enemy_data.push_back(Enemy_Data(U"no_data", x, y, 0, 0, 0, 0));
-		}
-	}*/
+	Serializer<BinaryWriter> EDwriter{ U"data/database/enemy_data.bin" };
+
+	if (not EDwriter)
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+    EDwriter(enemy_data);*/
 
 
+
+
+
+	
 
 	//敵情報読み込み
 
@@ -162,8 +173,21 @@ void Game::ini(){
 	}
 
 	Ereader(enemy_data);
+/**/
 
 
+	/*
+	stage_data.set_wide(16);
+	stage_data.set_speed(200);
+
+	Serializer<BinaryWriter> STwriter{ U"data/stage/0/Stage_Data.bin" };
+
+	if (not STwriter)
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	STwriter(stage_data);*/
 
 
 /*
