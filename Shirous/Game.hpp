@@ -90,7 +90,7 @@ public:
 
 
 	//ショット生成
-	void make_player_bullet();
+	void make_player_bullet(int i);
 	void make_enemy_bullet(int,int);
 
 	//自機狙い
@@ -321,10 +321,13 @@ private:
 	//敵出現データ
 	Array<EmergeEnemy> emergeEnemys;
 
+	//Playerクラス内の配列Fishそれぞれの中に移動
+	/*
 	// 自機ショットのクールタイム（秒）
 	double playerShotCoolTime = 0.5;
 	// 自機ショットのクールタイムタイマー
 	double playerShotTimer = 0.0;
+	*/
 
 	// 敵ショットのクールタイム（秒）
 	double enemyShotCoolTime = 0.90;

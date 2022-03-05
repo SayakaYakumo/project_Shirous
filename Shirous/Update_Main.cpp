@@ -132,11 +132,18 @@ void Game::GameShotUpdate(const double _time)
 
 	//自機ショット
 
+	
+	
 	//自機ショット生成
 	if (KeyZ.pressed()) {
-		if (gamePlayer.get_cool_time() < 0) {//クールタイム終了
-			make_player_bullet();//弾生成
+
+		for (int i = 0; i < gamePlayer.get_fish_size(); i++)
+		{
+			if (gamePlayer.get_shot_timer(i) > gamePlayer.get_cool_time(i)) {
+				make_player_bullet(i);//弾生成
+			}
 		}
+		
 	}
 
 	for (auto& playerBullet : gamePlayerBullet)

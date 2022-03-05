@@ -137,6 +137,7 @@
     <ClCompile Include="Make_Enemy_Bullet.cpp" />
     <ClCompile Include="Make_Player_Bullet.cpp" />
     <ClCompile Include="Menu2.cpp" />
+    <ClCompile Include="Player_Fish.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerBullet.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -366,6 +367,7 @@
     <ClInclude Include="Item.hpp" />
     <ClInclude Include="Bomb_Laser.hpp" />
     <ClInclude Include="Menu2.hpp" />
+    <ClInclude Include="Player_Fish.hpp" />
     <ClInclude Include="Save_Data.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="PlayerBullet.hpp" />

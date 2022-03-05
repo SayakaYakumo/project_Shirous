@@ -2,11 +2,9 @@
 
 Player::Player()
 {
-	start();//初期位置
 
-	name = U"シラス";
-
-	speed = mySpeed;
+	fish.push_back(Fish());
+	fish.push_back(Fish());
 
 }
 
@@ -14,87 +12,58 @@ Player::~Player()
 {
 
 }
+
 void Player::Update(double deltaTime)
 {
-	int naname = 0;
-
-	if (KeyUp.pressed() || KeyDown.pressed()) {
-		if (KeyLeft.pressed() || KeyRight.pressed()) {
-			naname = 1;
+	fish[0].myUpdate(deltaTime);
+	if (fish.size() >= 2)
+	{
+		for (int i = 1; i < fish.size(); i++)
+		{
+			fish[i].opUpdate(i, fish[0].get_rect(), deltaTime);
 		}
 	}
 
-	double now_speed = speed * deltaTime;
-
-	if (naname == 1) {//斜め移動中
-		now_speed *= 0.7;
-	}
-
-	if (KeyShift.pressed()) {//減速
-		now_speed *= 0.5;
-	}
-
-
-	if (KeyUp.pressed()) {//上
-		rect.y -= now_speed;
-	}
-	else if (KeyDown.pressed()) {//下
-		rect.y += now_speed;
-	}
-
-	if (KeyLeft.pressed()) {//左
-		rect.x -= now_speed;
-	}
-	else if (KeyRight.pressed()) {//右
-		rect.x += now_speed;
-	}
-
-	//画面の移動制限
-
-	if (rect.x<0) {
-		rect.x = 0;
-	}
-	else if (rect.x + rect.w > 1920) {
-		rect.x = 1920 - rect.w;
-	}
-
-	if (rect.y < 0) {
-		rect.y = 0;
-	}
-	else if (rect.y + rect.h > 1080) {
-		rect.y = 1080 - rect.h;
-	}
-
-	//ショットのクールタイム
-	shot_cool_time -= deltaTime;
+	Spawn(deltaTime);
 
 }
 
 void Player::Draw()const
 {
 	// 自機の描画
-	//texture.mirrored().resized(80).drawAt(pos);
 
-	String texture_name = U"player_" + name;
-
-	TextureAsset(texture_name).draw(rect.x-10, rect.y-20);
-
-
+	for (int i = 0; i < fish.size(); i++)
+	{
+		fish[i].Draw();
+	}
 
 }
 
-
-void Player::DrawFrame()const {
-	rect.drawFrame();
+void Player::DrawFrame()const
+{
+	for (int i = 0; i < fish.size(); i++)
+	{
+		fish[i].DrawFrame();
+	}
 }
 
+void Player::Spawn(double deltaTime)
+{
+	if (spawn_cool_time <=0 && KeyC.pressed())
+	{
+		spawn_Timer += deltaTime;
+	}
+	else spawn_Timer = 0.0;
+
+	if (spawn_Timer > 2.0)
+	{
+		fish.push_back(Fish(fish[0].get_rect()));
+		spawn_cool_time = 2.0;
+	}
+	if (spawn_cool_time > 0) spawn_cool_time -= deltaTime;
+}
 
 
 void Player::start() {
-	rect.x = 300;
-	rect.y = 300;
-	rect.w = 160;
-	rect.h = 30;
-
-	shot_cool_time = 0;
+	
 }
