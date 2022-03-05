@@ -194,4 +194,15 @@ void Game::load_debug() {
 	TextureAsset::Register(U"debug_spanner_select", U"data/image/debug_test/spanner_select.png");
 	TextureAsset::Load(U"debug_spanner_select");
 
+	//敵の登録
+	//1体目
+	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
+	TextureAsset::Load(U"enemy_アンモナイト");
+	//2体目
+	TextureAsset::Register(U"enemy_サケ", U"data/image/fish/enemy/サケ.png");
+	TextureAsset::Load(U"enemy_サケ");
+	//3体目
+	TextureAsset::Register(U"enemy_マグロ", U"data/image/fish/enemy/マグロ.png");
+	TextureAsset::Load(U"enemy_マグロ");
+
 }

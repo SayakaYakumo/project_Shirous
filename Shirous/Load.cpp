@@ -118,7 +118,7 @@ void Game::stage_0_load() {
 	//縦
 	for (int y = 0; y < csv_ED.rows() - 1; y++) {
 
-		String name = U"no_data";
+	String name = U"no_data";
 		String name2 = U"no_data";
 		int x_pos = 0;
 		int y_pos = 0;
@@ -161,13 +161,6 @@ void Game::stage_0_load() {
 	//ステージ0の登録
 	TextureAsset::Register(U"stage_0_back", U"data/image/back/0.png");
 	TextureAsset::Load(U"stage_0_back");
-
-	//敵の登録
-	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
-	TextureAsset::Load(U"enemy_アンモナイト");
-
-	TextureAsset::Register(U"enemy_サケ", U"data/image/fish/enemy/サケ.png");
-	TextureAsset::Load(U"enemy_サケ");
 
 	
 
