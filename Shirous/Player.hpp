@@ -38,6 +38,8 @@ public:
 
 	void start();
 
+	Vec2 getPos();
+
 	double get_cool_time() { return shot_cool_time; }
 
 	void set_cool_time(double v) { shot_cool_time = v; }

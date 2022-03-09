@@ -5,7 +5,7 @@ void Game::play_load(int stage_number) {
 	back_tile.clear();//データ初期化
 	emergeEnemys.clear();//データ初期化
 
-	gamePlayer.start();
+	gamePlayer->start();
 	gamePlayerBullet.clear();
 	gameEnemys.clear();
 	gameEnemyBullet.clear();

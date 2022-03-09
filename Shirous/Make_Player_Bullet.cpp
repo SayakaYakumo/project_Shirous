@@ -2,7 +2,7 @@
 
 void Game::make_player_bullet() {
 
-	String name = gamePlayer.get_name();
+	String name = gamePlayer->get_name();
 
 	    int x = 0;
 		int y = 0;
@@ -17,8 +17,8 @@ void Game::make_player_bullet() {
 	if (name == U"シラス") {
 
 
-		x = gamePlayer.get_rect().x+ gamePlayer.get_rect().w;
-		y = gamePlayer.get_rect().y+ gamePlayer.get_rect().h/2;
+		x = gamePlayer->get_rect().x+ gamePlayer->get_rect().w;
+		y = gamePlayer->get_rect().y+ gamePlayer->get_rect().h/2;
 		r = 30;
 		speed = 1000;
 		move = 0;
@@ -29,7 +29,7 @@ void Game::make_player_bullet() {
 
 		gamePlayerBullet.push_back(PlayerBullet(x,y,r,speed,move,angle,shape,color,size));
 
-		gamePlayer.set_cool_time(0.2);
+		gamePlayer->set_cool_time(0.2);
 	}
 
 }

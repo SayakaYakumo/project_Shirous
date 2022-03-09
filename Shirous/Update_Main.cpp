@@ -3,7 +3,6 @@
 void Game::update_main() {
 
 	const double deltaTime = Scene::DeltaTime();
-
 	//ステージ時間に追加
 	stage_time += deltaTime;
 
@@ -53,11 +52,11 @@ void Game::update_main() {
 	}
 
     //移動
-	GameMoveUpdate(deltaTime);
+	GameMoveUpdate(deltaTime,gamePlayer,is_intersect);
 
 	
 	//Shot周り
-	GameShotUpdate(deltaTime);
+	GameShotUpdate(deltaTime,gamePlayer);
 
 
 	//攻撃のヒット判定
@@ -79,25 +78,26 @@ void Game::update_main() {
 }
 
 
-void Game::GameMoveUpdate(const double _time)
+void Game::GameMoveUpdate(const double _time,std::shared_ptr<Player>& player,bool& is_intersect)
 {
+
 	//自機の移動と描画
-	gamePlayer.Update(_time);
+	gamePlayer->Update(_time);
 
 	//敵の移動と描画
 	for (auto& enemy : gameEnemys)
 	{
-		enemy.Update(_time);
+		enemy.Update(_time,player,is_intersect);
 	}
 
 	//敵の移動と描画
 	for (auto& item : gameItems)
 	{
-		item.Update(_time, gamePlayer.get_rect().center());
+		item.Update(_time, gamePlayer->get_rect().center());
 	}
 }
 
-void Game::GameShotUpdate(const double _time)
+void Game::GameShotUpdate(const double _time, std::shared_ptr<Player>& player)
 {
 
 	// 敵ショットの発射
@@ -134,7 +134,7 @@ void Game::GameShotUpdate(const double _time)
 
 	//自機ショット生成
 	if (KeyZ.pressed()) {
-		if (gamePlayer.get_cool_time() < 0) {//クールタイム終了
+		if (gamePlayer->get_cool_time() < 0) {//クールタイム終了
 			make_player_bullet();//弾生成
 		}
 	}
@@ -149,7 +149,7 @@ void Game::GameShotUpdate(const double _time)
 		bomb->Start();
 	}
 	//ボム更新
-	bomb->Update(_time, gamePlayer.get_rect().center());
+	bomb->Update(_time, gamePlayer->get_rect().center());
 
 	// 画面外の自機ショットの削除
 	gamePlayerBullet.remove_if([&](PlayerBullet p)
@@ -261,7 +261,7 @@ void Game::GameHitUpdate() {
 	for (size_t i = 0; i < gameEnemys.size(); i++) {
 		for (size_t e = 0; e < gameEnemys[i].get_hit_rect_size(); e++) {
 
-			if (gameEnemys[i].get_hit_rect(e).intersects(gamePlayer.get_rect())){//当たった時
+			if (gameEnemys[i].get_hit_rect(e).intersects(gamePlayer->get_rect())){//当たった時
 
 			}
 		}
@@ -270,7 +270,7 @@ void Game::GameHitUpdate() {
 	//自機と敵弾
 	gameEnemyBullet.remove_if([&](EnemyBullet e)
 		{
-			if (e.get_circle().intersects(gamePlayer.get_rect())) {//敵の弾が当たった
+			if (e.get_circle().intersects(gamePlayer->get_rect())) {//敵の弾が当たった
 
 				return true;
 			}
@@ -330,7 +330,7 @@ void Game::GameItemCatch() {
 
 	//取得チェック
 	for (auto& item : gameItems) {
-		if (gamePlayer.get_rect().intersects(item.get_rect())) {
+		if (gamePlayer->get_rect().intersects(item.get_rect())) {
 			item.alive = false;
 
 			//ここに取得時の処理を書く

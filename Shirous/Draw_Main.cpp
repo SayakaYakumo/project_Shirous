@@ -82,10 +82,10 @@ void Game::draw_enemy() const{
 
 void Game::draw_player() const{
 
-	gamePlayer.Draw();
+	gamePlayer->Draw();
 
 	if (debug_play == 1) {
-		gamePlayer.DrawFrame();
+		gamePlayer->DrawFrame();
 	}
 }
 

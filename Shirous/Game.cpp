@@ -126,6 +126,12 @@ void Game::ini(){
 	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
 	TextureAsset::Load(U"enemy_アンモナイト");
 
+	TextureAsset::Register(U"enemy_マグロ", U"data/image/fish/enemy/マグロ.png");
+	TextureAsset::Load(U"enemy_マグロ");
+
+	TextureAsset::Register(U"enemy_サメ", U"data/image/fish/enemy/サメ.png");
+	TextureAsset::Load(U"enemy_サメ");
+
 	//弾
 	TextureAsset::Register(U"bullet_circle_blue_s", U"data/image/bullet/circle/blue/s.png");
 	TextureAsset::Load(U"bullet_circle_blue_s");

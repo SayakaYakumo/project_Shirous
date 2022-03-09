@@ -204,5 +204,8 @@ void Game::load_debug() {
 	//3体目
 	TextureAsset::Register(U"enemy_マグロ", U"data/image/fish/enemy/マグロ.png");
 	TextureAsset::Load(U"enemy_マグロ");
+	//4体目
+	TextureAsset::Register(U"enemy_サメ", U"data/image/fish/enemy/サメ.png");
+	TextureAsset::Load(U"enemy_サメ");
 
 }

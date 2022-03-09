@@ -48,8 +48,8 @@ void Game::make_enemy_bullet(int e,int kind) {
 
 double Game::get_player_angle(int e) {
 
-	int p_x = gamePlayer.get_rect().x+ gamePlayer.get_rect().w/2;
-	int p_y = gamePlayer.get_rect().y+ gamePlayer.get_rect().h/2;
+	int p_x = gamePlayer->get_rect().x+ gamePlayer->get_rect().w/2;
+	int p_y = gamePlayer->get_rect().y+ gamePlayer->get_rect().h/2;
 
 	int e_x = gameEnemys[e].get_rect().x + gameEnemys[e].get_rect().w/2;
 	int e_y = gameEnemys[e].get_rect().y + gameEnemys[e].get_rect().h / 2;

@@ -12,7 +12,6 @@
 #include "Bomb.hpp"
 #include "Bomb_Laser.hpp"
 #include "Item.hpp"
-
 class Game 
 {
 public:
@@ -21,6 +20,9 @@ public:
 
 
 	//Game
+	/*Game(){
+
+	}*/
 	void ini();
 	void update();
 	void draw();
@@ -97,9 +99,9 @@ public:
 	double get_player_angle(int);
 
 	//ショットの移動関係
-	void GameShotUpdate(const double _time);
+	void GameShotUpdate(const double _time, std::shared_ptr<Player>& player);
 	//移動関係
-	void GameMoveUpdate(const double _time);
+	void GameMoveUpdate(const double _time, std::shared_ptr<Player>& player,bool& is_intersect);
 	
 	//ショットのヒット判定
 	void GameHitUpdate();
@@ -296,10 +298,10 @@ private:
 
 
 	//プレイヤー
-	Player gamePlayer;
-
+	std::shared_ptr<Player> gamePlayer = std::make_shared<Player>();
 	Array<PlayerBullet> gamePlayerBullet;
 
+	bool is_intersect = false;
 	//ボム
 	Bomb bomb_normal;
 	Bomb_Laser laser;

@@ -98,3 +98,7 @@ void Player::start() {
 
 	shot_cool_time = 0;
 }
+
+Vec2 Player::getPos() {
+	return { rect.x,rect.y };
+}

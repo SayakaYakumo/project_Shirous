@@ -1,10 +1,7 @@
 ﻿#include "Enemy.hpp"
 
 
-
-
-
-Enemy::Enemy(String name_,int x,int y,int hp_,int act_,int move_,int shot_pattern_,Array<Rect> rects)
+Enemy::Enemy(String name_,int x,int y,int hp_,int act_,int move_pattern_,int shot_pattern_,Array<Rect> rects)
 {
 	name = name_;
 	rect = Rect(x, y, 100, 100);
@@ -13,7 +10,7 @@ Enemy::Enemy(String name_,int x,int y,int hp_,int act_,int move_,int shot_patter
 
 	hp = hp_;
 	act_pattern = act_;
-	move_pattern = move_;
+	move_pattern = move_pattern_;
 
 	shot_pattern = shot_pattern_;
 
@@ -36,14 +33,14 @@ Enemy::~Enemy()
 
 }
 
-void Enemy::Update(double deltaTime)
+void Enemy::Update(double deltaTime, std::shared_ptr<Player>& player,bool& is_intersect)
 {
 	move_count += deltaTime;
 	shot_count += deltaTime;
 
 	if (act_pattern == -1) {
-		move(deltaTime);//移動
-        shot();//ショット
+		move(deltaTime,player,is_intersect);//移動
+        shot(player);//ショット
 	}
 	else {
 		act(deltaTime);//行動
@@ -143,32 +140,32 @@ void Enemy::act_6(double deltaTime) {
 
 }
 
-void Enemy::move(double deltaTime) {
+void Enemy::move(double deltaTime, std::shared_ptr<Player>& player,bool& is_intersect) {
 
 	
 	
 	switch (move_pattern)
 	{
 	case 0:
-		move_0(deltaTime);
+		move_0(deltaTime,player);
 		break;
 	case 1:
-		move_1(deltaTime);
+		move_1(deltaTime,player);
 		break;
 	case 2:
-		move_2(deltaTime);
+		move_2(deltaTime,player);
 		break;
 	case 3:
-		move_3(deltaTime);
+		move_3(deltaTime, player,is_intersect);
 		break;
 	case 4:
-		move_4(deltaTime);
+		move_4(deltaTime,player);
 		break;
 	case 5:
-		move_5(deltaTime);
+		move_5(deltaTime,player);
 		break;
 	case 6:
-		move_6(deltaTime);
+		move_6(deltaTime,player);
 		break;
 	default:
 		break;
@@ -176,7 +173,7 @@ void Enemy::move(double deltaTime) {
 }
 
 
-void Enemy::move_0(double deltaTime) {//まっすぐ
+void Enemy::move_0(double deltaTime, std::shared_ptr<Player>& player) {//まっすぐ
 	rect.x -= deltaTime * speed;
 
 	//Print<<U"speed::"<< speed;
@@ -184,7 +181,7 @@ void Enemy::move_0(double deltaTime) {//まっすぐ
 	//Print << U"-------";
 }
 
-void Enemy::move_1(double deltaTime) {//sin波
+void Enemy::move_1(double deltaTime, std::shared_ptr<Player>& player) {//sin波
 	rect.x -= deltaTime * speed;
 	count_2 += deltaTime;
 
@@ -192,58 +189,85 @@ void Enemy::move_1(double deltaTime) {//sin波
 	
 }
 
-void Enemy::move_2(double deltaTime) {
+void Enemy::move_2(double deltaTime, std::shared_ptr<Player>& player) {
 	rect.x -= deltaTime * speed;
 }
 
-void Enemy::move_3(double deltaTime) {
+void Enemy::move_3(double deltaTime, std::shared_ptr<Player>& player,bool& is_intersect/*, int32& _enemy_index*/ ){
+	Vec2 dir = Vec2(player->getPos()) - Vec2({rect.x,rect.y});
+	ClearPrint();
+	Print(U"距離 = ", dir);
+	Print(U"当たったか = ", is_intersect);
+	if (dir.length() < 1000 && dir.length() > 50)
+	{
+		rect.x += dir.normalized().x * deltaTime * (speed+ 200);
+		rect.y += dir.normalized().y * deltaTime * (speed + 180);
+	}
+	/*else if (dir.length() <= 50)
+	{
+		if (!is_intersect)
+		{
+			is_intersect = true;
+		}
+	}
+	else if (is_intersect)
+	{
+		rect.x += deltaTime * (speed +80);
+	}
+	else if (is_intersect && dir.length() > 150)
+	{
+		is_intersect = false;
+	}*/
+	else
+	{
+		rect.x -= deltaTime * speed;
+	}
+}
+
+void Enemy::move_4(double deltaTime, std::shared_ptr<Player>& player) {
 	rect.x -= deltaTime * speed;
 }
 
-void Enemy::move_4(double deltaTime) {
+void Enemy::move_5(double deltaTime, std::shared_ptr<Player>& player) {
 	rect.x -= deltaTime * speed;
 }
 
-void Enemy::move_5(double deltaTime) {
-	rect.x -= deltaTime * speed;
-}
-
-void Enemy::move_6(double deltaTime) {
+void Enemy::move_6(double deltaTime, std::shared_ptr<Player>& player) {
 	rect.x -= deltaTime * speed;
 }
 
 
-void Enemy::shot() {
+void Enemy::shot(std::shared_ptr<Player>& player) {
 
 	switch (shot_pattern)
 	{
 	case 0:
-		shot_0();
+		shot_0(player);
 		break;
 	case 1:
-		shot_1();
+		shot_1(player);
 		break;
 	case 2:
-		shot_2();
+		shot_2(player);
 		break;
 	case 3:
-		shot_3();
+		shot_3(player);
 		break;
 	case 4:
-		shot_4();
+		shot_4(player);
 		break;
 	case 5:
-		shot_5();
+		shot_5(player);
 		break;
 	case 6:
-		shot_6();
+		shot_6(player);
 		break;
 	default:
 		break;
 	}
 }
 
-void Enemy::shot_0() {//通常弾
+void Enemy::shot_0(std::shared_ptr<Player>& player) {//通常弾
 
 	if (shot_count > 1) {
 		make_bullet_flag = 0;
@@ -252,7 +276,7 @@ void Enemy::shot_0() {//通常弾
 	}
 }
 
-void Enemy::shot_1() {//三連射
+void Enemy::shot_1(std::shared_ptr<Player>& player) {//三連射
 
 	if (shot_scene==0) {
 
@@ -297,7 +321,7 @@ void Enemy::shot_1() {//三連射
 	
 }
 
-void Enemy::shot_2() {
+void Enemy::shot_2(std::shared_ptr<Player>& player) {
 
 	if (shot_count > 1) {
 		make_bullet_flag = 1;
@@ -306,19 +330,19 @@ void Enemy::shot_2() {
 	}
 }
 
-void Enemy::shot_3() {
+void Enemy::shot_3(std::shared_ptr<Player>& player) {
 
 }
 
-void Enemy::shot_4() {
+void Enemy::shot_4(std::shared_ptr<Player>& player) {
 
 }
 
-void Enemy::shot_5() {
+void Enemy::shot_5(std::shared_ptr<Player>& player) {
 
 }
 
-void Enemy::shot_6() {
+void Enemy::shot_6(std::shared_ptr<Player>& player) {
 
 }
 

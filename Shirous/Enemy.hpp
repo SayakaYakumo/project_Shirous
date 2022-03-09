@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 # include <Siv3D.hpp>
-
+#include"Player.hpp"
 # include"Hit_Rect.hpp"
 # include"Item.hpp"
 #include"Drop_Item.hpp"
@@ -62,7 +62,7 @@ public:
 	Enemy(String,int,int,int,int,int,int,Array<Rect>);//名前、ｘ、ｙ、体力,行動パータン,移動パターン,ショットパターン
 	~Enemy();
 
-	void Update(double deltaTime);
+	void Update(double deltaTime, std::shared_ptr<Player>& player, bool& is_intersect);
 
 	void Draw()const;
 
@@ -78,25 +78,25 @@ public:
 	void act_5(double);
 	void act_6(double);
 
-	void move(double);
+	void move(double, std::shared_ptr<Player>& player,bool&);
 
-	void move_0(double);
-	void move_1(double);
-	void move_2(double);
-	void move_3(double);
-	void move_4(double);
-	void move_5(double);
-	void move_6(double);
+	void move_0(double, std::shared_ptr<Player>& player);
+	void move_1(double, std::shared_ptr<Player>& player);
+	void move_2(double, std::shared_ptr<Player>& player);
+	void move_3(double, std::shared_ptr<Player>& player,bool&);
+	void move_4(double, std::shared_ptr<Player>& player);
+	void move_5(double, std::shared_ptr<Player>& player);
+	void move_6(double, std::shared_ptr<Player>& player);
 
-	void shot();
+	void shot(std::shared_ptr<Player>& player);
 
-	void shot_0();
-	void shot_1();
-	void shot_2();
-	void shot_3();
-	void shot_4();
-	void shot_5();
-	void shot_6();
+	void shot_0(std::shared_ptr<Player>& player);
+	void shot_1(std::shared_ptr<Player>& player);
+	void shot_2(std::shared_ptr<Player>& player);
+	void shot_3(std::shared_ptr<Player>& player);
+	void shot_4(std::shared_ptr<Player>& player);
+	void shot_5(std::shared_ptr<Player>& player);
+	void shot_6(std::shared_ptr<Player>& player);
 
 	int get_bullet_flag() { return make_bullet_flag;}
 
