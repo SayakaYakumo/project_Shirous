@@ -123,7 +123,7 @@ void Fish::opUpdate(int i, RectF player ,double deltaTime)
 	}
 
 	//ショットのクールタイム
-	shot_timer += deltaTime/2;
+	shot_timer += deltaTime/4;
 
 	//移動速度減衰のクールタイム
 	option_slow_timer += deltaTime;
