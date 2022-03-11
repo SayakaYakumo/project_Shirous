@@ -18,9 +18,9 @@ Fish::Fish(RectF r)
 	speed = mySpeed;
 
 }
-Fish::Fish(String n)
+Fish::Fish(String n, RectF r)
 {
-	first();
+	first(r);
 
 	name = n;
 

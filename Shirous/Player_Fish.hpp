@@ -37,7 +37,7 @@ public:
 
 	Fish();
 	Fish(RectF rect);
-	Fish(String name);
+	Fish(String name, RectF rect);
 	~Fish();
 
 	void myUpdate(double deltaTime);
