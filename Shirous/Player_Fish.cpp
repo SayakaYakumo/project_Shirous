@@ -2,29 +2,23 @@
 
 Fish::Fish()
 {
-	first();
-
 	name = U"シラス";
 
-	speed = mySpeed;
+	first();
 
 }
 Fish::Fish(RectF r)
 {
-	first(r);
-
 	name = U"シラス";
 
-	speed = mySpeed;
+	first(name, r);
 
 }
 Fish::Fish(String n, RectF r)
 {
-	first(r);
-
 	name = n;
 
-	speed = mySpeed;
+	first(name, r);
 
 }
 
@@ -91,20 +85,8 @@ void Fish::myUpdate(double deltaTime)
 
 void Fish::opUpdate(int i, RectF player ,double deltaTime)
 {
-	option_pos_timer += deltaTime;
-	if (option_pos_timer > 20*Math::Pi)option_pos_timer -= 20*Math::Pi;
-	Vec2 moved = Vec2(-50*i, 15*i*Math::Sin(option_pos_timer/i));
-
-	option_speed += Vec2(player.x - rect.x + moved.x, player.y - rect.y + moved.y) / 5;
-	if (option_speed.length() > mySpeed)option_speed = option_speed / option_speed.length() * mySpeed;
-	if (option_slow_timer > 0.1)
-	{
-		option_speed /= 2.0;
-		option_slow_timer -= 0.1;
-	}
-
-	rect.x += option_speed.x * deltaTime;
-	rect.y += option_speed.y * deltaTime;
+	//自機の移動
+	opMove(i, player, deltaTime);
 
 	//画面の移動制限
 
@@ -128,6 +110,64 @@ void Fish::opUpdate(int i, RectF player ,double deltaTime)
 	//移動速度減衰のクールタイム
 	option_slow_timer += deltaTime;
 
+}
+
+void Fish::opMove(int i, RectF player, double deltaTime)
+{
+	if (name == U"シラス")
+	{
+		option_pos_timer += deltaTime;
+		if (option_pos_timer > 20 * Math::Pi)option_pos_timer -= 20 * Math::Pi;
+
+		Vec2 moved = Vec2(-50 * i, 15 * i * Math::Sin(option_pos_timer / i));
+		option_speed += Vec2(player.x - rect.x + moved.x, player.y - rect.y + moved.y) / 5;
+		if (option_speed.length() > mySpeed)option_speed = option_speed / option_speed.length() * mySpeed;
+		if (option_slow_timer > 0.1)
+		{
+			option_speed /= 2.0;
+			option_slow_timer -= 0.1;
+		}
+
+		rect.x += option_speed.x * deltaTime;
+		rect.y += option_speed.y * deltaTime;
+	}
+	if (name == U"アンコウ")
+	{
+		option_pos_timer += deltaTime;
+		if (option_pos_timer > 20 * Math::Pi)option_pos_timer -= 20 * Math::Pi;
+
+		Vec2 moved = Vec2(-50 * i, -player.y + 900 + 15 * i * Math::Sin(option_pos_timer / i));
+		option_speed += Vec2(player.x - rect.x + moved.x, player.y - rect.y + moved.y) / 5;
+		if (option_speed.length() > mySpeed)option_speed = option_speed / option_speed.length() * mySpeed;
+		if (option_slow_timer > 0.1)
+		{
+			option_speed /= 2.0;
+			option_slow_timer -= 0.1;
+		}
+
+		double slowness = 1;
+		if (rect.y < 800) slowness = 2;
+		rect.x += option_speed.x * deltaTime / slowness;
+		rect.y += option_speed.y * deltaTime / slowness;
+	}
+	if (name == U"ハリセンボン")
+	{
+		option_pos_timer += deltaTime;
+		if (option_pos_timer > 20 * Math::Pi)option_pos_timer -= 20 * Math::Pi;
+
+		Vec2 moved = Vec2(-50 * i, 15 * i * Math::Sin(option_pos_timer / i));
+		option_speed += Vec2(player.x - rect.x + moved.x, player.y - rect.y + moved.y) / 5;
+		if (option_speed.length() > mySpeed)option_speed = option_speed / option_speed.length() * mySpeed;
+		if (option_slow_timer > 0.1)
+		{
+			option_speed /= 2.0;
+			option_slow_timer -= 0.1;
+		}
+
+		double slowness = 1;
+		rect.x += option_speed.x * deltaTime / slowness;
+		rect.y += option_speed.y * deltaTime / slowness;
+	}
 }
 
 void Fish::Draw()const
@@ -156,8 +196,16 @@ void Fish::first() {
 	rect.w = 160;
 	rect.h = 30;
 
+	speed = mySpeed;
 }
 void Fish::first(RectF r) {
 	rect = r;
 
+	speed = mySpeed;
+
+}
+void Fish::first(String name, RectF r) {
+	rect = r;
+
+	speed = mySpeed;
 }

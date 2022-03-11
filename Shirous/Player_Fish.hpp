@@ -44,12 +44,15 @@ public:
 
 	void opUpdate(int i, RectF player, double deltaTime);
 
+	void opMove(int i, RectF player, double deltaTime);
+
 	void Draw()const;
 
 	void DrawFrame()const;
 
 	void first();
 	void first(RectF rect);
+	void first(String name, RectF rect);
 
 	double get_cool_time() { return shot_cool_time; }
 	double get_shot_timer() { return shot_timer; }
