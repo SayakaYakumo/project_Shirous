@@ -13,6 +13,7 @@ void Game::make_player_bullet(int i) {
 		String shape=U"no_data";
 		String color=U"no_data";
 		String size=U"no_data";
+		bool pen = false;
 
 	if (name == U"シラス") {
 
@@ -65,6 +66,24 @@ void Game::make_player_bullet(int i) {
 
 		angle = ToRadians(-20);
 		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size));
+
+		gamePlayer.reset_shot_timer(i);
+	}
+	if (name == U"タツノオトシゴ") {
+
+		x = gamePlayer.get_rect(i).x;
+		y = gamePlayer.get_rect(i).y;
+
+		r = 30;
+		speed = 700;
+		move = 0;
+		angle = ToRadians(0);
+		shape = U"circle";
+		color = U"red";
+		size = U"s";
+		pen = true;
+
+		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size, pen, 3));
 
 		gamePlayer.reset_shot_timer(i);
 	}

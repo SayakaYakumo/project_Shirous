@@ -2,6 +2,15 @@
 
 Player::Player()
 {
+	/*
+	タツノオトシゴでスタート
+	RectF rect;
+	rect.x = 300;
+	rect.y = 300;
+	rect.w = Texture(U"data/image/fish/player/タツノオトシゴ.png").width() * 0.9;
+	rect.h = Texture(U"data/image/fish/player/タツノオトシゴ.png").height() * 0.9;
+	fish.push_back(Fish(U"タツノオトシゴ", rect));
+	*/
 
 	fish.push_back(Fish());
 	fish.push_back(Fish());
@@ -57,7 +66,7 @@ void Player::Spawn(double deltaTime)
 
 	if (spawn_Timer > 2.0)
 	{
-		fish.push_back(Fish(Sample({ U"シラス", U"アンコウ", U"ハリセンボン"}), fish[0].get_rect()));
+		fish.push_back(Fish(Sample({ U"シラス", U"シラス", U"アンコウ", U"ハリセンボン", U"タツノオトシゴ" }), fish[0].get_rect()));
 		spawn_cool_time = 2.0;
 	}
 	if (spawn_cool_time > 0) spawn_cool_time -= deltaTime;
