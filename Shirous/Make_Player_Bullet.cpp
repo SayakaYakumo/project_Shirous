@@ -87,5 +87,22 @@ void Game::make_player_bullet(int i) {
 
 		gamePlayer.reset_shot_timer(i);
 	}
+	if (name == U"イカ") {
+
+		x = gamePlayer.get_rect(i).x;
+		y = gamePlayer.get_rect(i).y;
+
+		r = 30;
+		speed = 1000;
+		move = 0;
+		angle = ToRadians(0);
+		shape = U"circle";
+		color = U"red";
+		size = U"s";
+
+		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size));
+
+		gamePlayer.reset_shot_timer(i);
+	}
 
 }

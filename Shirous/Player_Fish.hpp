@@ -18,9 +18,11 @@ private:
 
 	Vec2 option_speed = Vec2(0, 0);
 
-	double option_pos_timer = 0.0;
+	double option_pos_timer = 0.0;//群れっぽい上下の振れ幅に使う
 
-	double option_slow_timer = 0.0;
+	double option_slow_timer = 0.0;//移動速度の減衰に使う
+
+	double ika_move_timer = 0.0;//イカの動き（マリオのゲッソー意識）
 
 	//unitより
 	RectF rect;

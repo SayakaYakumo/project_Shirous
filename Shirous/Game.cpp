@@ -127,6 +127,9 @@ void Game::ini(){
 	TextureAsset::Register(U"player_タツノオトシゴ", U"data/image/fish/player/タツノオトシゴ.png");
 	TextureAsset::Load(U"player_タツノオトシゴ");
 
+	TextureAsset::Register(U"player_イカ", U"data/image/fish/player/イカ.png");
+	TextureAsset::Load(U"player_イカ");
+
 	//ステージ１
 	TextureAsset::Register(U"stage_1_back", U"data/image/back/1.png");
 	TextureAsset::Load(U"stage_1_back");
