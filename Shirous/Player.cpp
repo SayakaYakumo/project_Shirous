@@ -57,7 +57,7 @@ void Player::Spawn(double deltaTime)
 
 	if (spawn_Timer > 2.0)
 	{
-		fish.push_back(Fish(fish[0].get_rect()));
+		fish.push_back(Fish(Sample({ U"シラス", U"アンコウ", U"ハリセンボン"}), fish[0].get_rect()));
 		spawn_cool_time = 2.0;
 	}
 	if (spawn_cool_time > 0) spawn_cool_time -= deltaTime;

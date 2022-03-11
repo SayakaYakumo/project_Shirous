@@ -37,12 +37,14 @@ public:
 
 	Fish();
 	Fish(RectF rect);
-	Fish(String name);
+	Fish(String name, RectF rect);
 	~Fish();
 
 	void myUpdate(double deltaTime);
 
 	void opUpdate(int i, RectF player, double deltaTime);
+
+	void opMove(int i, RectF player, double deltaTime);
 
 	void Draw()const;
 
@@ -50,6 +52,7 @@ public:
 
 	void first();
 	void first(RectF rect);
+	void first(String name, RectF rect);
 
 	double get_cool_time() { return shot_cool_time; }
 	double get_shot_timer() { return shot_timer; }

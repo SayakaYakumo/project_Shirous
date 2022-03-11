@@ -118,6 +118,12 @@ void Game::ini(){
 	TextureAsset::Register(U"player_シラス", U"data/image/fish/player/シラス.png");
 	TextureAsset::Load(U"player_シラス");
 
+	TextureAsset::Register(U"player_アンコウ", U"data/image/fish/player/アンコウ.png");
+	TextureAsset::Load(U"player_アンコウ");
+
+	TextureAsset::Register(U"player_ハリセンボン", U"data/image/fish/player/ハリセンボン.png");
+	TextureAsset::Load(U"player_ハリセンボン");
+
 	//ステージ１
 	TextureAsset::Register(U"stage_1_back", U"data/image/back/1.png");
 	TextureAsset::Load(U"stage_1_back");
