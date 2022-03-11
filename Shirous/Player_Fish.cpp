@@ -177,7 +177,7 @@ void Fish::Draw()const
 
 	String texture_name = U"player_" + name;
 
-	TextureAsset(texture_name).draw(rect.x - 10, rect.y - 20);
+	TextureAsset(texture_name).draw(rect.x - rect.w/18, rect.y - rect.h / 18);
 
 
 
@@ -193,8 +193,8 @@ void Fish::DrawFrame()const {
 void Fish::first() {
 	rect.x = 300;
 	rect.y = 300;
-	rect.w = 160;
-	rect.h = 30;
+	rect.w = Texture(U"data/image/fish/player/シラス.png").width() * 0.9;
+	rect.h = Texture(U"data/image/fish/player/シラス.png").height() * 0.9;
 
 	speed = mySpeed;
 }
@@ -205,7 +205,12 @@ void Fish::first(RectF r) {
 
 }
 void Fish::first(String name, RectF r) {
-	rect = r;
+	String texture_name = U"player_" + name;
+
+	rect.x = r.x;
+	rect.y = r.y;
+	rect.w = TextureAsset(texture_name).width()*0.9;
+	rect.h = TextureAsset(texture_name).height()*0.9;
 
 	speed = mySpeed;
 }
