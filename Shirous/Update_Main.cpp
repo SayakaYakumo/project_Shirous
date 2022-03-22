@@ -269,7 +269,7 @@ void Game::GameHitUpdate() {
 		for (size_t e = 0; e < gameEnemys[i].get_hit_rect_size(); e++) {
 
 			if (gameEnemys[i].get_hit_rect(e).intersects(gamePlayer.get_rect())){//当たった時
-
+				gamePlayer.damage();
 			}
 		}
 	}
@@ -278,7 +278,7 @@ void Game::GameHitUpdate() {
 	gameEnemyBullet.remove_if([&](EnemyBullet e)
 		{
 			if (e.get_circle().intersects(gamePlayer.get_rect())) {//敵の弾が当たった
-
+				gamePlayer.damage();
 				return true;
 			}
 			else {
@@ -341,6 +341,25 @@ void Game::GameItemCatch() {
 			item.alive = false;
 
 			//ここに取得時の処理を書く
+			switch (item.get_type())
+			{
+			case ItemType::Bomb_I:
+				bomb->chatch_bomb();
+				break;
+			case ItemType::Life_I:
+				gamePlayer.add_life();
+				break;
+			case ItemType::Power_I:
+				break;
+			case ItemType::Feed_I:
+				gamePlayer.add_feed();
+				break;
+			case ItemType::Score_I:
+				score += 1000;
+				break;
+			default:
+				break;
+			}
 
 		}
 	}

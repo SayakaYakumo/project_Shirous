@@ -11,6 +11,7 @@ private:
 	Array<Fish> fish;
 
 	int HP = 3;//３回被弾で自機がやられてオプションと交代
+	int feed = 0;
 	double spawn_Timer = 0.0;
 	double spawn_cool_time = 1.0;
 
@@ -43,4 +44,9 @@ public:
 	//void set_cool_time(int i, double v) { fish[i].set_cool_time(v); }
 	void reset_shot_timer(int i) { fish[i].reset_shot_timer(); }
 
+	void add_life() { HP++; if (HP > 3) HP = 3; }
+	int get_hp() const { return HP; }
+	void add_feed() { feed++; if (feed > 100) feed = 100; }
+	int get_feed() const { return feed; }
+	void damage();
 };

@@ -67,3 +67,10 @@ void Player::Spawn(double deltaTime)
 void Player::start() {
 	
 }
+
+void Player::damage() {
+	HP--;
+	if (HP <= 0) {
+		//オプションとチェンジする処理をここに
+	}
+}

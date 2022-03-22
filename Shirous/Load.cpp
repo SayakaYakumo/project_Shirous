@@ -176,14 +176,20 @@ void Game::stage_0_load() {
 	TextureAsset::Load(U"back_tile");
 	
 	//Item
-	TextureAsset::Register(U"item_赤", U"data/image/item/赤.png");
-	TextureAsset::Load(U"item_赤");
+	TextureAsset::Register(U"item_Bomb", U"data/image/item/Bomb.png");//blfsp
+	TextureAsset::Load(U"item_Bomb");
 
-	TextureAsset::Register(U"item_青", U"data/image/item/青.png");
-	TextureAsset::Load(U"item_青");
+	TextureAsset::Register(U"item_Life", U"data/image/item/Life.png");
+	TextureAsset::Load(U"item_Life");
 
-	TextureAsset::Register(U"item_緑", U"data/image/item/緑.png");
-	TextureAsset::Load(U"item_緑");
+	TextureAsset::Register(U"item_Feed", U"data/image/item/Feed.png");
+	TextureAsset::Load(U"item_Feed");
+
+	TextureAsset::Register(U"item_Score", U"data/image/item/Score.png");
+	TextureAsset::Load(U"item_Score");
+
+	TextureAsset::Register(U"item_Power", U"data/image/item/Power.png");
+	TextureAsset::Load(U"item_Power");
 
 }
 
