@@ -117,12 +117,16 @@ void Game::draw_item()const {
 
 void Game::draw_ui()const {
 
-	FontAsset(U"ScoreFont")(U"SCORE  "+Format(score)).draw(100, 10);
-	FontAsset(U"ScoreFont")(U"BOMB  " + Format(bomb->getBombNum())).draw(100, 80);
-	FontAsset(U"ScoreFont")(U"LIFE  " + Format(gamePlayer.get_hp())).draw(1920/4 + 100, 80);
+	FontAsset(U"ScoreFont")(U"SCORE : {:0>12}"_fmt(score)).draw(100, 10);
+	FontAsset(U"ScoreFont")(U"BOMB  : {:0>2}"_fmt(bomb->getBombNum())).draw(100, 80);
+	FontAsset(U"ScoreFont")(U"LIFE  : {}"_fmt(gamePlayer.get_hp())).draw(1920/4 + 100, 80);
 
+
+	double feed = gamePlayer.get_feed();
+	double useFeed = gamePlayer.get_use_feed();
 	RectF(1920 / 2 + 100, 90, 720, 60).draw(Palette::Gray);
-	RectF(1920 / 2 + 100, 90, 720.0 * ((double)gamePlayer.get_feed() / 100.0), 60).draw(Palette::Lightgreen);
+	RectF(1920 / 2 + 100, 90, 720.0 * (feed / 100.0), 60).draw(Palette::Lightgreen);
+	RectF(1920 / 2 + 100 + 720.0 * ((feed - useFeed) / 100.0), 90, 720.0 * (useFeed / 100.0), 60).draw(Palette::Orangered);
 
-	FontAsset(U"ScoreFont")(U"HISCORE  " + Format(highScore)).draw((1920/2)+100, 10);
+	FontAsset(U"ScoreFont")(U"HISCORE : {:0>12}"_fmt(highScore)).draw((1920/2)+100, 10);
 }

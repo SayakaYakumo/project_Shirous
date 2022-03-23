@@ -350,6 +350,7 @@ void Game::GameItemCatch() {
 				gamePlayer.add_life();
 				break;
 			case ItemType::Power_I:
+				gamePlayer.add_power_up();
 				break;
 			case ItemType::Feed_I:
 				gamePlayer.add_feed();
