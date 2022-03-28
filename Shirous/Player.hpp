@@ -18,6 +18,13 @@ private:
 	double spawn_Timer = 0.0;
 	double spawn_cool_time = 1.0;
 
+	int effect_count = 0;
+
+	Effect effect;
+
+	double damage_timer = 0.0;
+	double damage_cool_time = 3.0;
+
 public:
 
 	Player();
