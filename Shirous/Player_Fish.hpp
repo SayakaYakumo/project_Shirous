@@ -46,7 +46,7 @@ public:
 
 	void opMove(int i, RectF player, double deltaTime);
 
-	void Draw()const;
+	void Draw(double alpha = 1.0)const;
 
 	void DrawFrame()const;
 

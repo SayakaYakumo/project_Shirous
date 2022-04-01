@@ -1,10 +1,6 @@
 ﻿#pragma once
 #include<Siv3D.hpp>
 
-#define item_high_speed 720
-#define item_middle_speed 540
-#define item_low_speed 240
-
 //順に、ボム、ライフ、オプション育成、スコア、パワーアップ。
 //仮のものです
 enum ItemType { Bomb_I, Life_I, Feed_I, Score_I, Power_I };
@@ -33,6 +29,9 @@ private:
 	Vec2 target;
 	double speed;
 
+	static int item_high_speed;
+	static int item_middle_speed;
+	static int item_low_speed;
 	
 
 	//蒐集ライン

@@ -367,6 +367,7 @@
     <ClInclude Include="Item.hpp" />
     <ClInclude Include="Bomb_Laser.hpp" />
     <ClInclude Include="Menu2.hpp" />
+    <ClInclude Include="PlayerEffect.hpp" />
     <ClInclude Include="Player_Fish.hpp" />
     <ClInclude Include="Save_Data.hpp" />
     <ClInclude Include="Player.hpp" />

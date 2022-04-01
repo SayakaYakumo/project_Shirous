@@ -170,14 +170,14 @@ void Fish::opMove(int i, RectF player, double deltaTime)
 	}
 }
 
-void Fish::Draw()const
+void Fish::Draw(double alpha)const
 {
 	// 自機の描画
 	//texture.mirrored().resized(80).drawAt(pos);
 
 	String texture_name = U"player_" + name;
 
-	TextureAsset(texture_name).draw(rect.x - rect.w/18, rect.y - rect.h / 18);
+	TextureAsset(texture_name).draw(rect.x - rect.w/18, rect.y - rect.h / 18, ColorF(1.0, alpha));
 
 
 
