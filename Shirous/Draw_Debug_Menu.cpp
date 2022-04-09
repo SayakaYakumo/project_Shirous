@@ -129,11 +129,11 @@ void Game::draw_edit_enemy() {
 		TextureAsset(U"debug_menu_rect_frame_mini").draw(30,1080-180-30);
 		FontAsset(U"DebugMenuFont7")(U"Back").draw(30+30, 1080-180 - 30+50);
 		
-		TextureAsset(U"debug_menu_rect_frame_mini").draw(30+200+50, 1080 - 180 - 30);
-		FontAsset(U"DebugMenuFont8")(U"＋").draw(30 + 30+200+50, 1080 - 180 - 30 + 0);
+		//TextureAsset(U"debug_menu_rect_frame_mini").draw(30+200+50, 1080 - 180 - 30);
+		//FontAsset(U"DebugMenuFont8")(U"＋").draw(30 + 30+200+50, 1080 - 180 - 30 + 0);
 
-		TextureAsset(U"debug_menu_rect_frame_mini").draw(30+400+100, 1080 - 180 - 30);
-		FontAsset(U"DebugMenuFont8")(U"－").draw(30 + 30+400+100, 1080 - 180 - 30 + 0);
+		//TextureAsset(U"debug_menu_rect_frame_mini").draw(30+400+100, 1080 - 180 - 30);
+		//FontAsset(U"DebugMenuFont8")(U"－").draw(30 + 30+400+100, 1080 - 180 - 30 + 0);
 
 		if (edit_enemy_cur_cover != -1) {
 			int x = edit_enemy_cur_cover;
@@ -184,7 +184,7 @@ void Game::draw_edit_enemy() {
 
 				//Print << U"t_name::" << texture_name;
 
-				TextureAsset(U"enemy_サケ").draw(100, 200);
+				
 
 			}
 		

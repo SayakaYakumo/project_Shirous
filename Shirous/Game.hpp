@@ -79,7 +79,7 @@ public:
 	
 	void update_edit_input_number();
 	void draw_edit_input_number();
-
+	void set_input_number(int);
 
 	//Edit
 	void update_edit();
@@ -199,7 +199,9 @@ private:
 
 	int debug_2_cur_cover = -1;
 
-
+	//定数
+	const int back_tile_wide = 500;
+	const int back_tile_high = 16;
 	
 	//エディタ
 	int edit_scene = 0;
@@ -209,6 +211,11 @@ private:
 	int edit_select_item = 0;
 	int edit_select_tile_kind = 0;
 	int edit_information = 0;
+
+	int edit_select_tile_scroll = 0;
+	int edit_select_tile_display = 0;
+	int edit_wide = 0;
+	int edit_information_input = 0;
 
 	int edit_bukket = 0;
 	int edit_bukket_start_x = 0;
@@ -266,7 +273,7 @@ private:
 	//セーブデータ
 	Save_Data save_data;
 
-	Stage_Data stage_data;
+	Array<Stage_Data> stage_data;
 
 	//ステージスクロールスピード
 	double stage_speed = 200;

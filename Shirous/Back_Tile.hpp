@@ -30,9 +30,13 @@ public:
 
 			TextureAsset(U"back_tile")(display_x * 120, display_y * 120, 120, 120).draw(x * 120 - scroll, y * 120,ColorF(1.0,0.7));
 		}
-
+		
+		
 	}
 
+	void draw_posi(int scroll) {
+		FontAsset(U"mini")(Format(x) + U"," + Format(y)).draw(x * 120 - scroll + 42, y * 120 + 50);
+	}
 	
 
 	int get_x() { return x; }
