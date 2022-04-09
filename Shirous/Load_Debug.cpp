@@ -34,6 +34,9 @@ void Game::load_debug() {
 	FontAsset::Register(U"DebugMenuFont8", FontMethod::MSDF, 120, Typeface::Bold);
 	FontAsset::Load(U"DebugMenuFont8");
 
+	FontAsset::Register(U"mini", FontMethod::MSDF, 20, Typeface::Light);
+	FontAsset::Load(U"mini");
+
 	//メニュー用
 	TextureAsset::Register(U"debug_menu_rect_frame", U"data/image/debug_test/menu_rect_frame.png");
 	TextureAsset::Load(U"debug_menu_rect_frame");
@@ -194,15 +197,6 @@ void Game::load_debug() {
 	TextureAsset::Register(U"debug_spanner_select", U"data/image/debug_test/spanner_select.png");
 	TextureAsset::Load(U"debug_spanner_select");
 
-	//敵の登録
-	//1体目
-	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
-	TextureAsset::Load(U"enemy_アンモナイト");
-	//2体目
-	TextureAsset::Register(U"enemy_サケ", U"data/image/fish/enemy/サケ.png");
-	TextureAsset::Load(U"enemy_サケ");
-	//3体目
-	TextureAsset::Register(U"enemy_マグロ", U"data/image/fish/enemy/マグロ.png");
-	TextureAsset::Load(U"enemy_マグロ");
+
 
 }

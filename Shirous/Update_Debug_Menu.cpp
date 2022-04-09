@@ -79,7 +79,7 @@ void Game::update_debug_menu_stage_select() {
 		if (select_box_number_y == 0 || select_box_number_y == 1) {//デバッグステージメニューへ
 
 			debug_stage_number = select_box_number_y * 5 + select_box_number_x;
-
+			stage_number = select_box_number_y * 5 + select_box_number_x;
 
 			debug_menu_scene = 1;
 
@@ -459,7 +459,7 @@ void Game::update_edit_enemy() {
 
 					if (not writer) // もしオープンに失敗したら
 					{
-						throw Error{ U"Failed to open `tutorial4.bin`" };
+						throw Error{ U"Failed to open `enemy_data.bin`" };
 					}
 
 					// シリアライズに対応したデータを記録
