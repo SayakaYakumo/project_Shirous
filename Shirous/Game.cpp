@@ -137,6 +137,14 @@ void Game::ini(){
 	//敵
 	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
 	TextureAsset::Load(U"enemy_アンモナイト");
+	TextureAsset::Register(U"enemy_サケ", U"data/image/fish/enemy/サケ.png");
+	TextureAsset::Load(U"enemy_サケ");
+	TextureAsset::Register(U"enemy_マグロ", U"data/image/fish/enemy/マグロ.png");
+	TextureAsset::Load(U"enemy_マグロ");
+	TextureAsset::Register(U"enemy_三葉虫", U"data/image/fish/enemy/三葉虫.png");
+	TextureAsset::Load(U"enemy_三葉虫");
+	TextureAsset::Register(U"enemy_シーラカンス", U"data/image/fish/enemy/シーラカンス.png");
+	TextureAsset::Load(U"enemy_シーラカンス");
 
 
 
