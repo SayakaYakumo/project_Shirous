@@ -1,6 +1,10 @@
 ﻿#include "stdafx.h"
 #include "Item.hpp"
 
+int Item::item_high_speed = 720;
+int Item::item_middle_speed = 540;
+int Item::item_low_speed = 240;
+
 Item::Item(Vec2 v, ItemType t)
 	:area(RectF(v, 50)), type(t), mode(Mode_Chase), speed(item_high_speed)
 {
@@ -10,16 +14,19 @@ Item::Item(Vec2 v, ItemType t)
 	switch (t)
 	{
 	case Bomb_I:
-		name = U"赤";
+		name = U"Bomb";
 		break;
 	case Life_I:
-		name = U"青";
+		name = U"Life";
 		break;
 	case Feed_I:
+		name = U"Feed";
 		break;
 	case Score_I:
+		name = U"Score";
 		break;
 	case Power_I:
+		name = U"Power";
 		break;
 	default:
 		break;

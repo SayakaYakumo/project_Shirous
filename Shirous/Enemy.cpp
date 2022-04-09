@@ -26,8 +26,11 @@ Enemy::Enemy(String name_,int x,int y,int hp_,int act_,int move_,int shot_patter
 		hit_rect.push_back(Hit_Rect(rects[i]));
 	}
 	//アイテムを出すテストをしたいので入れてるやつ
-	drop_item.push_back(Drop_Item(Bomb_I, 3));
-	drop_item.push_back(Drop_Item(Life_I, 2));
+	drop_item.push_back(Drop_Item(Bomb_I, 1));
+	drop_item.push_back(Drop_Item(Life_I, 1));
+	drop_item.push_back(Drop_Item(Score_I, 3));
+	drop_item.push_back(Drop_Item(Feed_I, 10));
+	drop_item.push_back(Drop_Item(Power_I, 2));
 }
 
 Enemy::~Enemy()
