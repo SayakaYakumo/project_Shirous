@@ -168,6 +168,50 @@ void Fish::opMove(int i, RectF player, double deltaTime)
 		rect.x += option_speed.x * deltaTime / slowness;
 		rect.y += option_speed.y * deltaTime / slowness;
 	}
+	if (name == U"タツノオトシゴ")
+	{
+		option_pos_timer += deltaTime;
+		if (option_pos_timer > 20 * Math::Pi)option_pos_timer -= 20 * Math::Pi;
+
+		Vec2 moved = Vec2(-50 * i, 15 * i * Math::Sin(option_pos_timer / i));
+		option_speed += Vec2(player.x - rect.x + moved.x, player.y - rect.y + moved.y) / 5;
+		if (option_speed.length() > mySpeed)option_speed = option_speed / option_speed.length() * mySpeed;
+		if (option_slow_timer > 0.1)
+		{
+			option_speed /= 2.0;
+			option_slow_timer -= 0.1;
+		}
+
+		rect.x += option_speed.x * deltaTime;
+		rect.y += option_speed.y * deltaTime;
+	}
+	if (name == U"イカ")
+	{
+		
+		option_pos_timer += deltaTime;
+		ika_move_timer += deltaTime;
+		if (option_pos_timer > 20 * Math::Pi)option_pos_timer -= 20 * Math::Pi;
+
+		Vec2 moved = Vec2(-50 * i, 15 * i * Math::Sin(option_pos_timer / i));
+		if (0.1 < ika_move_timer && ika_move_timer <= 2.1)
+		{//50/s左、10/s下に流れる
+			option_speed.x += (-50 - option_speed.x) / 5;
+			option_speed.y += (-10 - option_speed.y) / 5;
+			if (option_slow_timer > 0.4)
+			{
+				option_speed /= 1.3;
+				option_slow_timer -= 0.4;
+			}
+		}
+		else if(2.1 < ika_move_timer)
+		{
+			option_speed = Vec2(player.x - rect.x + moved.x, player.y - rect.y + moved.y) * 3;
+			ika_move_timer = 0.0;
+		}
+
+		rect.x += option_speed.x * deltaTime;
+		rect.y += option_speed.y * deltaTime;
+	}
 }
 
 void Fish::Draw(double alpha)const

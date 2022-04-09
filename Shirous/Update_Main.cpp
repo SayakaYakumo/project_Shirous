@@ -213,14 +213,17 @@ void Game::GameHitUpdate() {
 
 					Rect e_rect = gameEnemys[i].get_hit_rect(s);
 
-					if (b_check[j] == 0) {//どこにもあたっていない
+					if (b_check[j] == 0) {//どこにもあたっていない、または貫通弾
 
 						Circle b_circle = gamePlayerBullet[j].get_circle();
 
 						if (b_circle.intersects(e_rect)) {//当たった
-
-							gameEnemys[i].damage(gamePlayerBullet[j].get_power());
-							b_check[j] = 1;
+							if (gamePlayerBullet[j].get_pen()) gameEnemys[i].damage(gamePlayerBullet[j].get_power() * Scene::DeltaTime());
+							else
+							{
+								gameEnemys[i].damage(gamePlayerBullet[j].get_power());
+								b_check[j] = 1;
+							}
 						}
 
 					}
@@ -237,9 +240,7 @@ void Game::GameHitUpdate() {
 
 		if (b_check[i] == 1) {
 
-			
 			gamePlayerBullet.remove_at(i - b_adjust);
-
 			b_adjust++;
 
 		}

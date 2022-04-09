@@ -33,7 +33,7 @@ private:
 	double move_count = 0;
 
 
-	int hp = 3;
+	double hp = 3;
 	int act_pattern = 0;
 	int move_pattern = 0;
 	int shot_pattern = 0;
@@ -49,9 +49,9 @@ private:
 
 	Texture texture;
 
-	int count = 0;
+	int count = 0;//おそらく現在未使用
 
-	double count_2 = 0;
+	double count_2 = 0;//move_1()のsin波移動に使用
 
 	String name;
 
@@ -107,8 +107,10 @@ public:
 	Vec2 get_make_bullet_point() {return make_bullet_point; }
 
 	void damage(int v) { hp -= v; }
+	void damage(double v) { hp -= v; }
 
-	int get_hp() { return hp; }
+
+	int get_hp() { return (int)hp; }
 
 	int get_hit_rect_size() { return (int)hit_rect.size(); }
 

@@ -191,12 +191,21 @@ void Enemy::move_1(double deltaTime) {//sin波
 	rect.x -= deltaTime * speed;
 	count_2 += deltaTime;
 
-	rect.y += sin(3.14 * 2 / 120 * (count_2*60)) * 8;
+	rect.y += sin(3.14 * 2 / 120 * (count_2*20)) * 5;
 	
 }
 
-void Enemy::move_2(double deltaTime) {
-	rect.x -= deltaTime * speed;
+void Enemy::move_2(double deltaTime) {//真ん中あたりまで来て、しばらくするともどっていく
+	count += deltaTime;
+	if (count < 10)
+	{
+		rect.x -= deltaTime * speed / (1 + count);
+	}
+	if (count > 10)
+	{
+		rect.x += deltaTime * speed;
+	}
+	
 }
 
 void Enemy::move_3(double deltaTime) {

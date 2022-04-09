@@ -197,6 +197,4 @@ void Game::load_debug() {
 	TextureAsset::Register(U"debug_spanner_select", U"data/image/debug_test/spanner_select.png");
 	TextureAsset::Load(U"debug_spanner_select");
 
-
-
 }
