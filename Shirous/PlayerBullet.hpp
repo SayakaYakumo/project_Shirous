@@ -26,7 +26,7 @@ public:
 
 	
 
-	PlayerBullet(int x,int y,int r,int speed_,int move_,double angle_,String shape_,String color_,String size_) {
+	PlayerBullet(int x,int y,int r,int speed_,int move_,double angle_,String shape_,String color_,String size_, int pow_ = 1) {
 		circle = Circle(x, y, r);
 		speed = speed_;
 		move = move_;
@@ -46,6 +46,7 @@ public:
 		power = power_;
 		color = color_;
 		size = size_;
+		power = pow_;
 	}
 	~PlayerBullet() {
 

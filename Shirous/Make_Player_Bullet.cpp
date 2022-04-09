@@ -15,6 +15,9 @@ void Game::make_player_bullet(int i) {
 		String size=U"no_data";
 		bool pen = false;
 
+		int power = 1;
+		if (i == 0) power = gamePlayer.get_power();
+
 	if (name == U"シラス") {
 
 		x = gamePlayer.get_rect(i).x;
@@ -28,7 +31,7 @@ void Game::make_player_bullet(int i) {
 		color = U"red";
 		size = U"s";
 
-		gamePlayerBullet.push_back(PlayerBullet(x,y,r,speed,move,angle,shape,color,size));
+		gamePlayerBullet.push_back(PlayerBullet(x,y,r,speed,move,angle,shape,color,size, power));
 
 		gamePlayer.reset_shot_timer(i);
 	}
@@ -45,7 +48,7 @@ void Game::make_player_bullet(int i) {
 		color = U"red";
 		size = U"s";
 
-		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size));
+		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size, power));
 
 		gamePlayer.reset_shot_timer(i);
 	}
@@ -62,10 +65,10 @@ void Game::make_player_bullet(int i) {
 		size = U"s";
 
 		angle = ToRadians(20);
-		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size));
+		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size, power));
 
 		angle = ToRadians(-20);
-		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size));
+		gamePlayerBullet.push_back(PlayerBullet(x, y, r, speed, move, angle, shape, color, size, power));
 
 		gamePlayer.reset_shot_timer(i);
 	}

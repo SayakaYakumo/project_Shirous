@@ -1070,5 +1070,8 @@
     <ClInclude Include="Stage_Data.hpp">
       <Filter>Source Files\Data\Stage_Data</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerEffect.hpp">
+      <Filter>Source Files\Object\Player</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

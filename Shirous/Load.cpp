@@ -55,32 +55,22 @@ void Game::play_load(int stage_number) {
 
 void Game::stage_0_load() {
 
-	//ステージデータ
-	Deserializer<BinaryReader> Sreader{ U"data/stage/0/Stage_Data.bin" };
+	
 
-	if (not Sreader)
-	{
-		throw Error{ U"Failed to open `tutorial4.bin`" };
-	}
-
-	Sreader(stage_data);
-
-	stage_speed = stage_data.get_speed();
-	stage_wide = stage_data.get_wide();
+	stage_speed = stage_data[0].get_speed();
+	stage_wide = stage_data[0].get_wide();
 	/**/
 	
 	
-
-
-	/*
+/*
+	
+	
 	for (int x = 0; x < 16; x++) {
 		for (int y = 0; y < 9; y++) {
 			back_tile.push_back(Back_Tile(x, y, 1));
 		}
 	}
-
-
-	
+*/
 
 	//背景データ
 
@@ -89,11 +79,12 @@ void Game::stage_0_load() {
 
 	if (not Breader)
 	{
-		throw Error{ U"Failed to open `tutorial4.bin`" };
+		throw Error{ U"Failed to open `backtile.bin`" };
 	}
 
-	Breader(back_tile);*/
+	Breader(back_tile);
 
+/**/
     //敵生成データ
 
 	/*
@@ -106,6 +97,7 @@ void Game::stage_0_load() {
 
 	EEreader(emergeEnemys);
 */
+	
 
 
 //Enemyデータ
@@ -176,14 +168,20 @@ void Game::stage_0_load() {
 	TextureAsset::Load(U"back_tile");
 	
 	//Item
-	TextureAsset::Register(U"item_赤", U"data/image/item/赤.png");
-	TextureAsset::Load(U"item_赤");
+	TextureAsset::Register(U"item_Bomb", U"data/image/item/Bomb.png");//blfsp
+	TextureAsset::Load(U"item_Bomb");
 
-	TextureAsset::Register(U"item_青", U"data/image/item/青.png");
-	TextureAsset::Load(U"item_青");
+	TextureAsset::Register(U"item_Life", U"data/image/item/Life.png");
+	TextureAsset::Load(U"item_Life");
 
-	TextureAsset::Register(U"item_緑", U"data/image/item/緑.png");
-	TextureAsset::Load(U"item_緑");
+	TextureAsset::Register(U"item_Feed", U"data/image/item/Feed.png");
+	TextureAsset::Load(U"item_Feed");
+
+	TextureAsset::Register(U"item_Score", U"data/image/item/Score.png");
+	TextureAsset::Load(U"item_Score");
+
+	TextureAsset::Register(U"item_Power", U"data/image/item/Power.png");
+	TextureAsset::Load(U"item_Power");
 
 }
 

@@ -181,18 +181,26 @@ void Game::ini(){
 
 	if (not Ereader)
 	{
-		throw Error{ U"Failed to open `tutorial4.bin`" };
+		throw Error{ U"Failed to open `enemy_data.bin`" };
 	}
 
 	Ereader(enemy_data);
-/**/
 
 
-	/*
-	stage_data.set_wide(16);
-	stage_data.set_speed(200);
+	//ステージデータ
+/*
 
-	Serializer<BinaryWriter> STwriter{ U"data/stage/0/Stage_Data.bin" };
+
+	for (int i = 0; i < 9; i++) {
+		stage_data.push_back(Stage_Data());
+		stage_data[i].set_wide(16);
+		stage_data[i].set_speed(200);
+	}
+
+	
+
+
+	Serializer<BinaryWriter> STwriter{ U"data/stage/Stage_Data.bin" };
 
 	if (not STwriter)
 	{
@@ -201,6 +209,14 @@ void Game::ini(){
 
 	STwriter(stage_data);*/
 
+	Deserializer<BinaryReader> SDreader{ U"data/stage/Stage_Data.bin" };
+
+	if (not SDreader)
+	{
+		throw Error{ U"Failed to open `stage_data.bin`" };
+	}
+
+	SDreader(stage_data);
 
 /*
 	//セーブデータ書き込み
