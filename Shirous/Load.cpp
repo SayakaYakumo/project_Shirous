@@ -55,22 +55,32 @@ void Game::play_load(int stage_number) {
 
 void Game::stage_0_load() {
 
-	
+	//ステージデータ
+	Deserializer<BinaryReader> Sreader{ U"data/stage/0/Stage_Data.bin" };
 
-	stage_speed = stage_data[0].get_speed();
-	stage_wide = stage_data[0].get_wide();
+	if (not Sreader)
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	Sreader(stage_data);
+
+	stage_speed = stage_data.get_speed();
+	stage_wide = stage_data.get_wide();
 	/**/
 	
 	
-/*
-	
-	
+
+
+	/*
 	for (int x = 0; x < 16; x++) {
 		for (int y = 0; y < 9; y++) {
 			back_tile.push_back(Back_Tile(x, y, 1));
 		}
 	}
-*/
+
+
+	
 
 	//背景データ
 
@@ -79,12 +89,11 @@ void Game::stage_0_load() {
 
 	if (not Breader)
 	{
-		throw Error{ U"Failed to open `backtile.bin`" };
+		throw Error{ U"Failed to open `tutorial4.bin`" };
 	}
 
-	Breader(back_tile);
+	Breader(back_tile);*/
 
-/**/
     //敵生成データ
 
 	/*
@@ -97,7 +106,6 @@ void Game::stage_0_load() {
 
 	EEreader(emergeEnemys);
 */
-	
 
 
 //Enemyデータ
