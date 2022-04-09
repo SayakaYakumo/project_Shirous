@@ -22,7 +22,15 @@ void Game::update_debug_menu() {
 	default:
 		break;
 	}
-	
+
+	if (KeyZ.down()) {//debug用ショートカット
+		debug_stage_number = 0;
+		stage_number = 0;
+		debug_menu_scene = 1;
+		change_scene(2);
+		play_se(U"decide");
+	}
+
 }
 
 void Game::update_debug_menu_stage_select() {

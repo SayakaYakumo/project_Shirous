@@ -116,6 +116,7 @@
   <ItemGroup>
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Change_Scene.cpp" />
+    <ClCompile Include="Control_Stage.cpp" />
     <ClCompile Include="Draw_Debug_Menu.cpp" />
     <ClCompile Include="Draw_Edit.cpp" />
     <ClCompile Include="Draw_GameOver.cpp" />
@@ -137,6 +138,8 @@
     <ClCompile Include="Make_Enemy_Bullet.cpp" />
     <ClCompile Include="Make_Player_Bullet.cpp" />
     <ClCompile Include="Menu2.cpp" />
+    <ClCompile Include="music.cpp" />
+    <ClCompile Include="My_Effect.cpp" />
     <ClCompile Include="Player_Fish.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerBullet.cpp" />
@@ -367,6 +370,7 @@
     <ClInclude Include="Item.hpp" />
     <ClInclude Include="Bomb_Laser.hpp" />
     <ClInclude Include="Menu2.hpp" />
+    <ClInclude Include="My_Effect.hpp" />
     <ClInclude Include="PlayerEffect.hpp" />
     <ClInclude Include="Player_Fish.hpp" />
     <ClInclude Include="Save_Data.hpp" />

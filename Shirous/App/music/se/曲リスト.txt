@@ -1,0 +1,11 @@
+効果音ラボ
+
+player_shot　
+break_enemy
+get_item
+bomb
+
+クラゲ工匠
+
+make_child 
+death

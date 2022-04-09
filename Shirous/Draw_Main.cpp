@@ -14,7 +14,11 @@ void Game::draw_main() const {
 
 	effect.update();//エフェクト描画
 
+	draw_my_effect();//マイエフェクト描画
+
 	draw_ui();//UI描画
+
+	
 }
 
 void Game::draw_main_back() const {
@@ -117,10 +121,21 @@ void Game::draw_item()const {
 
 void Game::draw_ui()const {
 
-	FontAsset(U"ScoreFont")(U"SCORE : {:0>12}"_fmt(score)).draw(100, 10);
-	FontAsset(U"ScoreFont")(U"BOMB  : {:0>2}"_fmt(bomb->getBombNum())).draw(100, 80);
-	FontAsset(U"ScoreFont")(U"LIFE  : {}"_fmt(gamePlayer.get_hp())).draw(1920/4 + 100, 80);
+	double _fade = 1;
 
+	if (gamePlayer.get_rect().y < 400) {
+		_fade = 1 * (abs(200 - gamePlayer.get_rect().y) / double(200));
+
+		if (gamePlayer.get_rect().y <= 200) {
+			_fade = 0;
+		}
+	}
+
+
+	FontAsset(U"ScoreFont")(U"SCORE : {:0>12}"_fmt(score)).draw(100, 10,ColorF(1.0,_fade));
+	FontAsset(U"ScoreFont")(U"BOMB  : {:0>2}"_fmt(bomb->getBombNum())).draw(100, 80, ColorF(1.0, _fade));
+	FontAsset(U"ScoreFont")(U"LIFE  : {}"_fmt(gamePlayer.get_hp())).draw(1920/4 + 100, 80, ColorF(1.0, _fade));
+	FontAsset(U"ScoreFont")(U"HISCORE : {:0>12}"_fmt(highScore)).draw((1920 / 2) + 100, 10,ColorF(1.0,_fade));
 
 	double feed = gamePlayer.get_feed();
 	double useFeed = gamePlayer.get_use_feed();
@@ -128,5 +143,12 @@ void Game::draw_ui()const {
 	RectF(1920 / 2 + 100, 90, 720.0 * (feed / 100.0), 60).draw(Palette::Lightgreen);
 	RectF(1920 / 2 + 100 + 720.0 * ((feed - useFeed) / 100.0), 90, 720.0 * (useFeed / 100.0), 60).draw(Palette::Orangered);
 
-	FontAsset(U"ScoreFont")(U"HISCORE : {:0>12}"_fmt(highScore)).draw((1920/2)+100, 10);
+	
+}
+
+void Game::draw_my_effect() const{
+
+	for (size_t m = 0; m < my_effect.size(); m++) {
+		my_effect[m].draw();
+	}
 }

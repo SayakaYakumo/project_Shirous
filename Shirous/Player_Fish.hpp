@@ -8,7 +8,7 @@ class Fish
 
 private:
 
-	double mySpeed = 550.0;
+	double mySpeed = 650.0;
 
 	double shot_cool_time = 0.2;
 
@@ -62,7 +62,7 @@ public:
 	void set_cool_time(double v) { shot_cool_time = v; }
 	void reset_shot_timer() { shot_timer = 0; }
 
-	RectF get_rect() { return rect; }
+	RectF get_rect() const{ return rect; }
 
 	String get_name() { return name; }
 

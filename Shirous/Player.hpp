@@ -42,8 +42,9 @@ public:
 
 	void Spawn2(double deltaTime);
 
-	RectF get_rect() { return fish[0].get_rect(); }
+	RectF get_rect() const{ return fish[0].get_rect(); }
 	RectF get_rect(int i) { return fish[i].get_rect(); }
+	
 
 	String get_name() { return fish[0].get_name(); }
 	String get_name(int i) { return fish[i].get_name(); }

@@ -76,11 +76,45 @@ void Game::ini(){
 		load_debug();
 	}
 
-	// ウィンドウを最大化
+    // ウィンドウを最大化
 
 	Scene::Resize(1920, 1080);
 	Scene::SetResizeMode(ResizeMode::Keep);
 	//Window::SetFullscreen(true);
+	
+	
+	//敵情報読み込み
+
+	Deserializer<BinaryReader> Ereader{ U"data/database/enemy_data.bin" };
+
+	if (not Ereader)
+	{
+		throw Error{ U"Failed to open `enemy_data.bin`" };
+	}
+
+	Ereader(enemy_data);
+
+   //セーブデータ読み込み
+
+	Deserializer<BinaryReader> Sreader{ U"save_data/save_data.bin" };
+
+	if (not Sreader) 
+	{
+		throw Error{ U"Failed to open `tutorial4.bin`" };
+	}
+
+	Sreader(save_data);
+
+	//ステージデータ読み込み
+
+	Deserializer<BinaryReader> SDreader{ U"data/stage/Stage_Data.bin" };
+
+	if (not SDreader)
+	{
+		throw Error{ U"Failed to open `stage_data.bin`" };
+	}
+
+	SDreader(stage_data);
 
 	//FontAsset
 
@@ -135,16 +169,14 @@ void Game::ini(){
 	TextureAsset::Load(U"stage_1_back");
 
 	//敵
-	TextureAsset::Register(U"enemy_アンモナイト", U"data/image/fish/enemy/アンモナイト.png");
-	TextureAsset::Load(U"enemy_アンモナイト");
-	TextureAsset::Register(U"enemy_サケ", U"data/image/fish/enemy/サケ.png");
-	TextureAsset::Load(U"enemy_サケ");
-	TextureAsset::Register(U"enemy_マグロ", U"data/image/fish/enemy/マグロ.png");
-	TextureAsset::Load(U"enemy_マグロ");
-	TextureAsset::Register(U"enemy_三葉虫", U"data/image/fish/enemy/三葉虫.png");
-	TextureAsset::Load(U"enemy_三葉虫");
-	TextureAsset::Register(U"enemy_シーラカンス", U"data/image/fish/enemy/シーラカンス.png");
-	TextureAsset::Load(U"enemy_シーラカンス");
+
+	for (size_t e = 0; e < enemy_data.size(); e++) {
+		String name = U"enemy_"+enemy_data[e].get_name();
+		String adress = U"data/image/fish/enemy/" + enemy_data[e].get_name() + U".png";
+		TextureAsset::Register(name, adress);
+	}
+
+	
 
 	//弾
 	TextureAsset::Register(U"bullet_circle_blue_s", U"data/image/bullet/circle/blue/s.png");
@@ -153,9 +185,54 @@ void Game::ini(){
 	TextureAsset::Register(U"bullet_circle_red_s", U"data/image/bullet/circle/red/s.png");
 	TextureAsset::Load(U"bullet_circle_red_s");
 
+	TextureAsset::Register(U"bullet_circle_red_s_effect", U"data/image/bullet/circle/red/s_effect.png");
+	TextureAsset::Load(U"bullet_circle_red_s_effect");
+
 	//背景タイル
 	TextureAsset::Register(U"back_tile", U"data/image/back/back_tile.png");
 	TextureAsset::Load(U"back_tile");
+
+	//音楽
+	AudioAsset::Register(U"stage_0", U"music/bgm/deep-sea.mp3");
+	AudioAsset::Load(U"stage_0");
+
+	//se
+	for (int i = 0; i < 50; i++) {
+		String str;
+		str = U"se{}"_fmt(i);
+		se << str;
+		se_lock.push_back(0);
+	}
+
+
+	AudioAsset::Register(se[0], U"music/se/enemy_shot.mp3");
+	AudioAsset::Load(se[0]);
+
+	AudioAsset::Register(se[1], U"music/se/bomb.mp3");
+	AudioAsset::Load(se[1]);
+
+	AudioAsset::Register(se[2], U"music/se/get_item.mp3");
+	AudioAsset::Load(se[2]);
+
+	AudioAsset::Register(se[3], U"music/se/break_enemy.mp3");
+	AudioAsset::Load(se[3]);
+
+	AudioAsset::Register(se[4], U"music/se/player_shot.mp3");
+	AudioAsset::Load(se[4]);
+
+	AudioAsset::Register(se[5], U"music/se/death.mp3");
+	AudioAsset::Load(se[5]);
+
+
+
+	AudioAsset::Register(U"make_child", U"music/se/make_child.mp3");
+	AudioAsset::Load(U"make_child");
+
+	AudioAsset::Register(U"death", U"music/se/death.mp3");
+	AudioAsset::Load(U"death");
+
+	AudioAsset::Register(U"decide", U"music/se/decide.mp3");
+	AudioAsset::Load(U"decide");
 
 	//デバッグ以外でファイルに書き込まない
 
@@ -183,16 +260,7 @@ void Game::ini(){
 
 	
 
-	//敵情報読み込み
-
-	Deserializer<BinaryReader> Ereader{ U"data/database/enemy_data.bin" };
-
-	if (not Ereader)
-	{
-		throw Error{ U"Failed to open `enemy_data.bin`" };
-	}
-
-	Ereader(enemy_data);
+	
 
 
 	//ステージデータ
@@ -217,14 +285,7 @@ void Game::ini(){
 
 	STwriter(stage_data);*/
 
-	Deserializer<BinaryReader> SDreader{ U"data/stage/Stage_Data.bin" };
-
-	if (not SDreader)
-	{
-		throw Error{ U"Failed to open `stage_data.bin`" };
-	}
-
-	SDreader(stage_data);
+	
 
 /*
 	//セーブデータ書き込み
@@ -241,17 +302,7 @@ void Game::ini(){
 
 	/**/
 
-	//セーブデータ読み込み
-
 	
-	Deserializer<BinaryReader> Sreader{ U"save_data/save_data.bin" };
-
-	if (not Sreader) 
-	{
-		throw Error{ U"Failed to open `tutorial4.bin`" };
-	}
-
-	Sreader(save_data);
 
 	/*
 

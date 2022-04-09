@@ -10,7 +10,11 @@ void Game::update_main() {
 	//ステージスクロール
 	stage_scroll += deltaTime * stage_speed;
 
-	
+	//ステージコントロール
+	control_stage();
+
+	//効果音処理更新
+	update_se(deltaTime);
 
 	// 敵の発生
 	for (size_t i = 0; i < emergeEnemys.size(); i++) {
@@ -69,6 +73,12 @@ void Game::update_main() {
 	//敵などを消す
 	GameEraseUpdate();
 
+	//マイエフェクト更新
+	update_my_effect(deltaTime);
+
+	//効果音鳴らす
+	play_se_main();
+
 
 	if (KeyControl.down()) {//ポーズ
 		play_scene = 1;
@@ -107,6 +117,7 @@ void Game::GameShotUpdate(const double _time)
 		if (v != -1) {
 			make_enemy_bullet(i,v);//弾生成
 			gameEnemys[i].reset_bullet_flag();//弾発射のフラグを消す
+			set_se(0);
 		}
 	}
 
@@ -141,6 +152,7 @@ void Game::GameShotUpdate(const double _time)
 		{
 			if (gamePlayer.get_shot_timer(i) > gamePlayer.get_cool_time(i)) {
 				make_player_bullet(i);//弾生成
+				set_se(4);
 			}
 		}
 		
@@ -154,6 +166,7 @@ void Game::GameShotUpdate(const double _time)
 	//ボム発射
 	if (KeyX.down() && !bomb->isActive()) {
 		bomb->Start();
+		set_se(1);
 	}
 	//ボム更新
 	bomb->Update(_time, gamePlayer.get_rect().center());
@@ -218,10 +231,15 @@ void Game::GameHitUpdate() {
 						Circle b_circle = gamePlayerBullet[j].get_circle();
 
 						if (b_circle.intersects(e_rect)) {//当たった
-							if (gamePlayerBullet[j].get_pen()) gameEnemys[i].damage(gamePlayerBullet[j].get_power() * Scene::DeltaTime());
+							if (gamePlayerBullet[j].get_pen()) {
+								gameEnemys[i].damage(gamePlayerBullet[j].get_power() * Scene::DeltaTime());
+								
+							
+							}
 							else
 							{
 								gameEnemys[i].damage(gamePlayerBullet[j].get_power());
+								my_effect.push_back(My_Effect(U"bullet_circle_red_s_effect", gamePlayerBullet[j].get_circle().x, gamePlayerBullet[j].get_circle().y));
 								b_check[j] = 1;
 							}
 						}
@@ -321,7 +339,7 @@ void Game::GameEraseUpdate() {
 	gameEnemys.remove_if([&](Enemy e)
 		{
 			if (e.get_hp()<=0) {
-
+				set_se(3);
 			
 
 				return true;
@@ -340,7 +358,7 @@ void Game::GameItemCatch() {
 	for (auto& item : gameItems) {
 		if (gamePlayer.get_rect().intersects(item.get_rect())) {
 			item.alive = false;
-
+			set_se(2);
 			//ここに取得時の処理を書く
 			switch (item.get_type())
 			{
@@ -379,6 +397,25 @@ void Game::GameItemCatch() {
 		});
 }
 
+void Game::update_my_effect(double deltaTime) {
+
+	for (size_t m = 0; m < my_effect.size(); m++) {
+		my_effect[m].update(deltaTime);
+	}
+
+	
+    //消えたら消す
+	my_effect.remove_if([&](My_Effect m)
+		{
+			if (m.get_fade()<=0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+
+		});
+}
 
 //参考にしたプログラムのホーミング弾があったときの名残、使うかもしれないので一応残しておく
 /*

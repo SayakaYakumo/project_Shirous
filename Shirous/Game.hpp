@@ -12,6 +12,7 @@
 #include "Bomb.hpp"
 #include "Bomb_Laser.hpp"
 #include "Item.hpp"
+#include"My_Effect.hpp"
 
 class Game 
 {
@@ -161,6 +162,31 @@ public:
 	void stage_9_load();
 
 	Array<Back_Tile> back_tile;
+
+	//Music
+	void play_bgm();
+	void play_se_main();
+	void update_se(double);
+	void play_se(String);
+
+	void set_bgm(int);
+	void set_se(int);
+
+	//ステージ制御
+	void control_stage();
+	void control_stage_0();
+	void control_stage_1();
+	void control_stage_2();
+	void control_stage_3();
+	void control_stage_4();
+	void control_stage_5();
+	void control_stage_6();
+	void control_stage_7();
+	void control_stage_8();
+
+	//マイエフェクト
+	void update_my_effect(double);
+	void draw_my_effect() const;
 
 private:
 
@@ -349,4 +375,18 @@ private:
 	int32 highScore = 0;
 	// 現在のスコア
 	int32 score = 0;
+
+	//コントロールステージ
+	int stage_scene = 0;
+
+	//Music
+	Array<String> se;
+	int bgm_volume = 5;
+	int se_volume = 5;
+
+	Array<int> se_will;
+	Array<double> se_lock;
+
+	//オリジナルのエフェクト
+	Array<My_Effect> my_effect;
 };

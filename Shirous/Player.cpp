@@ -97,12 +97,15 @@ void Player::Spawn2(double deltaTime)
 
 		if (useFeed >= 30) {
 			fish.push_back(Fish(U"ハリセンボン", fish[0].get_rect()));
+			AudioAsset(U"make_child").playOneShot();
 		}
 		else if (useFeed >= 20) {
 			fish.push_back(Fish(U"アンコウ", fish[0].get_rect()));
+			AudioAsset(U"make_child").playOneShot();
 		}
 		else if (useFeed >= 10) {
 			fish.push_back(Fish(U"シラス", fish[0].get_rect()));
+			AudioAsset(U"make_child").playOneShot();
 		}
 
 		if (useFeed >= 10) feed -= useFeed;
@@ -113,7 +116,7 @@ void Player::Spawn2(double deltaTime)
 	if (spawn_Timer > 2.0)
 	{
 		fish.push_back(Fish(Sample({ U"シラス", U"アンコウ", U"ハリセンボン" }), fish[0].get_rect()));
-		
+		AudioAsset(U"make_child").playOneShot();
 	}
 	
 }
@@ -128,6 +131,8 @@ void Player::damage() {
 	HP--;
 	damage_timer = damage_cool_time;
 	effect.add<DamageEffect>(get_rect().center());
+	AudioAsset(U"death").play();
+	
 	if (HP <= 0) {
 		//オプションとチェンジする処理をここに
 	}

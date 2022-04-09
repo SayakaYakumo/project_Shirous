@@ -4,6 +4,8 @@ void Game::draw_debug_menu() {
 
 	TextureAsset(U"menu_back").draw(0, 0);
 
+	FontAsset(U"DebugMenuFont")(U"Zでstage0が始まります").drawAt(1920 / 2, 80);
+
 	switch (debug_menu_scene)
 	{
 	case 0:
