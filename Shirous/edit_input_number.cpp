@@ -131,6 +131,10 @@ void Game::update_edit_input_number() {
 
 }
 
+void Game::set_input_number(int v) {
+	edit_input_v = Format(v);
+}
+
 void Game::draw_edit_input_number() {
 
 	

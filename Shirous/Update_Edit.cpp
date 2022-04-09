@@ -117,18 +117,45 @@ void Game::update_edit_main() {
 					}
 				}
 				else if (click_number == 8) {//セーブ
-
+					/* */
 					//背景タイル保存
 
 					Serializer<BinaryWriter> Bwriter{ U"data/stage/0/BackTile.bin" };
 
 					if (not Bwriter)
 					{
-						throw Error{ U"Failed to open `tutorial4.bin`" };
+						throw Error{ U"Failed to open `backtile.bin`" };
 					}
 
 					Bwriter(back_tile);
 
+                   //CSV用（没）
+/*
+					CSV BD{ U"data/stage/0/back_tile.csv" };
+
+					if (not BD)
+					{
+						throw Error{ U"Failed to load `back_tile_csv_this_file_may_be_at_data/stage/0/back_tile.csv`" };
+					}
+
+					
+					
+
+
+                    
+
+					for (int x = 0; x < back_tile_wide; x++) {
+						for (int y = 0; y < back_tile_high; y++) {
+							back_tile.push_back(Back_Tile(x, y, -1));
+						}
+					}
+
+					for (size_t b = 0; b < back_tile.size(); b++) {
+						int x = back_tile[b].get_x();
+						int y = back_tile[b].get_y();
+						int v = back_tile[b].get_kind();
+						BD[y][x] = Format(v);
+					}*/
 
 					//敵配置情報保存
 
@@ -136,7 +163,7 @@ void Game::update_edit_main() {
 
 					if (not EEwriter)
 					{
-						throw Error{ U"Failed to open `tutorial4.bin`" };
+						throw Error{ U"Failed to open `emerge_enemy.bin`" };
 					}
 
 					EEwriter(emergeEnemys);
@@ -155,8 +182,31 @@ void Game::update_edit_main() {
 				}
 			}
 
+			
+
+
+			
+
 		}
 
+
+		if (edit_information == 1) {//インフォメーション表示中
+			Array<Rect> rect;
+
+			rect.push_back(Rect(1100 + 500, 210 + 0 * (120),90,90));
+
+			for (size_t i = 0; i < rect.size(); i++) {
+
+				if (rect[i].mouseOver()) {
+					Cursor::RequestStyle(CursorStyle::Hand);
+				}
+
+				if (rect[i].leftClicked()) {//入力へ
+					edit_scene_2 = 2;
+					set_input_number(stage_data[stage_number].get_wide());
+				}
+			}
+		}
 
 
 
@@ -206,6 +256,7 @@ void Game::update_edit_main() {
 					}
 				}
 			}
+			/*
 			else if (edit_select_item == 5) {//敵追加
 
 				if (MouseL.down()) {
@@ -269,7 +320,7 @@ void Game::update_edit_main() {
 					}
 
 				}
-			}
+			}*/
 
 
 
@@ -358,7 +409,7 @@ void Game::update_edit_main() {
 							//マークがついているタイルを塗り替える
 							for (size_t i = 0; i < back_tile.size(); i++) {
 								if (back_tile[i].get_edit_kind_x() != -1 && back_tile[i].get_edit_kind_y() != -1) {
-									back_tile[i].set_kind(0);
+									back_tile[i].set_kind(edit_select_tile_kind);
 								}
 							}
 
@@ -391,6 +442,82 @@ void Game::update_edit_main() {
 
 	}
 	else if (edit_scene_2 == 1) {//タイル選択へ
+		int x = (Cursor::Pos().x - 360) / 120;
+		int y = (Cursor::Pos().y + edit_select_tile_scroll - 100) / 120;
+
+		if (x >= 0 and y >= 0) {
+			edit_select_tile_display = x + y * 10;
+		}
+		else {
+			edit_select_tile_display = -1;
+		}
+
+		if (MouseL.down()) {
+			edit_select_tile_kind = x + y * 10;
+			
+			edit_scene_2 = 0;
+		}
+	}
+	else if (edit_scene_2 == 2) {//wide入力
+
+		update_edit_input_number();
+
+		if (edit_input_end == 1) {//決定
+			edit_input_end = 0;
+			edit_scene_2 = 0;
+
+			int v = Parse<double>(edit_input_v);
+
+			if (v > 0) {//0より大きい
+				edit_wide = v;
+				
+			}
+			else {
+				edit_wide = 1;
+				
+			}
+				
+
+				int now_wide = stage_data[stage_number].get_wide();
+
+
+				if (now_wide < edit_wide) {//拡大する
+					int v = edit_wide - now_wide;
+
+					for (int i = 0; i < v; i++) {
+						for (int y = 0; y < 9; y++) {
+							int x = now_wide + i;
+
+							back_tile.push_back(Back_Tile(x, y, -1));
+						}
+					}
+
+				}
+				else if (now_wide > edit_wide) {
+
+					// 
+					back_tile.remove_if([&](Back_Tile b)
+						{
+								if (b.get_x() >= edit_wide) {
+
+									return true;
+								}
+								else {
+									return false;
+								}
+
+						});
+				}
+
+			
+			stage_data[stage_number].set_wide(edit_wide);
+
+		}
+		else if (edit_input_end == 2) {//キャンセル
+			edit_input_end = 0;
+			edit_input_v = U"";
+
+		}
 		
 	}
 
