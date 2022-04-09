@@ -146,6 +146,8 @@ void Game::ini(){
 	TextureAsset::Register(U"enemy_シーラカンス", U"data/image/fish/enemy/シーラカンス.png");
 	TextureAsset::Load(U"enemy_シーラカンス");
 
+
+
 	//弾
 	TextureAsset::Register(U"bullet_circle_blue_s", U"data/image/bullet/circle/blue/s.png");
 	TextureAsset::Load(U"bullet_circle_blue_s");

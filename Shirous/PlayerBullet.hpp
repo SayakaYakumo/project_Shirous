@@ -46,6 +46,7 @@ public:
 		power = power_;
 		color = color_;
 		size = size_;
+		//power = pow_;
 	}
 	~PlayerBullet() {
 
