@@ -49,9 +49,9 @@ private:
 
 	Texture texture;
 
-	int count = 0;
+	int count = 0;//おそらく現在未使用
 
-	double count_2 = 0;
+	double count_2 = 0;//move_1()のsin波移動に使用
 
 	String name;
 

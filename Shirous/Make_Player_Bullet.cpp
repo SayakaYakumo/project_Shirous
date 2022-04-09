@@ -21,7 +21,7 @@ void Game::make_player_bullet(int i) {
 		y = gamePlayer.get_rect(i).y;
 
 		r = 30;
-		speed = 1000;
+		speed = 700;
 		move = 0;
 		angle = ToRadians(0);
 		shape = U"circle";
@@ -55,7 +55,7 @@ void Game::make_player_bullet(int i) {
 		y = gamePlayer.get_rect(i).y;
 
 		r = 30;
-		speed = 800;
+		speed = 700;
 		move = 0;
 		shape = U"circle";
 		color = U"red";
@@ -75,7 +75,7 @@ void Game::make_player_bullet(int i) {
 		y = gamePlayer.get_rect(i).y;
 
 		r = 30;
-		speed = 700;
+		speed = 1200;
 		move = 0;
 		angle = ToRadians(0);
 		shape = U"circle";
@@ -93,7 +93,7 @@ void Game::make_player_bullet(int i) {
 		y = gamePlayer.get_rect(i).y;
 
 		r = 30;
-		speed = 1000;
+		speed = 800;
 		move = 0;
 		angle = ToRadians(0);
 		shape = U"circle";

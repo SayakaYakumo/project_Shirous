@@ -2,20 +2,8 @@
 
 Player::Player()
 {
-	
-	//タツノオトシゴでスタート
-	RectF rect;
-	rect.x = 300;
-	rect.y = 300;
-	rect.w = Texture(U"data/image/fish/player/タツノオトシゴ.png").width() * 0.9;
-	rect.h = Texture(U"data/image/fish/player/タツノオトシゴ.png").height() * 0.9;
-	//fish.push_back(Fish(U"タツノオトシゴ", rect));
-	
-
 	fish.push_back(Fish());
-	//fish.push_back(Fish());
-	fish.push_back(Fish(U"イカ", rect));
-
+	fish.push_back(Fish());
 }
 
 Player::~Player()
