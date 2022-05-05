@@ -1,4 +1,5 @@
 ﻿#include "Enemy.hpp"
+#include"Player.hpp"
 
 
 
@@ -8,7 +9,9 @@ Enemy::Enemy(String name_,int x,int y,int hp_,int act_,int move_,int shot_patter
 {
 	name = name_;
 	rect = Rect(x, y, 100, 100);
-	
+	String texture_name = U"enemy_" + name_;
+	rect.w = TextureAsset(texture_name).width() * 0.9;
+	rect.h = TextureAsset(texture_name).height() * 0.9;
 	speed = 120;
 
 	hp = hp_;
@@ -64,15 +67,37 @@ void Enemy::Update(double deltaTime)
 	
 }
 
+void Enemy::Update(double deltaTime, RectF player_rect)
+{
+	move_count += deltaTime;
+	shot_count += deltaTime;
+	read_player_pos(player_rect);
+	if (act_pattern == -1) {
+		move(deltaTime);//移動
+		shot();//ショット
+	}
+	else {
+		act(deltaTime);//行動
+	}
+
+
+
+	for (size_t i = 0; i < hit_rect.size(); i++) {//当たり判定の四角形たちを調整
+		hit_rect[i].update(rect.x, rect.y);
+	}
+
+	make_bullet_point.x = rect.x + make_bullet_point_adjust_x;//弾を出す位置を調整
+	make_bullet_point.y = rect.y + make_bullet_point_adjust_y;//弾を出す位置を調整
+
+
+}
+
 void Enemy::Draw()const
 {
 
 	String texture_name = U"enemy_" + name;
 
 	TextureAsset(texture_name).draw(rect.x, rect.y);
-
-	
-
 }
 
 void Enemy::DrawFrame() const{
@@ -131,7 +156,11 @@ void  Enemy::act_2(double deltaTime) {
 }
 
 void  Enemy::act_3(double deltaTime) {
+	////Playerの位置と敵の位置を引き、その位置ベクトルを敵の
 
+	Vec2 dir = Enemy::PlayerRect.movedBy(250, 0).center() - Vec2{ rect.x,rect.center().y };
+	rect.x += double(dir.normalized().x * 6);
+	rect.y += double(dir.normalized().y * 6);
 }
 
 void Enemy::act_4(double deltaTime) {
@@ -146,6 +175,10 @@ void Enemy::act_6(double deltaTime) {
 
 }
 
+void Enemy::read_player_pos(RectF PlayerRect_)
+{
+	Enemy::PlayerRect = PlayerRect_;
+}
 void Enemy::move(double deltaTime) {
 
 	

@@ -87,7 +87,8 @@ void Game::GameMoveUpdate(const double _time)
 	//敵の移動と描画
 	for (auto& enemy : gameEnemys)
 	{
-		enemy.Update(_time);
+		//enemy.Update(_time);
+		enemy.Update(_time, gamePlayer.get_rect());
 	}
 
 	//敵の移動と描画

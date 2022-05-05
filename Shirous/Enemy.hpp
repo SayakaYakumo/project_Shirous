@@ -16,8 +16,9 @@ private:
 	
 
 	int make_bullet_flag = -1;
+	//プレイヤーの位置を保持する変数
+	RectF PlayerRect;
 
-	
 
 	Vec2 make_bullet_point;
 
@@ -63,6 +64,8 @@ public:
 	~Enemy();
 
 	void Update(double deltaTime);
+	void Update(double deltaTime, RectF player_rect);
+
 
 	void Draw()const;
 
@@ -103,6 +106,7 @@ public:
 	void reset_bullet_flag() { make_bullet_flag = -1; }
 
 	RectF get_rect() { return rect; }
+	void read_player_pos(RectF);
 
 	Vec2 get_make_bullet_point() {return make_bullet_point; }
 
